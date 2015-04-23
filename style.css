@@ -1,0 +1,175 @@
+/*
+Theme Name: Basic Bootstrap Template for WordPress
+Theme URI: http://jonuday.com/initializer-bootstrap-template-for-wordpress
+Description: An Initializr Bootstrap theme for WordPress.
+Author: Jonathan Day
+Author URI: http://jonuday.com/about
+Version: 1.0
+Tags: black, white, custom-colors, three-columns, flexible-width, custom-header, custom-background, threaded-comments, sticky-post, translation-ready, microformats, rtl-language-support, editor-style, custom-menus (optional)
+
+License: 
+License URI:
+
+General comments:
+Built with SASS
+
+*/
+/* line 38, style.scss */
+.screen-reader-text {
+  display: none;
+}
+
+/* Adjustments for WordPress Styles */
+/* line 44, style.scss */
+body, html {
+  /* important */
+  height: 100%;
+  padding-top: 24px;
+  margin-bottom: 30px;
+}
+/* line 50, style.scss */
+body.logged-in, html.logged-in {
+  padding-top: 20px;
+}
+/* line 53, style.scss */
+body.logged-in .navbar-fixed-top, html.logged-in .navbar-fixed-top {
+  top: 25px;
+}
+
+/* line 60, style.scss */
+body > .footer-fixed {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 4px 0;
+  margin: 2em 0 0;
+  border-top: 1px solid white;
+  z-index: 1;
+}
+/* line 69, style.scss */
+body > .footer-fixed.navbar-inverse {
+  color: white;
+}
+/* line 74, style.scss */
+body .clear {
+  height: 60px;
+}
+/* line 79, style.scss */
+body .clear-double {
+  height: 120px;
+}
+
+@media all and (max-width: 767px) {
+  /* line 88, style.scss */
+  body > .footer-fixed {
+    position: relative;
+  }
+  /* line 92, style.scss */
+  body .clear, body .clear-double {
+    height: 4px;
+  }
+}
+/* line 100, style.scss */
+a:hover {
+  text-decoration: none;
+}
+
+/* line 105, style.scss */
+img {
+  background-color: #fefefe;
+  border: 1px solid #a5a5a5;
+  margin: 0.25em 0.5em;
+  padding: 0.25em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+}
+/* line 114, style.scss */
+img.alignleft {
+  float: left;
+  margin-left: 0;
+}
+/* line 118, style.scss */
+img.alignright {
+  float: right;
+  margin-right: 0;
+}
+
+/* line 125, style.scss */
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* line 131, style.scss */
+.navbar-fixed-top.navbar-inverse {
+  margin-bottom: 0;
+}
+
+/* line 136, style.scss */
+.banner {
+  position: absolute;
+  min-height: 600px;
+  width: 100%;
+  z-index: -1;
+  /*	@include background (linear-gradient(to top, rgba($body-bg,0), rgba($body-bg,1)), 
+  	 			 transparent url(img/fs-image-1.jpg) 0 0 no-repeat); */
+}
+
+/*
+.banner,
+.main {
+		@include background (linear-gradient(to left, rgba($gray-base,0.5), rgba($gray-darker,0.5), rgba($gray-base,0.5)), 
+	 			 transparent url(img/fs-image-1.jpg) 0 0 no-repeat);
+		background-size: cover;
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+		background-position: center center;
+} */
+/* shift this to header image CSS */
+/* line 162, style.scss */
+body.home .main > ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+/* line 168, style.scss */
+body.home .main .container {
+  font-size: 1.25em;
+  color: #FFF;
+  text-shadow: 1px 2px 5px #000;
+  padding: 2em;
+}
+/* line 174, style.scss */
+body.home .main .container a {
+  color: #FFF;
+}
+
+/* content */
+/* line 183, style.scss */
+.widget-container h2 {
+  font-size: 18px;
+}
+
+/* line 186, style.scss */
+.fpw-widget-page .widget-title, .fpw-widget-page .fpw-page-title, .fpw-widget-page .fpw-featured-image {
+  font-size: 36px;
+  margin: 0px 0px 10px;
+  padding-top: 0px;
+}
+
+/* Posts */
+/* line 193, style.scss */
+.entry-header img {
+  float: left;
+}
+
+/* line 199, style.scss */
+footer.entry-meta {
+  display: none;
+}

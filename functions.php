@@ -1,0 +1,605 @@
+<?php
+/**
+ *
+ * @package WordPress Initializr
+ * @subpackage WP_Bootstrapped
+ * @since WordPress Initializr 1.0
+ *
+ * Fix list:
+ * 
+ * 1. replace header image with background image to support pages
+ * 2. add logo option (null default)
+ * 3. 
+**/
+
+// Custom Headers 
+function wp_bootstrapped_header () {
+	$header_args = array(
+		'default-image' => get_template_directory_uri() . '/img/header.jpg',
+		'random-default'         => false,
+		'width'                  => 0,
+		'height'                 => 0,
+		'flex-height'            => true,
+		'flex-width'             => true,
+		'default-text-color'     => '',
+		'header-text'            => true,
+		'uploads'                => true,
+		'wp-head-callback'       => '',
+		'admin-head-callback'    => '',
+		'admin-preview-callback' => '',
+	);
+	add_theme_support( 'custom-header', $header_args );
+}
+add_action('after_setup_theme','wp_bootstrapped_header');
+
+// Custom Settings
+
+function wp_bootstrapped_customize_register( $wp_customize ) {
+
+
+   //All our sections, settings, and controls will be added here
+
+	$wp_customize->add_section( 'wp_bootstrapped_logo_section' , array(
+    	'title'      => __( 'Logo', 'wp_bootstrapped' ),
+    	'priority'   => 10,
+	) );
+
+	// add settings
+
+	$wp_customize->add_setting( 'nav_style' , array(
+    	'default'     => 'default',
+    	'transport'   => 'postMessage',
+	) );
+
+	$wp_customize->add_setting( 'logo_image' , array(
+    	'default'     => '',
+    	'transport'   => 'postMessage',
+	) );
+
+	// add controls	
+
+	$wp_customize->add_control('navbar_style', 
+		array(
+			'label'    => __( 'Navbar Style', 'wp_initilizr' ),
+			'section'  => 'nav',
+			'settings' => 'nav_style',
+			'type'     => 'radio',
+			'choices'  => array(
+				'default'  => 'default',
+				'inverse' => 'inverse',
+			),
+		)
+	); // echo get_theme_mod('nav_style', 'navbar-default');
+
+	$wp_customize->add_control( new WP_Customize_Header_Image_Control( $wp_customize, 'header_image', array(
+		'label'        => __( 'Front Page Banner Image', 'wp_initilizr' ),
+		'section'    => 'header_image',
+		'settings'   => 'header_image',
+	) ) );
+
+
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'logo', array(
+		'label'        => __( 'Logo Image', 'wp_initilizr' ),
+		'section'    => 'wp_bootstrapped_logo_section',
+		'settings'   => 'logo_image',
+	) ) );
+
+	$wp_customize->add_control( new WP_Customize_Background_Image_Control( $wp_customize, 'background_image', array(
+		'label'        => __( 'Posts and Pages Background Image', 'wp_initilizr' ),
+		'section'    => 'background_image',
+		'settings'   => 'background_image',
+	) ) );
+
+	// Acknowledge whats already built in
+	$wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
+	$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
+	$wp_customize->get_setting( 'background_image' )->transport = 'postMessage';
+
+}
+add_action( 'customize_register', 'wp_bootstrapped_customize_register' );
+
+function wp_bootstrapped_customize_css()
+{
+    ?>
+         <style type="text/css">
+
+         	<?php if (get_theme_mod('logo_image')) { ?>
+         	a.navbar-brand {
+         		width: 140px;
+         		height: auto;
+         		background: transparent url(<?php echo get_theme_mod('logo_image', get_template_directory_uri() . '/img/logo-hanko-red.png'); ?>) 50% 50% no-repeat;
+         		background-size: auto 70%;
+         		text-indent: -9999em;
+         	}
+         	<?php } ?>
+
+            .banner {
+            	background: -webkit-gradient(linear, to bottom, to top, color-stop(0%, rgba(254, 254, 254, 0)), color-stop(100%, #fefefe)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 0 0 no-repeat;
+				background: -webkit-linear-gradient(to bottom, rgba(254, 254, 254, 0), #fefefe), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 0 0 no-repeat;
+				background: -moz-linear-gradient(to bottom, rgba(254, 254, 254, 0), #fefefe), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 0 0 no-repeat;
+				background: -o-linear-gradient(to bottom, rgba(254, 254, 254, 0), #fefefe), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 0 0 no-repeat;
+				background: linear-gradient(to bottom, rgba(254, 254, 254, 0), #fefefe), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 0 0 no-repeat;
+				opacity: 0.25;
+            }
+            .main {
+            	background-image: url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>);
+            }
+
+         </style>
+    <?php
+}
+add_action( 'wp_head', 'wp_bootstrapped_customize_css');
+
+function wp_bootstrapped_customizer_live_preview() {
+	wp_enqueue_script( 
+		  'wp-initializr-themecustomizer',			//Give the script an ID
+		  get_template_directory_uri().'/js/theme-customize.js',//Point to file
+		  array( 'jquery','customize-preview' ),	//Define dependencies
+		  '',						//Define a version (optional) 
+		  true						//Put script in footer?
+	);
+}
+add_action( 'customize_preview_init', 'wp_bootstrapped_customizer_live_preview' );
+
+
+/*
+ * Loads our main stylesheet.
+*/
+function wp_bootstrapped_styles_scripts () {	
+	wp_enqueue_style( 'wp-initializr-style', get_stylesheet_uri() );
+}
+add_action( 'wp_enqueue_scripts', 'wp_bootstrapped_styles_scripts' );
+
+
+
+// Menu Classing
+/**
+ * Create a nav menu with very basic markup.
+ *
+ * @author Thomas Scholz http://toscho.de
+ * @version 1.0
+ */
+class wp_initilizr_Walker_Nav_Menu extends Walker_Nav_Menu {
+	/**
+	 * Start the element output.
+	 *
+	 * @param  string $output Passed by reference. Used to append additional content.
+	 * @param  object $item   Menu item data object.
+	 * @param  int $depth     Depth of menu item. May be used for padding.
+	 * @param  array $args    Additional strings.
+	 * @return void
+	 */
+	public function start_el( &$output, $item, $depth, $args )
+	{
+		$output     .= '<li';
+		$attributes  = '';
+		$caret = '';
+
+		$parents = array();
+		if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $args->theme_location ] ) ) {
+			$menu = wp_get_nav_menu_object( $locations[ $args->theme_location ] );
+			$menu_items = wp_get_nav_menu_items($menu->term_id);
+			foreach( $menu_items as $menu_item ) {
+			  if( $menu_item->menu_item_parent != 0 )
+			    $parents[] = $menu_item->menu_item_parent;
+			}
+		}
+
+		if( in_array($item->ID, $parents ) ) {
+			$attributes = 'class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"';
+			$caret .= '<span class="caret"></span>';
+			$menu_item_parent = true;
+		}
+
+		$output .= (($item->current || $menu_item_parent == true) ? ' class="' : '').($item->current ? 'active':'').($menu_item_parent == true ? ($args->theme_location == 'footer-menu'? 'dropup' : 'dropdown') : '').( ($item->current || $menu_item_parent == true) ? '"' : '').' >';
+
+		! empty ( $item->attr_title )
+			// Avoid redundant titles
+			and $item->attr_title !== $item->title
+			and $attributes .= ' title="' . esc_attr( $item->attr_title ) .'"';
+
+		! empty ( $item->url )
+			and $attributes .= ($menu_item_parent == true ? ' href="#"' : ' href="' . esc_attr( $item->url ) .'"');
+
+		$attributes  = trim( $attributes );
+		$title       = apply_filters( 'the_title', $item->title, $item->ID ).$caret;
+		$item_output = "$args->before<a $attributes>$args->link_before$title</a>"
+						. "$args->link_after$args->after";
+
+		// Since $output is called by reference we don't need to return anything.
+		$output .= apply_filters(
+			'walker_nav_menu_start_el'
+			,   $item_output
+			,   $item
+			,   $depth
+			,   $args
+		);
+	}
+
+	/**
+	 * @see Walker::start_lvl()
+	 *
+	 * @param string $output Passed by reference. Used to append additional content.
+	 * @return void
+	 */
+	public function start_lvl( &$output )
+	{
+		$output .= '<ul class="dropdown-menu">';
+	}
+
+	/**
+	 * @see Walker::end_lvl()
+	 *
+	 * @param string $output Passed by reference. Used to append additional content.
+	 * @return void
+	 */
+	public function end_lvl( &$output )
+	{
+		$output .= '</ul>';
+	}
+
+	/**
+	 * @see Walker::end_el()
+	 *
+	 * @param string $output Passed by reference. Used to append additional content.
+	 * @return void
+	 */
+	function end_el( &$output )
+	{
+		$output .= '</li>';
+	}
+}
+
+// Menus
+function register_wpi_menus() {
+  register_nav_menus(
+    array(
+      'top-menu' => __( 'Top Menu' ),
+      'sidebar-right-menu' => __( 'Right Sidebar Menu' ),
+      'sidebar-left-menu' => __( 'Left Sidebar Menu' ),
+      'footer-menu' => __( 'Footer Menu' ),
+    )
+  );
+}
+add_action( 'init', 'register_wpi_menus' );
+
+/**
+ * Makes our wp_nav_menu() fallback -- wp_page_menu() -- show a home link.
+ *
+ * from Twenty Twelve 1.0
+ */
+function wp_bootstrapped_page_menu_args( $args ) {
+	if ( ! isset( $args['show_home'] ) )
+		$args['show_home'] = true;
+		$args['container_class'] = 'nav-collapse collapse';
+		$args['menu_class'] = 'nav';
+	return $args;
+}
+add_filter( 'wp_page_menu_args', 'wp_bootstrapped_page_menu_args' );
+
+// Content Navigation Items
+
+if ( ! function_exists( 'wp_bootstrapped_content_nav' ) ) :
+/**
+ * Displays navigation to next/previous pages when applicable.
+ *
+ * @since Twenty Twelve 1.0
+ */
+function wp_bootstrapped_content_nav( $html_id ) {
+	global $wp_query;
+
+	$html_id = esc_attr( $html_id );
+
+	if ( $wp_query->max_num_pages > 1 ) : ?>
+		<nav id="<?php echo $html_id; ?>" class="navigation" role="navigation">
+			<h3 class="assistive-text"><?php _e( 'Post navigation', 'wp_bootstrapped' ); ?></h3>
+			<div class="nav-previous alignleft"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Previous posts', 'wp_bootstrapped' ) ); ?></div>
+			<div class="nav-next alignright"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'wp_bootstrapped' ) ); ?></div>
+		</nav><!-- #<?php echo $html_id; ?> .navigation -->
+	<?php endif;
+}
+endif;
+
+
+// Content Entry Meta Data
+// from TwentyTwelve
+
+if ( ! function_exists( 'wp_bootstrapped_entry_meta' ) ) :
+/**
+ * Prints HTML with meta information for current post: categories, tags, permalink, author, and date.
+ *
+ * Create your own wp_bootstrapped_entry_meta() to override in a child theme.
+ *
+ * @since Twenty Twelve 1.0
+ */
+function wp_bootstrapped_entry_meta() {
+	// Translators: used between list items, there is a space after the comma.
+	$categories_list = get_the_category_list( __( ', ', 'wp_bootstrapped' ) );
+
+	// Translators: used between list items, there is a space after the comma.
+	$tag_list = get_the_tag_list( '', __( ', ', 'wp_bootstrapped' ) );
+
+	$date = sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a>',
+		esc_url( get_permalink() ),
+		esc_attr( get_the_time() ),
+		esc_attr( get_the_date( 'c' ) ),
+		esc_html( get_the_date() )
+	);
+
+	$author = sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
+		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+		esc_attr( sprintf( __( 'View all posts by %s', 'wp_bootstrapped' ), get_the_author() ) ),
+		get_the_author()
+	);
+
+	// Translators: 1 is category, 2 is tag, 3 is the date and 4 is the author's name.
+	if ( $tag_list ) {
+		$utility_text = __( '<p>Posted in: %1$s <br />Tagged: %2$s <br />Date: %3$s <br />By: <span class="by-author">%4$s</span></p>', 'wp_bootstrapped' );
+	} elseif ( $categories_list ) {
+		$utility_text = __( '<p>Posted in: %1$s <br />Tagged: %2$s <br />Date: %3$s <br />By: <span class="by-author">%4$s</span></p>', 'wp_bootstrapped' );
+	} else {
+		$utility_text = __( '<p>Posted in: %1$s <br />Tagged: %2$s <br />Date: %3$s <br />By: <span class="by-author">%4$s</span></p>', 'wp_bootstrapped' );
+	}
+
+	printf(
+		$utility_text,
+		$categories_list,
+		$tag_list,
+		$date,
+		$author
+	);
+}
+endif;
+
+// Hero, Sidebars, and Widgets
+// The hero is more useful if one can choose any contents for 
+// for rotating, so a sidebar area is set to handle the contents.
+function wp_bootstrapped_widgets() {
+	// 2 widget areas for right sidebars 
+	register_sidebar( array(
+		'name'          => __( 'Top Right Sidebar', 'wp_bootstrapped' ),
+		'id'            => 'sidebar-1',
+		'description'   => 'Contents used in page templates in the right sidebar section',
+		'class'         => 'sidebar-1',
+		'before_widget' => '<div id="%1$s" class="sidebar %2$s">',
+		'after_widget'  => "</div>\n",
+		'before_title'  => '<h1 class="sidebar-title">',
+		'after_title'   => "</h1>\n",
+	) );
+	
+	register_sidebar( array(
+		'name'          => __( 'Bottom Right Sidebar', 'wp_bootstrapped' ),
+		'id'            => 'sidebar-2',
+		'description'   => 'Contents used in page templates in the right sidebar section',
+		'class'         => 'sidebar-2',
+		'before_widget' => '<div id="%1$s" class="sidebar %2$s">',
+		'after_widget'  => "</div>\n",
+		'before_title'  => '<h1 class="sidebar-title">',
+		'after_title'   => "</h1>\n",
+	) );
+
+	// 2 widget areas for left sidebars 
+	register_sidebar( array(
+		'name'          => __( 'Top Left Sidebar', 'wp_bootstrapped' ),
+		'id'            => 'sidebar-3',
+		'description'   => 'Contents used in page templates for the left sidebar section',
+		'class'         => 'sidebar-3',
+		'before_widget' => '<div id="%1$s" class="sidebar %2$s">',
+		'after_widget'  => "</div>\n",
+		'before_title'  => '<h1 class="sidebar-title">',
+		'after_title'   => "</h1>\n",
+	) );
+	
+	register_sidebar( array(
+		'name'          => __( 'Bottom Left Sidebar', 'wp_bootstrapped' ),
+		'id'            => 'sidebar-4',
+		'description'   => 'Contents used in page templates for the left sidebar section',
+		'class'         => 'sidebar-4',
+		'before_widget' => '<div id="%1$s" class="sidebar %2$s">',
+		'after_widget'  => "</div>\n",
+		'before_title'  => '<h1 class="sidebar-title">',
+		'after_title'   => "</h1>\n",
+	) );
+
+
+	// 3 widget areas for above the footer
+	register_sidebar( array(
+		'name'          => __( 'First Footer Content Area' , 'wp_bootstrapped' ),
+		'id'            => 'widget-1',
+		'description'   => 'Contents used in templates that include contents above the footer',
+		'class'         => 'widget-1',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => "</div>\n",
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => "</h1>\n",
+	) );
+
+	register_sidebar( array(
+		'name'          => __( 'Second Footer Content Area', 'wp_bootstrapped' ),
+		'id'            => 'widget-2',
+		'description'   => 'Contents used in templates that include contents above the footer',
+		'class'         => 'widget-2',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => "</div>\n",
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => "</h1>\n",
+	) );
+
+	register_sidebar( array(
+		'name'          => __( 'Third Footer Content Area', 'wp_bootstrapped' ),
+		'id'            => 'widget-3',
+		'description'   => 'Contents used in templates that include contents above the footer',
+		'class'         => 'widget-3',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => "</div>\n",
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => "</h1>\n",
+	) );
+}
+
+add_action( 'widgets_init', 'wp_bootstrapped_widgets' );
+
+// Theme Dashboard
+
+add_action('wp_dashboard_setup', 'wp_bootstrapped_dashboard_widgets');
+function wp_bootstrapped_dashboard_widgets() {
+	global $wp_meta_boxes;
+	wp_add_dashboard_widget('custom_help_widget', 'Theme Support', 'custom_dashboard_help');
+}
+
+function custom_dashboard_help() {
+	echo '<p>Welcome to the Initializr with Bootstrap WordPress Theme! Need help? Contact the developer <a href="mailto:jon@jonuday.com">here</a>.</p><p>Learn more about Initializr at <a href="www.initializr.com" title="Open the Initializr Homepage in a new window" target="_blank">www.initializr.com</a></p>.';
+}
+
+
+
+/**
+ * Recent_Posts widget class
+ *
+ * @since 2.8.0
+ */
+class wp_bootstrapped_Widget_Recent_Posts extends WP_Widget {
+
+	public function __construct() {
+		$widget_ops = array('classname' => 'wpi_widget_recent_entries', 'description' => __( "Your site&#8217;s most recent Posts.") );
+		parent::__construct('wpi_recent-posts', __('WPI Recent Posts'), $widget_ops);
+		$this->alt_option_name = 'wpi_recent_entries';
+
+		add_action( 'save_post', array($this, 'flush_widget_cache') );
+		add_action( 'deleted_post', array($this, 'flush_widget_cache') );
+		add_action( 'switch_theme', array($this, 'flush_widget_cache') );
+	}
+
+	public function widget($args, $instance) {
+		$cache = array();
+		if ( ! $this->is_preview() ) {
+			$cache = wp_cache_get( 'wpi_recent_posts', 'widget' );
+		}
+
+		if ( ! is_array( $cache ) ) {
+			$cache = array();
+		}
+
+		if ( ! isset( $args['widget_id'] ) ) {
+			$args['widget_id'] = $this->id;
+		}
+
+		if ( isset( $cache[ $args['widget_id'] ] ) ) {
+			echo $cache[ $args['widget_id'] ];
+			return;
+		}
+
+		ob_start();
+
+		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Recent Posts' );
+
+		/** This filter is documented in wp-includes/default-widgets.php */
+		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
+
+		$number = ( ! empty( $instance['number'] ) ) ? absint( $instance['number'] ) : 5;
+		if ( ! $number )
+			$number = 5;
+		$show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
+		
+		/*if ( is_category() ) { //adds the category parameter in the query if we display a category
+ 			$cat = get_queried_object();
+ 		}*/
+
+ 		$cat = isset( $instance['cat'] ) ? $instance['cat'] : '';
+
+
+		/**
+		 * Filter the arguments for the Recent Posts widget.
+		 *
+		 * @since 3.4.0
+		 *
+		 * @see WP_Query::get_posts()
+		 *
+		 * @param array $args An array of arguments used to retrieve the recent posts.
+		 */
+		$r = new WP_Query( apply_filters( 'widget_posts_args', array(
+			'posts_per_page'      => $number,
+			'no_found_rows'       => true,
+			'post_status'         => 'publish',
+			'ignore_sticky_posts' => true,
+			'category_name' => $cat // -> term_id
+		) ) );
+
+		if ($r->have_posts()) :
+
+?>
+		<?php echo $args['before_widget']; ?>
+		<section>
+			<?php if ( $title ) {
+			echo $args['before_title'] . $title  . $args['after_title'];
+			} ?>
+			<?php while ( $r->have_posts() ) : $r->the_post(); ?>
+			<article>
+				<?php get_the_post_thumbnail( $page->ID, 'thumbnail' ); ?>
+				<h1><a href="<?php the_permalink(); ?>"><?php get_the_title() ? the_title() : the_ID(); ?></a></h1>
+				<?php if ( $show_date ) : ?>
+				<span class="post-date"><?php echo get_the_date(); ?></span>
+				<?php endif; ?>
+				<?php get_the_excerpt() ? the_excerpt() : print('no excerpt available'); ?>
+			</article>
+		<?php endwhile; ?>
+		</section>
+		<?php echo $args['after_widget']; ?>
+<?php
+		// Reset the global $the_post as this query will have stomped on it
+		wp_reset_postdata();
+
+		endif;
+
+		if ( ! $this->is_preview() ) {
+			$cache[ $args['widget_id'] ] = ob_get_flush();
+			wp_cache_set( 'wpi_recent_posts', $cache, 'widget' );
+		} else {
+			ob_end_flush();
+		}
+	}
+
+	public function update( $new_instance, $old_instance ) {
+		$instance = $old_instance;
+		$instance['title'] = strip_tags($new_instance['title']);
+		$instance['cat'] = strip_tags($new_instance['cat']);
+		$instance['number'] = (int) $new_instance['number'];
+		$instance['show_date'] = isset( $new_instance['show_date'] ) ? (bool) $new_instance['show_date'] : false;
+		$this->flush_widget_cache();
+
+		$alloptions = wp_cache_get( 'alloptions', 'options' );
+		if ( isset($alloptions['wpi_recent_entries']) )
+			delete_option('wpi_recent_entries');
+
+		return $instance;
+	}
+
+	public function flush_widget_cache() {
+		wp_cache_delete('wpi_recent_posts', 'widget');
+	}
+
+	public function form( $instance ) {
+		$title     = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
+		$cat     = isset( $instance['cat'] ) ? esc_attr( $instance['cat'] ) : '';
+		$number    = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
+		$show_date = isset( $instance['show_date'] ) ? (bool) $instance['show_date'] : false;
+?>
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
+		
+		<p><label for="<?php echo $this->get_field_id( 'cat' ); ?>"><?php _e( 'Category:' ); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id( 'cat' ); ?>" name="<?php echo $this->get_field_name( 'cat' ); ?>" type="text" value="<?php echo $cat; ?>" /></p>
+
+		<p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of posts to show:' ); ?></label>
+		<input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
+
+		<p><input class="checkbox" type="checkbox" <?php checked( $show_date ); ?> id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" />
+		<label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display post date?' ); ?></label></p>
+<?php
+	}
+}
+
+register_widget('wp_bootstrapped_Widget_Recent_Posts');
+
+
+?>

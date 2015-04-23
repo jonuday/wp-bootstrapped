@@ -1,0 +1,202 @@
+/*
+Theme Name: Basic Bootstrap Template for WordPress
+Theme URI: http://jonuday.com/initializer-bootstrap-template-for-wordpress
+Description: An Initializr Bootstrap theme for WordPress.
+Author: Jonathan Day
+Author URI: http://jonuday.com/about
+Version: 1.0
+Tags: black, white, custom-colors, three-columns, flexible-width, custom-header, custom-background, threaded-comments, sticky-post, translation-ready, microformats, rtl-language-support, editor-style, custom-menus (optional)
+
+License: 
+License URI:
+
+General comments:
+Built with SASS
+
+*/
+
+@import "compass";
+
+$gray-base 			: #2E2E2E;
+$gray-darker 		: lighten($gray-base, 13.5%);
+$gray-dark 			: lighten($gray-base, 20%);
+$gray 				: lighten($gray-base, 33.5%);
+$gray-light 		: lighten($gray-base, 46.7%);
+$gray-lighter 		: lighten($gray-base, 93.5%);
+// $brand-primary 		: #CC0000; // red
+$brand-primary 		: #7E9900; // green
+// $brand-primary 		: #0000CC; // blue
+$brand-success 		: #5cb85c;
+$brand-info 		: #5bc0de;
+$brand-warning 		: #f0ad4e;
+$brand-danger 		: #d9534f;
+$body-bg 			: #fefefe;
+$text-color 		: $gray-dark;
+$link-color 		: $brand-primary;
+$link-hover-color 	: darken($link-color, 15%);
+
+.screen-reader-text {
+	display: none;
+} 
+
+/* Adjustments for WordPress Styles */
+
+body, html {
+	/* important */
+	height: 100%;
+	padding-top: 24px;
+	margin-bottom: 30px;
+
+	&.logged-in {
+		padding-top: 20px;
+
+		.navbar-fixed-top {
+			top: 25px;
+		}
+	}
+}
+
+body {
+	> .footer-fixed {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		padding: 4px 0;
+		margin: 2em 0 0;
+		border-top: 1px solid $gray-lighter;
+		z-index: 1;
+		
+		&.navbar-inverse {
+			color: $gray-lighter;
+		}
+	}
+
+	.clear {
+		// creates clear for fixed footer
+		height: 60px;
+	}
+
+	.clear-double {
+		// creates clear for fixed footer
+		height: 120px;
+	}
+}
+
+@media all and (max-width: 767px) {
+	body {
+
+		> .footer-fixed {
+			position: relative;
+		}
+
+		.clear, .clear-double {
+			height: 4px;
+		}
+		
+	}
+}
+
+a {
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+img {
+	background-color: $body-bg;
+	border: 1px solid $gray-light;
+	margin: 0.25em 0.5em;
+	padding: 0.25em;
+
+	@include box-sizing(border-box);
+	@include border-radius(2px);
+
+	&.alignleft {
+		float: left;
+		margin-left: 0;
+	}
+	&.alignright {
+		float: right;
+		margin-right: 0;
+	}
+}
+
+
+.row {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+
+.navbar-fixed-top.navbar-inverse {
+	margin-bottom: 0;
+	// @include background(linear-gradient(top, darken($brand-primary, 20%) 0%, darken($brand-primary, 17%) 100%));
+}
+
+.banner {
+	position: absolute;
+	min-height: 600px;
+	width: 100%; 
+	z-index: -1;
+
+
+/*	@include background (linear-gradient(to top, rgba($body-bg,0), rgba($body-bg,1)), 
+	 			 transparent url(img/fs-image-1.jpg) 0 0 no-repeat); */
+}
+/*
+.banner,
+.main {
+		@include background (linear-gradient(to left, rgba($gray-base,0.5), rgba($gray-darker,0.5), rgba($gray-base,0.5)), 
+	 			 transparent url(img/fs-image-1.jpg) 0 0 no-repeat);
+		background-size: cover;
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+		background-position: center center;
+} */
+
+/* shift this to header image CSS */ 
+body.home {
+
+	.main {
+
+		> ul {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+
+		.container {
+			font-size: 1.25em;
+			color: #FFF;
+			text-shadow: 1px 2px 5px #000;
+			padding: 2em;
+			
+			a {
+				color: #FFF;
+			}
+		}
+	}
+ }
+
+
+/* content */
+.widget-container h2 {
+	font-size: 18px;
+}
+.fpw-widget-page .widget-title, .fpw-widget-page .fpw-page-title, .fpw-widget-page .fpw-featured-image {
+    font-size: 36px;
+    margin: 0px 0px 10px;
+    padding-top: 0px;
+}
+
+/* Posts */
+.entry-header img {
+	float: left;
+}
+
+footer {
+
+	&.entry-meta {
+		display: none;
+	}
+}
