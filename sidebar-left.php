@@ -8,10 +8,9 @@
  *
 **/?>
 
-
 	<?php if ( has_nav_menu( 'sidebar-left-menu') ) { ?>
-	<div  class="sidebar">
-	    <?php wp_nav_menu( array( 'container_class' => '', 'theme_location' => 'sidebar-left-menu', 'menu_class' => 'nav-left-sidebar' ) ); ?>
+	<div  class="sidebar navbar navbar-<?php echo get_theme_mod('nav_style', 'default'); ?>">
+	    <?php wp_nav_menu( array( 'container_class' => '', 'theme_location' => 'sidebar-left-menu', 'menu_class' => 'nav nav-sidebar', 'walker' => new wp_bootstrapped_Walker_Nav_Menu ) ); ?>
 	</div>
 	<?php } ?>
 
@@ -30,14 +29,3 @@
 	    
 	</div>
 	<?php } ?>
-
-	<?php 
-	if ( !has_nav_menu( 'sidebar-menu') 
-		&& !is_active_sidebar( 'sidebar-3' ) 
-		&& !is_active_sidebar( 'sidebar-4' ) ) {
-
-		echo "<p>No left sidebars are set for this theme.</p>"; 
-	}
-
-
-	?>

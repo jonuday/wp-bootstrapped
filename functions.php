@@ -1,15 +1,23 @@
 <?php
 /**
  *
- * @package WordPress Initializr
+ * @package WordPress Bootstrapped
  * @subpackage WP_Bootstrapped
- * @since WordPress Initializr 1.0
+ * @since WordPress Bootstrapped 1.0
  *
- * Fix list:
+ * Features:
+ * • Recent Posts with Category (Shortcode & Widget)
+ * • Navigation (Header, Footer, Left & Right Sidebar)
+ * • Navigation Styling (Fixed, Coloring)
+ * • Customizable Images (Banner, Logo)
+ * • Customizable Banner Image
  * 
- * 1. replace header image with background image to support pages
- * 2. add logo option (null default)
- * 3. 
+ * Add list:
+ * 
+ * 1. Fixed Scroll front page
+ * 2. Gallery Page
+ * 3. Customizer Realtime Updating (Logo, Navbar Style)
+ * 4. 
 **/
 
 // Custom Headers 
@@ -51,16 +59,18 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
     	'transport'   => 'postMessage',
 	) );
 
+	$wp_customize->add_setting( 'nav_fixed' );
+		
+
 	$wp_customize->add_setting( 'logo_image' , array(
-    	'default'     => '',
     	'transport'   => 'postMessage',
-	) );
+	) ); // 'default'     => 'img/wp-bootstrapped.png',
 
 	// add controls	
 
 	$wp_customize->add_control('navbar_style', 
 		array(
-			'label'    => __( 'Navbar Style', 'wp_initilizr' ),
+			'label'    => __( 'Navbar Style', 'wp_bootstrapped' ),
 			'section'  => 'nav',
 			'settings' => 'nav_style',
 			'type'     => 'radio',
@@ -69,23 +79,31 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
 				'inverse' => 'inverse',
 			),
 		)
+	); // echo get_theme_mod('nav_style', '');
+	
+
+	$wp_customize->add_control( 'nav_fixed', array(
+	        'type' => 'checkbox',
+	        'label' => 'Use Fixed Navbars',
+	        'section' => 'nav',
+	    )
 	); // echo get_theme_mod('nav_style', 'navbar-default');
 
 	$wp_customize->add_control( new WP_Customize_Header_Image_Control( $wp_customize, 'header_image', array(
-		'label'        => __( 'Front Page Banner Image', 'wp_initilizr' ),
+		'label'        => __( 'Front Page Banner Image', 'wp_bootstrapped' ),
 		'section'    => 'header_image',
 		'settings'   => 'header_image',
 	) ) );
 
 
-	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'logo', array(
-		'label'        => __( 'Logo Image', 'wp_initilizr' ),
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'logo_image', array(
+		'label'        => __( 'Logo', 'wp_bootstrapped' ),
 		'section'    => 'wp_bootstrapped_logo_section',
 		'settings'   => 'logo_image',
 	) ) );
 
 	$wp_customize->add_control( new WP_Customize_Background_Image_Control( $wp_customize, 'background_image', array(
-		'label'        => __( 'Posts and Pages Background Image', 'wp_initilizr' ),
+		'label'        => __( 'Posts and Pages Background Image', 'wp_bootstrapped' ),
 		'section'    => 'background_image',
 		'settings'   => 'background_image',
 	) ) );
@@ -103,16 +121,22 @@ function wp_bootstrapped_customize_css()
     ?>
          <style type="text/css">
 
-         	<?php if (get_theme_mod('logo_image')) { ?>
+         	<?php if (get_theme_mod('header_textcolor')) { ?>
+         		h1, h2, h3, h4, h5,
+         		h1 a, h2 a, h3 a, h4 a, h5 a {
+         			color: #<?php echo get_theme_mod('header_textcolor', '2c2c2c'); ?>;
+         		}
+         	<?php } ?>
+
          	a.navbar-brand {
          		width: 140px;
-         		height: auto;
-         		background: transparent url(<?php echo get_theme_mod('logo_image', get_template_directory_uri() . '/img/logo-hanko-red.png'); ?>) 50% 50% no-repeat;
+         		height: auto; 
+         		background: transparent url( <?php echo get_theme_mod('logo_image') ? get_theme_mod('logo_image') :  get_template_directory_uri() . '/img/wp-bootstrapped.png'; ?>) 50% 50% no-repeat;
          		background-size: auto 70%;
          		text-indent: -9999em;
          	}
-         	<?php } ?>
 
+         	<?php if (get_theme_mod('header_image')) { ?>
             .banner {
             	background: -webkit-gradient(linear, to bottom, to top, color-stop(0%, rgba(254, 254, 254, 0)), color-stop(100%, #fefefe)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 0 0 no-repeat;
 				background: -webkit-linear-gradient(to bottom, rgba(254, 254, 254, 0), #fefefe), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 0 0 no-repeat;
@@ -122,8 +146,13 @@ function wp_bootstrapped_customize_css()
 				opacity: 0.25;
             }
             .main {
-            	background-image: url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>);
+            	background: -webkit-gradient(linear, to left, to right, color-stop(0%, rgba(46, 46, 46, 0.75)), color-stop(50%, rgba(80, 80, 80, 0.5)), color-stop(100%, rgba(46, 46, 46, 0.75))), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 0 0 no-repeat;
+				background: -webkit-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 0 0 no-repeat;
+				background: -moz-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 0 0 no-repeat;
+				background: -o-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 0 0 no-repeat;
+				background: linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 0 0 no-repeat;
             }
+            <?php } ?>
 
          </style>
     <?php
@@ -132,7 +161,7 @@ add_action( 'wp_head', 'wp_bootstrapped_customize_css');
 
 function wp_bootstrapped_customizer_live_preview() {
 	wp_enqueue_script( 
-		  'wp-initializr-themecustomizer',			//Give the script an ID
+		  'wp-bootstrapped-themecustomizer',			//Give the script an ID
 		  get_template_directory_uri().'/js/theme-customize.js',//Point to file
 		  array( 'jquery','customize-preview' ),	//Define dependencies
 		  '',						//Define a version (optional) 
@@ -146,7 +175,7 @@ add_action( 'customize_preview_init', 'wp_bootstrapped_customizer_live_preview' 
  * Loads our main stylesheet.
 */
 function wp_bootstrapped_styles_scripts () {	
-	wp_enqueue_style( 'wp-initializr-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'wp-bootstrapped-style', get_stylesheet_uri() );
 }
 add_action( 'wp_enqueue_scripts', 'wp_bootstrapped_styles_scripts' );
 
@@ -159,7 +188,7 @@ add_action( 'wp_enqueue_scripts', 'wp_bootstrapped_styles_scripts' );
  * @author Thomas Scholz http://toscho.de
  * @version 1.0
  */
-class wp_initilizr_Walker_Nav_Menu extends Walker_Nav_Menu {
+class wp_bootstrapped_Walker_Nav_Menu extends Walker_Nav_Menu {
 	/**
 	 * Start the element output.
 	 *
@@ -251,7 +280,7 @@ class wp_initilizr_Walker_Nav_Menu extends Walker_Nav_Menu {
 }
 
 // Menus
-function register_wpi_menus() {
+function register_wp_bootstrapped_menus() {
   register_nav_menus(
     array(
       'top-menu' => __( 'Top Menu' ),
@@ -261,7 +290,7 @@ function register_wpi_menus() {
     )
   );
 }
-add_action( 'init', 'register_wpi_menus' );
+add_action( 'init', 'register_wp_bootstrapped_menus' );
 
 /**
  * Makes our wp_nav_menu() fallback -- wp_page_menu() -- show a home link.
@@ -448,7 +477,7 @@ function wp_bootstrapped_dashboard_widgets() {
 }
 
 function custom_dashboard_help() {
-	echo '<p>Welcome to the Initializr with Bootstrap WordPress Theme! Need help? Contact the developer <a href="mailto:jon@jonuday.com">here</a>.</p><p>Learn more about Initializr at <a href="www.initializr.com" title="Open the Initializr Homepage in a new window" target="_blank">www.initializr.com</a></p>.';
+	echo '<p>Welcome to the Bootstrapped WordPress Theme!</p><p>The theme includes several helpful tools, incuding: <ul><li>Recent Posts with Category Filter (Shortcode & Widget)</li><li>Custom Navigation (Header, Footer, Left & Right Sidebar)</li><li>Custom Navigation Styling (fixed positons, 2 color options)</li><li>Customizable Images (Banner, Logo)</li><li>Customizable Banner and Background Image</li></ul></p><p>Learn more about Bootstrap at <a href="http://getbootstrap.com/" title="Open the Bootstrapped Homepage in a new window" target="_blank">http://getbootstrap.com/</a></p><p>Need help or customizations? Contact the developer <a href="mailto:jon@jonuday.com">here</a>.</p>.';
 }
 
 
@@ -461,9 +490,9 @@ function custom_dashboard_help() {
 class wp_bootstrapped_Widget_Recent_Posts extends WP_Widget {
 
 	public function __construct() {
-		$widget_ops = array('classname' => 'wpi_widget_recent_entries', 'description' => __( "Your site&#8217;s most recent Posts.") );
-		parent::__construct('wpi_recent-posts', __('WPI Recent Posts'), $widget_ops);
-		$this->alt_option_name = 'wpi_recent_entries';
+		$widget_ops = array('classname' => 'wp_bootstrapped_widget_recent_entries', 'description' => __( "Your site&#8217;s most recent posts with category filter.") );
+		parent::__construct('wp_bootstrapped_recent-posts', __('WP Bootstrapped Recent Posts'), $widget_ops);
+		$this->alt_option_name = 'wp_bootstrapped_recent_entries';
 
 		add_action( 'save_post', array($this, 'flush_widget_cache') );
 		add_action( 'deleted_post', array($this, 'flush_widget_cache') );
@@ -473,7 +502,7 @@ class wp_bootstrapped_Widget_Recent_Posts extends WP_Widget {
 	public function widget($args, $instance) {
 		$cache = array();
 		if ( ! $this->is_preview() ) {
-			$cache = wp_cache_get( 'wpi_recent_posts', 'widget' );
+			$cache = wp_cache_get( 'wp_bootstrapped_recent_posts', 'widget' );
 		}
 
 		if ( ! is_array( $cache ) ) {
@@ -553,7 +582,7 @@ class wp_bootstrapped_Widget_Recent_Posts extends WP_Widget {
 
 		if ( ! $this->is_preview() ) {
 			$cache[ $args['widget_id'] ] = ob_get_flush();
-			wp_cache_set( 'wpi_recent_posts', $cache, 'widget' );
+			wp_cache_set( 'wp_bootstrapped_recent_posts', $cache, 'widget' );
 		} else {
 			ob_end_flush();
 		}
@@ -568,14 +597,14 @@ class wp_bootstrapped_Widget_Recent_Posts extends WP_Widget {
 		$this->flush_widget_cache();
 
 		$alloptions = wp_cache_get( 'alloptions', 'options' );
-		if ( isset($alloptions['wpi_recent_entries']) )
-			delete_option('wpi_recent_entries');
+		if ( isset($alloptions['wp_bootstrapped_recent_entries']) )
+			delete_option('wp_bootstrapped_recent_entries');
 
 		return $instance;
 	}
 
 	public function flush_widget_cache() {
-		wp_cache_delete('wpi_recent_posts', 'widget');
+		wp_cache_delete('wp_bootstrapped_recent_posts', 'widget');
 	}
 
 	public function form( $instance ) {
@@ -600,6 +629,66 @@ class wp_bootstrapped_Widget_Recent_Posts extends WP_Widget {
 }
 
 register_widget('wp_bootstrapped_Widget_Recent_Posts');
+
+function wp_bootstrapped_Shortcode_Recent_Posts( $attributes ) {
+
+	$a = shortcode_atts( array(
+        'title' => null,
+        'number' => 5,
+        'show_date' => false,
+        'category' => null,
+    ), $attributes );
+
+	/**
+	 * Filter the arguments for the Recent Posts widget.
+	 *
+	 * @since 3.4.0
+	 *
+	 * @see WP_Query::get_posts()
+	 *
+	 * @param array $args An array of arguments used to retrieve the recent posts.
+	 */
+	$r = new WP_Query( apply_filters( 'shortcode_posts_args', array(
+		'posts_per_page'      => $a['number'],
+		'no_found_rows'       => true,
+		'post_status'         => 'publish',
+		'ignore_sticky_posts' => true,
+		'category_name' 	  => $a['category'] // -> term_id
+	) ) );
+
+	ob_start();
+
+	if ($r->have_posts()) :
+
+		echo '<section>';
+		echo $a['title'] ? '<h1>' . $title  . '</h1>' : '';
+
+		while ( $r->have_posts() ) : $r->the_post();  
+			
+			echo '<article>';
+			echo get_the_post_thumbnail( $page->ID, 'thumbnail' );
+			echo '<h1><a href="';
+			echo the_permalink();
+			echo '">'; 
+			echo get_the_title() ? the_title() : "no title found"; 
+			echo '</a></h1>';
+			print ($a['show_date'] == 'true' )? '<span class="post-date">' . get_the_date() . '</span>' : '';
+			echo get_the_excerpt() ? the_excerpt() : 'no excerpt available';
+			echo '</article>';
+		
+		endwhile;
+
+		echo '</section>';
+
+	endif;
+
+	$content = ob_get_clean();
+    
+    return $content;
+
+}
+
+add_shortcode('wpb_recent_posts','wp_bootstrapped_Shortcode_Recent_Posts');
 
 
 ?>

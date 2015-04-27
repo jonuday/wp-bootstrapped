@@ -4,7 +4,7 @@
  *
  * @package WP_Bootstrapped
  * @subpackage WP_Bootstrapped
- * @since WordPress Initializr 1.0
+ * @since WordPress Bootstrapped 1.0
  *
  * from Twenty Twelve 1.0
 **/

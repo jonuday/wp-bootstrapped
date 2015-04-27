@@ -10,18 +10,17 @@
 
 get_header(); ?>
 
-<!-- BEGIN CONTENT --> 
-    <?php 
-        $header_image = get_header_image();
+<!-- BEGIN ARCHIVE CONTENT --> 
+
+	<?php $header_image = get_header_image();
         if ( ! empty( $header_image ) ) { ?>
-        <div class="row">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( $header_image ); ?>" class="header-image" alt="" /></a>
-        </div>
+        <div class="row banner">
+        </div>    
     <?php } ?>
 
     <div class="row">
     	<div class="container">
-	    		<div class="col-md-12">
+	    		<div class="col-sm-8">
 	    			<?php if ( have_posts() ) : ?>
 					<h1><?php
 						if ( is_day() ) :
@@ -57,7 +56,7 @@ get_header(); ?>
 	    	</div>
 
 		    <!-- sidebar widgets section -->
-		    <div class="col-md-4">
+		    <div class="col-sm-4">
 		    <?php get_sidebar(); ?>
 			</div>
 		</div>

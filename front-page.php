@@ -1,11 +1,11 @@
 <?php
 /**
- * Template Name: Front Page (selection of category and blog snippets)
- * A page template with a hero and widgets that pull from the current category of pages.
+ * Template Name: Front Page
+ * A page template with three widget areas under a main banner area.
  *
  * @package WP_Bootstrapped
  * @subpackage WP_Bootstrapped
- * @since WordPress Initializr 1.0
+ * @since WordPress Bootstrapped 1.0
  *
 **/
  

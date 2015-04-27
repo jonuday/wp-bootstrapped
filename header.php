@@ -4,7 +4,7 @@
  *
  * @package WP_Bootstrapped
  * @subpackage WP_Bootstrapped
- * @since WordPress Initializr 1.0
+ * @since WordPress Bootstrapped 1.0
  *
 **/
 ?><!doctype html>
@@ -50,12 +50,14 @@
     get right to the good stuff. */ ?>
 
     <div class="skip-link screen-reader-text">
-        <a href="#content" title="<?php esc_attr_e( 'Skip to content', 'wp-initializr' ); ?>">
-        <?php _e( 'Skip to content', 'wp-initializr' ); ?></a>
+        <a href="#content" title="<?php esc_attr_e( 'Skip to content', 'wp-bootstrapped' ); ?>">
+        <?php _e( 'Skip to content', 'wp-bootstrapped' ); ?></a>
     </div>
 
-    <nav class="navbar navbar-<?php echo get_theme_mod('nav_style', 'default'); ?> navbar-fixed-top" role="navigation">
-      <div class="container">
+    <?php if ( get_theme_mod('nav_fixed') == '' ) { echo '<div class="container">'; } ?>
+
+    <nav class="navbar navbar-<?php echo get_theme_mod('nav_style', 'default'); ?> <?php if ( get_theme_mod('nav_fixed') == 1 ) { echo 'navbar-fixed-top'; } ?>" role="navigation">
+      <div class="container<?php if ( get_theme_mod('nav_fixed') == '' ) { echo '-fluid'; } ?>">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -74,13 +76,11 @@
                         the one used.  If none is assigned, the menu with the lowest ID is
                         used. */
 
-                        if (has_nav_menu('top-menu')) {
-                            wp_nav_menu( array( 'container_class' => '', 'theme_location' => 'top-menu', 'menu_class' => 'nav navbar-nav', 'walker' => new wp_initilizr_Walker_Nav_Menu ) );  
-                        } elseif (has_nav_menu('main-menu')) {
-                            wp_nav_menu( array( 'container_class' => 'sr-only', 'theme_location' => 'main-menu', 'menu_class' => 'nav navbar-nav', 'walker' => new wp_initilizr_Walker_Nav_Menu  ) );  
-                        }  else {
-                            wp_page_menu(array( 'container_class' => 'sr-only', 'menu_class' => 'nav navbar-nav', 'walker' => new wp_initilizr_Walker_Nav_Menu  )); 
-                       }
+                        //if (has_nav_menu('top-menu')) {
+                            wp_nav_menu( array( 'container_class' => '', 'theme_location' => 'top-menu', 'menu_class' => 'nav navbar-nav', 'fallback_cb' => 'false', 'walker' => new wp_bootstrapped_Walker_Nav_Menu ) );  
+                        //} else {
+                        //    wp_page_menu(array( 'container_class' => 'sr-only', 'menu_class' => 'nav navbar-nav', 'walker' => new wp_bootstrapped_Walker_Nav_Menu  )); 
+                       //}
            ?>
 
             <form class="nav navbar-nav navbar-right navbar-form" role="form">
