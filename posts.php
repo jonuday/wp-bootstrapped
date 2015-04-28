@@ -25,11 +25,6 @@
 				<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'wp_bootstrapped' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 			</h1 -->
 			<?php endif; // is_single() ?>
-			<?php if ( comments_open() ) : ?>
-				<div class="comments-link">
-					<?php comments_popup_link( '<span class="leave-reply">' . __( 'Leave a reply', 'wp_bootstrapped' ) . '</span>', __( '1 Reply', 'wp_bootstrapped' ), __( '% Replies', 'wp_bootstrapped' ) ); ?>
-				</div><!-- .comments-link -->
-			<?php endif; // comments_open() ?>
 		</header><!-- .entry-header -->
 
 		<?php if ( is_search() ) : // Only display Excerpts for Search ?>
@@ -42,6 +37,12 @@
 			<?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'wp_bootstrapped' ), 'after' => '</div>' ) ); ?>
 		</div><!-- .entry-content -->
 		<?php endif; ?>
+
+		<?php if ( comments_open() ) : ?>
+			<div class="comments-link">
+				<?php comments_popup_link( '<span class="leave-reply">' . __( 'Leave a reply', 'wp_bootstrapped' ) . '</span>', __( '1 Reply', 'wp_bootstrapped' ), __( '% Replies', 'wp_bootstrapped' ) ); ?>
+			</div><!-- .comments-link -->
+		<?php endif; // comments_open() ?>
 
 		<footer class="entry-meta">
 			<?php wp_bootstrapped_entry_meta(); ?>

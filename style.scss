@@ -107,6 +107,8 @@ img {
 	border: 1px solid $gray-light;
 	margin: 0.25em 0.5em;
 	padding: 0.25em;
+	max-width: 100%;
+	height: auto;
 
 	@include box-sizing(border-box);
 	@include border-radius(2px);

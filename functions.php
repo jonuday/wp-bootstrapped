@@ -665,16 +665,16 @@ function wp_bootstrapped_Shortcode_Recent_Posts( $attributes ) {
 
 		while ( $r->have_posts() ) : $r->the_post();  
 			
-			echo '<article>';
+			echo '<article class="row"><div class="col-sm-4">';
 			echo get_the_post_thumbnail( $page->ID, 'thumbnail' );
-			echo '<h1><a href="';
+			echo '</div><div class="col-sm-8"><h1><a href="';
 			echo the_permalink();
 			echo '">'; 
 			echo get_the_title() ? the_title() : "no title found"; 
 			echo '</a></h1>';
 			print ($a['show_date'] == 'true' )? '<span class="post-date">' . get_the_date() . '</span>' : '';
 			echo get_the_excerpt() ? the_excerpt() : 'no excerpt available';
-			echo '</article>';
+			echo '</div></article>';
 		
 		endwhile;
 
