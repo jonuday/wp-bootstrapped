@@ -130,12 +130,14 @@ img.alignright {
   background: -o-linear-gradient(to bottom, rgba(254, 254, 254, 0.8), #fefefe), transparent url(img/header.jpg) 0 0 no-repeat;
   background: linear-gradient(to bottom, rgba(254, 254, 254, 0.8), #fefefe), transparent url(img/header.jpg) 0 0 no-repeat;
   position: absolute;
+  top: 0;
+  left: 0;
   min-height: 600px;
   width: 100%;
   z-index: -1;
 }
 
-/* line 155, style.scss */
+/* line 157, style.scss */
 .main {
   background: -webkit-gradient(linear, to left, to right, color-stop(0%, rgba(46, 46, 46, 0.25)), color-stop(50%, rgba(80, 80, 80, 0.5)), color-stop(100%, rgba(46, 46, 46, 0.25))), transparent url(img/header.jpg) 0 0 no-repeat;
   background: -webkit-linear-gradient(to left, rgba(46, 46, 46, 0.25), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.25)), transparent url(img/header.jpg) 0 0 no-repeat;
@@ -145,42 +147,42 @@ img.alignright {
 }
 
 /* shift this to header image CSS */
-/* line 165, style.scss */
+/* line 167, style.scss */
 body.home .main > ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-/* line 171, style.scss */
+/* line 173, style.scss */
 body.home .main .container {
   font-size: 1.25em;
   color: #FFF;
   text-shadow: 1px 2px 5px #000;
   padding: 2em;
 }
-/* line 177, style.scss */
+/* line 179, style.scss */
 body.home .main .container a {
   color: #FFF;
 }
 
 /* content */
-/* line 186, style.scss */
+/* line 188, style.scss */
 .widget-container h2 {
   font-size: 18px;
 }
 
-/* line 189, style.scss */
+/* line 191, style.scss */
 .fpw-widget-page .widget-title, .fpw-widget-page .fpw-page-title, .fpw-widget-page .fpw-featured-image {
   font-size: 36px;
   margin: 0px 0px 10px;
   padding-top: 0px;
 }
 
-/* line 195, style.scss */
+/* line 197, style.scss */
 .sidebar {
   margin-top: 20px;
 }
-/* line 198, style.scss */
+/* line 200, style.scss */
 .sidebar .dropdown-menu {
   position: relative;
   margin-top: 1px;
@@ -191,18 +193,18 @@ body.home .main .container a {
   border-radius: 0;
 }
 
-/* line 209, style.scss */
+/* line 211, style.scss */
 .panel {
   margin-top: 20px;
 }
 
 /* Posts */
-/* line 214, style.scss */
+/* line 216, style.scss */
 .entry-header img {
   float: left;
 }
 
-/* line 220, style.scss */
+/* line 222, style.scss */
 footer.entry-meta {
   display: none;
 }
