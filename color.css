@@ -1,0 +1,86 @@
+/*
+Theme Name: Basic Bootstrap Template for WordPress
+Theme URI: https://github.com/jonuday/wp-bootstrapped
+Description: A Bootstrapped theme for WordPress.
+Author: Jonathan Day
+Author URI: http://jonuday.com/about
+Version: 1.0.1
+Tags: green, white, custom-colors, three-columns, flexible-width, custom-header, custom-background, threaded-comments, sticky-post, editor-style, custom-menus (optional)
+
+License: 
+License URI:
+
+General comments:
+Built with SASS
+
+*/
+/* line 39, color.scss */
+.navbar-inverse.nav-green, .navbar-inverse.nav-red, .navbar-inverse.nav-blue, .navbar-inverse.nav-orange {
+  color: #a5a5a5;
+}
+/* line 42, color.scss */
+.navbar-inverse.nav-green a, .navbar-inverse.nav-red a, .navbar-inverse.nav-blue a, .navbar-inverse.nav-orange a, .navbar-inverse.nav-green .navbar-nav a, .navbar-inverse.nav-red .navbar-nav a, .navbar-inverse.nav-blue .navbar-nav a, .navbar-inverse.nav-orange .navbar-nav a {
+  color: white;
+}
+/* line 46, color.scss */
+.navbar-inverse.nav-green .dropdown-menu > li > a, .navbar-inverse.nav-red .dropdown-menu > li > a, .navbar-inverse.nav-blue .dropdown-menu > li > a, .navbar-inverse.nav-orange .dropdown-menu > li > a {
+  color: #616161;
+}
+
+/* line 51, color.scss */
+.navbar-inverse.nav-green {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7e9900), color-stop(100%, #374200));
+  background: -webkit-linear-gradient(top, #7e9900 0%, #374200 100%);
+  background: -moz-linear-gradient(top, #7e9900 0%, #374200 100%);
+  background: -o-linear-gradient(top, #7e9900 0%, #374200 100%);
+  background: linear-gradient(top, #7e9900 0%, #374200 100%);
+}
+/* line 57, color.scss */
+.navbar-inverse.nav-green .navbar-nav > .open > a,
+.navbar-inverse.nav-green .navbar-nav > .active > a {
+  background-image: linear-gradient(to top, #3f4d00 0px, #546600 100%);
+}
+
+/* line 62, color.scss */
+.navbar-inverse.nav-red {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #cc0000), color-stop(100%, #750000));
+  background: -webkit-linear-gradient(top, #cc0000 0%, #750000 100%);
+  background: -moz-linear-gradient(top, #cc0000 0%, #750000 100%);
+  background: -o-linear-gradient(top, #cc0000 0%, #750000 100%);
+  background: linear-gradient(top, #cc0000 0%, #750000 100%);
+}
+/* line 68, color.scss */
+.navbar-inverse.nav-red .navbar-nav > .open > a,
+.navbar-inverse.nav-red .navbar-nav > .active > a {
+  background-image: linear-gradient(to top, #e64c4c 0px, #e44141 100%);
+  box-shadow: none;
+}
+
+/* line 74, color.scss */
+.navbar-inverse.nav-blue {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #131386), color-stop(100%, #0c0c6a));
+  background: -webkit-linear-gradient(top, #131386 0%, #0c0c6a 100%);
+  background: -moz-linear-gradient(top, #131386 0%, #0c0c6a 100%);
+  background: -o-linear-gradient(top, #131386 0%, #0c0c6a 100%);
+  background: linear-gradient(top, #131386 0%, #0c0c6a 100%);
+}
+/* line 80, color.scss */
+.navbar-inverse.nav-blue .navbar-nav > .open > a,
+.navbar-inverse.nav-blue .navbar-nav > .active > a {
+  background-image: linear-gradient(to top, #0000b3 0px, #0000e6 100%);
+}
+
+/* line 85, color.scss */
+.navbar-inverse.nav-orange {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d5652b), color-stop(100%, #8d431c));
+  background: -webkit-linear-gradient(top, #d5652b 0%, #8d431c 100%);
+  background: -moz-linear-gradient(top, #d5652b 0%, #8d431c 100%);
+  background: -o-linear-gradient(top, #d5652b 0%, #8d431c 100%);
+  background: linear-gradient(top, #d5652b 0%, #8d431c 100%);
+}
+/* line 91, color.scss */
+.navbar-inverse.nav-orange .navbar-nav > .open > a,
+.navbar-inverse.nav-orange .navbar-nav > .active > a {
+  background-image: linear-gradient(to top, #dd8456 0px, #d97440 100%);
+  box-shadow: none;
+}

@@ -1,0 +1,97 @@
+/*
+Theme Name: Basic Bootstrap Template for WordPress
+Theme URI: https://github.com/jonuday/wp-bootstrapped
+Description: A Bootstrapped theme for WordPress.
+Author: Jonathan Day
+Author URI: http://jonuday.com/about
+Version: 1.0.1
+Tags: green, white, custom-colors, three-columns, flexible-width, custom-header, custom-background, threaded-comments, sticky-post, editor-style, custom-menus (optional)
+
+License: 
+License URI:
+
+General comments:
+Built with SASS
+
+*/
+
+@import "compass";
+
+$gray-base 			: #2E2E2E;
+$gray-darker 		: lighten($gray-base, 13.5%);
+$gray-dark 			: lighten($gray-base, 20%);
+$gray 				: lighten($gray-base, 33.5%);
+$gray-light 		: lighten($gray-base, 46.7%);
+$gray-lighter 		: lighten($gray-base, 93.5%);
+$brand-red 			: #CC0000; // red
+$brand-green 		: #7E9900; // green
+$brand-blue 		: #0000CC; // blue // consider #3053A9, with bg #F4F4F4
+$brand-orange 		: #D5652B; // orange
+$brand-success 		: #5cb85c;
+$brand-info 		: #5bc0de;
+$brand-warning 		: #f0ad4e;
+$brand-danger 		: #d9534f;
+$body-bg 			: #fefefe;
+$text-color 		: $gray-dark;
+$link-color 		: #FFF;
+$link-hover-color 	: darken($link-color, 15%);
+
+%adjustments { 
+	color: $gray-light;
+
+	a, .navbar-nav a {
+		color: $link-color;
+	}
+
+	.dropdown-menu > li > a {
+		color: $gray-dark;
+	}
+}
+
+.navbar-inverse.nav-green {
+	@include background(linear-gradient(top, $brand-green 0%, darken($brand-green, 17%) 100%)); // used to add color to navs
+	@extend %adjustments;
+
+	.navbar-nav { 
+		> .open > a,
+		> .active > a {
+			background-image: linear-gradient(to top, darken($brand-green, 15%) 0px, darken($brand-green, 10%) 100%);
+		}
+	}
+}
+.navbar-inverse.nav-red {
+	@include background(linear-gradient(top, $brand-red 0%, darken($brand-red, 17%) 100%)); // used to add color to navs
+	@extend %adjustments;
+
+	.navbar-nav { 
+		> .open > a,
+		> .active > a {
+			background-image: linear-gradient(to top, desaturate(lighten($brand-red, 20%), 25%) 0px, desaturate(lighten($brand-red, 17.5%),25%) 100%);
+			box-shadow: none;
+		}
+	}
+}
+.navbar-inverse.nav-blue {
+	@include background(linear-gradient(top, darken(desaturate($brand-blue, 25%), 10%) 0%, darken(desaturate($brand-blue, 20%), 17%) 100%)); // used to add color to navs
+	@extend %adjustments;
+
+	.navbar-nav { 
+		> .open > a,
+		> .active > a {
+			background-image: linear-gradient(to top, darken($brand-blue, 5%) 0px, lighten($brand-blue, 5%) 100%);
+		}
+	}
+}
+.navbar-inverse.nav-orange {
+	@include background(linear-gradient(top, $brand-orange 0%, darken($brand-orange, 17%) 100%)); // used to add color to navs
+	@extend %adjustments;
+
+	.navbar-nav { 
+		> .open > a,
+		> .active > a {
+			background-image: linear-gradient(to top, lighten($brand-orange, 10%) 0px, lighten($brand-orange, 5%) 100%);
+			box-shadow: none;
+		}
+	}
+}
+

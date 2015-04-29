@@ -12,7 +12,7 @@
 
     <div class="clear<?php if (has_nav_menu('footer-menu')) { echo '-double'; } ?>"></div>
     
-    <footer class="footer navbar-<?php echo get_theme_mod('nav_style', 'default'); ?> <?php if ( get_theme_mod('nav_fixed') == 1 ) { echo 'footer-fixed'; } ?>">
+    <footer class="footer navbar-<?php if ( get_theme_mod('nav_style') == 'colorful' ) { echo 'inverse nav-' . get_theme_mod('color_scheme','green'); } else { echo get_theme_mod('nav_style', 'default'); } ?> <?php if ( get_theme_mod('nav_fixed') == 1 ) { echo 'footer-fixed'; } ?>">
 
         <?php if ( has_nav_menu( 'footer-menu') ) { ?>
             <div class="row">
@@ -30,7 +30,7 @@
                         <p>&copy; <?php bloginfo('name'); ?> <?php echo date(Y); ?></p>
                     </div>
                     <div class="col-sm-4 col-xs-12 theme">
-                        <p><a href="http://jonuday.com/initializr-bootstrap-theme-for-wordpress" alt="A Bootstrapped Theme for Wordpress">WordPress Bootstrapped Theme</a> for <a href="http://wordpress.org" alt="Wordpress">Wordpress</a></p>
+                        <p><a href="https://github.com/jonuday/wp-bootstrapped" alt="A Bootstrapped Theme for Wordpress">WordPress Bootstrapped Theme</a> for <a href="http://wordpress.org" alt="Wordpress">Wordpress</a></p>
                     </div>
                 </div>
             </div>
@@ -40,9 +40,9 @@
     <?php if ( get_theme_mod('nav_fixed') == '' ) { echo '</div>'; } ?>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="<?php bloginfo('template_directory'); ?>/bootstrap-green/js/jquery-1.10.1.min.js"><\/script>')</script>
+    <script>window.jQuery || document.write('<script src="<?php bloginfo('template_directory'); ?>/js/jquery-1.10.1.min.js"><\/script>')</script>
 
-    <script src="<?php bloginfo('template_directory'); ?>/bootstrap-green/js/bootstrap.min.js"></script>
+    <script src="<?php bloginfo('template_directory'); ?>/bootstrap-<?php echo get_theme_mod('color_scheme','green'); ?>/js/bootstrap.min.js"></script>
 
     <script src="<?php bloginfo('template_directory'); ?>/js/responsive-images.js"></script>
     <script src="<?php bloginfo('template_directory'); ?>/js/custom.js"></script>

@@ -53,6 +53,10 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
 	) );
 
 	// add settings
+	$wp_customize->add_setting( 'color_scheme' , array(
+    	'default'     => 'green',
+    	'transport'   => 'postMessage',
+	) );
 
 	$wp_customize->add_setting( 'nav_style' , array(
     	'default'     => 'default',
@@ -68,15 +72,31 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
 
 	// add controls	
 
-	$wp_customize->add_control('navbar_style', 
+	$wp_customize->add_control('color_scheme', 
+		array(
+			'label'    => __( 'Base Color Scheme', 'wp_bootstrapped' ),
+			'section'  => 'colors',
+			'settings' => 'color_scheme',
+			'type'     => 'radio',
+			'choices'  => array(
+				'green'  => 'green (#7E9900)',
+				'red' => 'red (#CC0000)',
+				'blue' => 'blue (#0000CC)',
+				'orange' => 'orange (#D5652B)',
+			),
+		)
+	); // echo get_theme_mod('nav_style', '');
+
+	$wp_customize->add_control('nav_style', 
 		array(
 			'label'    => __( 'Navbar Style', 'wp_bootstrapped' ),
 			'section'  => 'nav',
 			'settings' => 'nav_style',
 			'type'     => 'radio',
 			'choices'  => array(
-				'default'  => 'default',
-				'inverse' => 'inverse',
+				'default'  => 'default (light)',
+				'inverse' => 'inverse (gray)',
+				'colorful' => 'colorful (theme color)',
 			),
 		)
 	); // echo get_theme_mod('nav_style', '');
@@ -131,7 +151,7 @@ function wp_bootstrapped_customize_css()
          	a.navbar-brand {
          		width: 140px;
          		height: auto; 
-         		background: transparent url( <?php echo get_theme_mod('logo_image') ? get_theme_mod('logo_image') :  get_template_directory_uri() . '/img/wp-bootstrapped.png'; ?>) 50% 50% no-repeat;
+         		background: transparent url( <?php echo get_theme_mod('logo_image') ? get_theme_mod('logo_image') :  get_template_directory_uri() . '/img/wp-bootstrapped.png'; ?>) 20px 50% no-repeat;
          		background-size: auto 70%;
          		text-indent: -9999em;
          	}

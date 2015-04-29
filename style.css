@@ -14,29 +14,29 @@ General comments:
 Built with SASS
 
 */
-/* line 38, style.scss */
+/* line 39, style.scss */
 .screen-reader-text {
   display: none;
 }
 
 /* Adjustments for WordPress Styles */
-/* line 44, style.scss */
+/* line 45, style.scss */
 body, html {
   /* important */
   height: 100%;
   padding-top: 24px;
   margin-bottom: 30px;
 }
-/* line 50, style.scss */
+/* line 51, style.scss */
 body.logged-in, html.logged-in {
   padding-top: 20px;
 }
-/* line 53, style.scss */
+/* line 54, style.scss */
 body.logged-in .navbar-fixed-top, html.logged-in .navbar-fixed-top {
   top: 25px;
 }
 
-/* line 60, style.scss */
+/* line 61, style.scss */
 body > .footer-fixed {
   position: fixed;
   bottom: 0;
@@ -46,35 +46,35 @@ body > .footer-fixed {
   border-top: 1px solid white;
   z-index: 1;
 }
-/* line 69, style.scss */
+/* line 70, style.scss */
 body > .footer-fixed.navbar-inverse {
   color: white;
 }
-/* line 74, style.scss */
+/* line 75, style.scss */
 body .clear {
   height: 60px;
 }
-/* line 79, style.scss */
+/* line 80, style.scss */
 body .clear-double {
   height: 120px;
 }
 
 @media all and (max-width: 767px) {
-  /* line 88, style.scss */
+  /* line 89, style.scss */
   body > .footer-fixed {
     position: relative;
   }
-  /* line 92, style.scss */
+  /* line 93, style.scss */
   body .clear, body .clear-double {
     height: 4px;
   }
 }
-/* line 100, style.scss */
+/* line 101, style.scss */
 a:hover {
   text-decoration: none;
 }
 
-/* line 105, style.scss */
+/* line 106, style.scss */
 img {
   background-color: #fefefe;
   border: 1px solid #a5a5a5;
@@ -91,25 +91,25 @@ img {
   -o-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 116, style.scss */
+/* line 117, style.scss */
 img.alignleft {
   float: left;
   margin-left: 0;
 }
-/* line 120, style.scss */
+/* line 121, style.scss */
 img.alignright {
   float: right;
   margin-right: 0;
 }
 
-/* line 127, style.scss */
+/* line 128, style.scss */
 .row {
   margin-left: 0;
   margin-right: 0;
 }
 
-/* line 133, style.scss */
-.navbar-fixed-top.navbar-inverse {
+/* line 134, style.scss */
+.navbar-fixed-top {
   margin-bottom: 0;
 }
 
