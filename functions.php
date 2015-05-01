@@ -681,7 +681,7 @@ function wp_bootstrapped_Shortcode_Recent_Posts( $attributes ) {
 	if ($r->have_posts()) :
 
 		echo '<section>';
-		echo $a['title'] ? '<h1>' . $title  . '</h1>' : '';
+		echo $a['title'] ? '<h1>' . $a['title']  . '</h1>' : '';
 
 		while ( $r->have_posts() ) : $r->the_post();  
 			
