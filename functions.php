@@ -711,4 +711,93 @@ function wp_bootstrapped_Shortcode_Recent_Posts( $attributes ) {
 add_shortcode('wpb_recent_posts','wp_bootstrapped_Shortcode_Recent_Posts');
 
 
+/*
+*  Gallery Shortcode
+*
+*/
+
+add_action( 'wp_enqueue_scripts', 'register_cycle2' );
+
+function register_cycle2() {
+	wp_register_script( 'script-name',  get_template_directory_uri() . '/js/jquery.cycle2.min.js', array(), '2.1.6', true );
+}
+
+function wp_bootstrapped_gallery( $attributes ) {
+
+	$a = shortcode_atts( array(
+        'title' => null,
+        'number' => 5,
+        'show_date' => false,
+        'category' => null,
+        'timeout' => '4000',
+        'speed' => '1000',
+        'pagers' => true,
+        'fx' => 'fadeout',
+    ), $attributes );
+
+	/**
+	 * Filter the arguments for the Recent Posts widget.
+	 *
+	 * @since 3.4.0
+	 *
+	 * @see WP_Query::get_posts()
+	 *
+	 * @param array $args An array of arguments used to retrieve the recent posts.
+	 */
+	$r = new WP_Query( apply_filters( 'shortcode_posts_args', array(
+		'posts_per_page'      => $a['number'],
+		'no_found_rows'       => true,
+		'post_status'         => 'publish',
+		'ignore_sticky_posts' => true,
+		'category_name' 	  => $a['category'] // -> term_id
+	) ) );
+
+	ob_start();
+
+	if ($r->have_posts()) :
+		wp_enqueue_script( 'script-name' );
+
+		echo '<section class="cycle-wrapper">';
+		echo $a['title'] ? '<h1>' . $a['title']  . '</h1>' : '';
+		echo '<div class="cycle-slideshow" data-cycle-slides="> article" data-cycle-timeout="'.$a['timeout'].'" data-cycle-speed="'.$a['speed'].'" data-cycle-pause-on-hover="true" ';
+		if ($a['pagers'] == true) { echo 'data-cycle-next="#next" data-cycle-prev="#prev"'; }
+		echo ' data-cycle-fx=' . $a['fx'] . ' >';
+
+		while ( $r->have_posts() ) : $r->the_post();  
+			if (get_the_post_thumbnail( $page->ID, 'full' )) {
+				echo '<article>';
+				echo get_the_post_thumbnail( $page->ID, 'full' );
+				echo '<div>';
+				if ( get_the_title() ) { 
+					echo  '<h1><a href="';
+					echo the_permalink();
+					echo '">';
+					echo the_title();
+					echo '</a></h1>'; 
+				}
+				print ($a['show_date'] == 'true' ) ? '<span class="post-date">' . get_the_date() . '</span>' : '';
+				echo get_the_excerpt() ? the_excerpt() : '';
+				echo '</div></article>';
+			}
+		endwhile;
+
+		echo '</div>';
+
+		if ($a['pagers'] == true) {
+			echo '<div class="cycle-pagers"><a id="prev" alt="previous slide" href="#" ><i class="glyphicon glyphicon-chevron-left"></i></a> <a id="next" alt="next slide" href="#"><i class="glyphicon glyphicon-chevron-right"></i></a></div>';
+		}
+		echo '</section>';
+
+	endif;
+
+	$content = ob_get_clean();
+    
+    return $content;
+
+    // add script to head
+
+}
+
+add_shortcode('wpb_gallery','wp_bootstrapped_gallery');
+
 ?>

@@ -44,7 +44,7 @@ body > .footer-fixed {
   padding: 4px 0;
   margin: 2em 0 0;
   border-top: 1px solid white;
-  z-index: 1;
+  z-index: 1000;
 }
 /* line 70, style.scss */
 body > .footer-fixed.navbar-inverse {
@@ -207,4 +207,97 @@ body.home .main .container a {
 /* line 222, style.scss */
 footer.entry-meta {
   display: none;
+}
+
+/* Gallery */
+/* line 230, style.scss */
+.cycle-wrapper {
+  position: relative;
+}
+
+/* line 233, style.scss */
+.cycle-slideshow {
+  overflow: hidden;
+}
+
+/* line 239, style.scss */
+.cycle-slide > img {
+  position: relative;
+  width: calc(100% - 8px);
+}
+/* line 244, style.scss */
+.cycle-slide > div {
+  position: absolute;
+  bottom: -10%;
+  left: 0;
+  width: calc(100% - 12px);
+  padding: 0 5% 2%;
+  background-color: rgba(254, 254, 254, 0.75);
+  margin: 8px;
+  -webkit-transition: all 1.5s ease-in, 1s;
+  -moz-transition: all 1.5s ease-in, 1s;
+  -o-transition: all 1.5s ease-in, 1s;
+  transition: all 1.5s ease-in, 1s;
+}
+/* line 257, style.scss */
+.cycle-slide.cycle-slide-active > div {
+  bottom: 0;
+}
+
+/* line 264, style.scss */
+.cycle-pagers {
+  position: absolute;
+  width: 100%;
+  top: calc(50% - 20px);
+  font-size: 40px;
+  line-height: 1;
+  padding: 0 5%;
+  z-index: 100;
+}
+/* line 273, style.scss */
+.cycle-pagers a {
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 2px 2px 5px #838383;
+}
+/* line 277, style.scss */
+.cycle-pagers a:hover {
+  color: #FFF;
+}
+/* line 282, style.scss */
+.cycle-pagers #prev {
+  float: left;
+}
+/* line 286, style.scss */
+.cycle-pagers #next {
+  float: right;
+}
+
+@media all and (max-width: 767px) {
+  /* line 294, style.scss */
+  .cycle-slide > div {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: transparent;
+    margin: 0;
+    -webkit-transition: all 1.5s ease-in, 1s;
+    -moz-transition: all 1.5s ease-in, 1s;
+    -o-transition: all 1.5s ease-in, 1s;
+    transition: all 1.5s ease-in, 1s;
+  }
+
+  /* line 306, style.scss */
+  .cycle-pagers {
+    position: absolute;
+    top: 0;
+    font-size: 28px;
+    margin-top: -35px;
+    text-align: right;
+  }
+  /* line 313, style.scss */
+  .cycle-pagers #prev, .cycle-pagers #next {
+    display: inline;
+    float: none;
+    clear: both;
+  }
 }
