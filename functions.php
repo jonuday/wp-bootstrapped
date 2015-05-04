@@ -800,4 +800,202 @@ function wp_bootstrapped_gallery( $attributes ) {
 
 add_shortcode('wpb_gallery','wp_bootstrapped_gallery');
 
+
+/**
+ * Featured Content widget class
+ *
+ * @since 2.8.0
+ */
+class wp_bootstrapped_widget_featured_content extends WP_Widget {
+
+	public function __construct() {
+		$widget_ops = array('classname' => 'wp_bootstrapped_widget_featured_content', 'description' => __( "Select featured content using post or page ID.") );
+		parent::__construct('wp_bootstrapped_featured_content', __('WPB Featured Content'), $widget_ops);
+		$this->alt_option_name = 'wp_bootstrapped_featured_content';
+
+		add_action( 'save_post', array($this, 'flush_widget_cache') );
+		add_action( 'deleted_post', array($this, 'flush_widget_cache') );
+		add_action( 'switch_theme', array($this, 'flush_widget_cache') );
+	}
+
+	public function widget($args, $instance) {
+		$cache = array();
+		if ( ! $this->is_preview() ) {
+			$cache = wp_cache_get( 'wp_bootstrapped_featured_content', 'widget' );
+		}
+
+		if ( ! is_array( $cache ) ) {
+			$cache = array();
+		}
+
+		if ( ! isset( $args['widget_id'] ) ) {
+			$args['widget_id'] = $this->id;
+		}
+
+		if ( isset( $cache[ $args['widget_id'] ] ) ) {
+			echo $cache[ $args['widget_id'] ];
+			return;
+		}
+
+		ob_start();
+
+		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Featured Content' );
+
+		$id = isset( $instance['id'] ) ? absint($instance['id']) : 0;
+
+		/** This filter is documented in wp-includes/default-widgets.php */
+		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
+
+		$show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
+
+
+		/**
+		 * Filter the arguments for the Recent Posts widget.
+		 *
+		 * @since 3.4.0
+		 *
+		 * @see WP_Query::get_posts()
+		 *
+		 * @param array $args An array of arguments used to retrieve the recent posts.
+		 */
+		$r = new WP_Query( apply_filters( 'widget_posts_args', array(
+			'posts_per_page'      => 1,
+			'no_found_rows'       => true,
+			'post_status'         => 'publish',
+			'ignore_sticky_posts' => true,
+			'p' => $id // -> post or page id
+		) ) );
+
+		if ($r->have_posts()) :
+
+?>
+		<?php echo $args['before_widget']; ?>
+		<section>
+			<?php if ( $title ) {
+			echo $args['before_title'] . $title  . $args['after_title'];
+			} ?>
+			<?php while ( $r->have_posts() ) : $r->the_post(); ?>
+			<article>
+				<?php get_the_post_thumbnail( $page->ID, 'thumbnail' ); ?>
+				<h1><a href="<?php the_permalink(); ?>"><?php get_the_title() ? the_title() : the_ID(); ?></a></h1>
+				<?php if ( $show_date ) : ?>
+				<span class="post-date"><?php echo get_the_date(); ?></span>
+				<?php endif; ?>
+				<?php get_the_excerpt() ? the_excerpt() : print('no excerpt available'); ?>
+			</article>
+		<?php endwhile; ?>
+		</section>
+		<?php echo $args['after_widget']; ?>
+<?php
+		// Reset the global $the_post as this query will have stomped on it
+		wp_reset_postdata();
+
+		endif;
+
+		if ( ! $this->is_preview() ) {
+			$cache[ $args['widget_id'] ] = ob_get_flush();
+			wp_cache_set( 'wp_bootstrapped_featured_content', $cache, 'widget' );
+		} else {
+			ob_end_flush();
+		}
+	}
+
+	public function update( $new_instance, $old_instance ) {
+		$instance = $old_instance;
+		$instance['title'] = strip_tags($new_instance['title']);
+		$instance['id'] = absint($new_instance['id']);
+		$instance['show_date'] = isset( $new_instance['show_date'] ) ? (bool) $new_instance['show_date'] : false;
+		$this->flush_widget_cache();
+
+		$alloptions = wp_cache_get( 'alloptions', 'options' );
+		if ( isset($alloptions['wp_bootstrapped_featured_content']) )
+			delete_option('wp_bootstrapped_featured_content');
+
+		return $instance;
+	}
+
+	public function flush_widget_cache() {
+		wp_cache_delete('wp_bootstrapped_featured_content', 'widget');
+	}
+
+	public function form( $instance ) {
+		$title     = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
+		$id    = isset( $instance['id'] ) ? absint( $instance['id'] ) : '';
+		$show_date = isset( $instance['show_date'] ) ? (bool) $instance['show_date'] : false;
+?>
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
+		
+		<p><label for="<?php echo $this->get_field_id( 'id' ); ?>"><?php _e( 'ID Number of post or page to show, limit 1:' ); ?></label>
+		<input id="<?php echo $this->get_field_id( 'id' ); ?>" name="<?php echo $this->get_field_name( 'id' ); ?>" type="text" value="<?php echo $id; ?>" size="3" /></p>
+
+		<p><input class="checkbox" type="checkbox" <?php checked( $show_date ); ?> id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" />
+		<label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display post date?' ); ?></label></p>
+<?php
+	}
+}
+
+register_widget('wp_bootstrapped_widget_featured_content');
+
+function wp_bootstrapped_shortcode_featured_content( $attributes ) {
+
+	$a = shortcode_atts( array(
+        'title' => null,
+        'show_date' => false,
+        'id' => null,
+    ), $attributes );
+
+	/**
+	 * Filter the arguments for the Recent Posts widget.
+	 *
+	 * @since 3.4.0
+	 *
+	 * @see WP_Query::get_posts()
+	 *
+	 * @param array $args An array of arguments used to retrieve the recent posts.
+	 */
+	$r = new WP_Query( apply_filters( 'shortcode_posts_args', array(
+		'posts_per_page'      => 1,
+		'no_found_rows'       => true,
+		'post_status'         => 'publish',
+		'ignore_sticky_posts' => true,
+		'p' 	  => $a['id'] // -> term_id
+	) ) );
+
+	ob_start();
+
+	if ($r->have_posts()) :
+
+		echo '<section>';
+		echo $a['title'] ? '<h1>' . $a['title']  . '</h1>' : '';
+
+		while ( $r->have_posts() ) : $r->the_post();  
+			
+			echo '<article class="row"><div class="col-sm-4">';
+			echo get_the_post_thumbnail( $page->ID, 'thumbnail' );
+			echo '</div><div class="col-sm-8"><h1><a href="';
+			echo the_permalink();
+			echo '">'; 
+			echo get_the_title() ? the_title() : "no title found"; 
+			echo '</a></h1>';
+			print ($a['show_date'] == 'true' )? '<span class="post-date">' . get_the_date() . '</span>' : '';
+			echo get_the_excerpt() ? the_excerpt() : 'no excerpt available';
+			echo '</div></article>';
+		
+		endwhile;
+
+		echo '</section>';
+
+	endif;
+
+	$content = ob_get_clean();
+    
+    return $content;
+
+}
+
+add_shortcode('wpb_featured_content','wp_bootstrapped_Shortcode_featured_content');
+
+
+
 ?>
