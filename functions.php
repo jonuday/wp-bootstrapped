@@ -3,7 +3,7 @@
  *
  * @package WordPress Bootstrapped
  * @subpackage WP_Bootstrapped
- * @since WordPress Bootstrapped 1.0
+ * @since WordPress Bootstrapped 1.0.2
  *
  * Features:
  * • Recent Posts with Category (Shortcode & Widget)
@@ -53,11 +53,6 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
 	) );
 
 	// add settings
-	$wp_customize->add_setting( 'color_scheme' , array(
-    	'default'     => 'green',
-    	'transport'   => 'postMessage',
-	) );
-
 	$wp_customize->add_setting( 'nav_style' , array(
     	'default'     => 'default',
     	'transport'   => 'postMessage',
@@ -72,21 +67,8 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
 
 	// add controls	
 
-	$wp_customize->add_control('color_scheme', 
-		array(
-			'label'    => __( 'Base Color Scheme', 'wp_bootstrapped' ),
-			'section'  => 'colors',
-			'settings' => 'color_scheme',
-			'type'     => 'radio',
-			'choices'  => array(
-				'green'  => 'green (#7E9900)',
-				'red' => 'red (#CC0000)',
-				'blue' => 'blue (#0000CC)',
-				'orange' => 'orange (#D5652B)',
-			),
-		)
-	); // echo get_theme_mod('nav_style', '');
-
+	// $wp_customize->add_control('color_scheme', 
+	
 	$wp_customize->add_control('nav_style', 
 		array(
 			'label'    => __( 'Navbar Style', 'wp_bootstrapped' ),
@@ -96,7 +78,6 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
 			'choices'  => array(
 				'default'  => 'default (light)',
 				'inverse' => 'inverse (gray)',
-				'colorful' => 'colorful (theme color)',
 			),
 		)
 	); // echo get_theme_mod('nav_style', '');
@@ -149,10 +130,10 @@ function wp_bootstrapped_customize_css()
          	<?php } ?>
 
          	a.navbar-brand {
-         		width: 140px;
+         		min-width: 140px;
          		height: auto; 
          		background: transparent url( <?php echo get_theme_mod('logo_image') ? get_theme_mod('logo_image') :  get_template_directory_uri() . '/img/wp-bootstrapped.png'; ?>) 20px 50% no-repeat;
-         		background-size: auto 70%;
+         		background-size: 100% auto;
          		text-indent: -9999em;
          	}
 
@@ -166,11 +147,12 @@ function wp_bootstrapped_customize_css()
 				opacity: 0.25;
             }
             .main {
-            	background: -webkit-gradient(linear, to left, to right, color-stop(0%, rgba(46, 46, 46, 0.75)), color-stop(50%, rgba(80, 80, 80, 0.5)), color-stop(100%, rgba(46, 46, 46, 0.75))), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 0 0 no-repeat;
-				background: -webkit-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 0 0 no-repeat;
-				background: -moz-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 0 0 no-repeat;
-				background: -o-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 0 0 no-repeat;
-				background: linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 0 0 no-repeat;
+            	background: -webkit-gradient(linear, to left, to right, color-stop(0%, rgba(46, 46, 46, 0.75)), color-stop(50%, rgba(80, 80, 80, 0.5)), color-stop(100%, rgba(46, 46, 46, 0.75))), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 0 no-repeat;
+				background: -webkit-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 0 no-repeat;
+				background: -moz-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 0 no-repeat;
+				background: -o-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 0 no-repeat;
+				background: linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 0 no-repeat;
+				background-size: cover;
             }
             <?php } ?>
 

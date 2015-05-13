@@ -22,7 +22,7 @@
         <link rel="apple-touch-icon" href="<?php bloginfo('template_directory'); ?>/apple-touch-icon.png">
 
         <link href='//fonts.googleapis.com/css?family=Lato:300,400,700|Poiret+One' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/bootstrap-<?php echo get_theme_mod('color_scheme','green'); ?>/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/bootstrap/css/bootstrap.min.css">
 
         <style>
             body {
@@ -31,12 +31,11 @@
             }
         </style>
 
-        <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/bootstrap-<?php echo get_theme_mod('color_scheme','green'); ?>/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/bootstrap/css/bootstrap-theme.min.css">
         
         <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/style.css">
-        <?php if ( get_theme_mod('nav_style') == 'colorful') { ?> <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/color.css"> <?php } ?>
 
-        <script src="<?php bloginfo('template_directory'); ?>/bootstrap-<?php echo get_theme_mod('color_scheme','green'); ?>/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="<?php bloginfo('template_directory'); ?>/bootstrap/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
         <?php wp_head(); ?> 
     </head>
@@ -57,7 +56,7 @@
 
     <?php if ( get_theme_mod('nav_fixed') == '' ) { echo '<div class="container">'; } ?>
 
-    <nav class="navbar navbar-<?php if ( get_theme_mod('nav_style') == 'colorful' ) { echo 'inverse nav-' . get_theme_mod('color_scheme','green'); } else { echo get_theme_mod('nav_style', 'default'); } ?> <?php if ( get_theme_mod('nav_fixed') == 1 ) { echo 'navbar-fixed-top'; } ?>" role="navigation">
+    <nav class="navbar navbar-<?php echo get_theme_mod('nav_style', 'default'); ?> <?php if ( get_theme_mod('nav_fixed') == 1 ) { echo 'navbar-fixed-top'; } ?>" role="navigation">
       <div class="container<?php if ( get_theme_mod('nav_fixed') == '' ) { echo '-fluid'; } ?>">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">

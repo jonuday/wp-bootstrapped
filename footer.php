@@ -12,7 +12,7 @@
 
     <div class="clear<?php if (has_nav_menu('footer-menu')) { echo '-double'; } ?>"></div>
     
-    <footer class="footer navbar-<?php if ( get_theme_mod('nav_style') == 'colorful' ) { echo 'inverse nav-' . get_theme_mod('color_scheme','green'); } else { echo get_theme_mod('nav_style', 'default'); } ?> <?php if ( get_theme_mod('nav_fixed') == 1 ) { echo 'footer-fixed'; } ?>">
+    <footer class="footer navbar-<?php echo get_theme_mod('nav_style', 'default'); ?> <?php if ( get_theme_mod('nav_fixed') == 1 ) { echo 'footer-fixed'; } ?>">
 
         <?php if ( has_nav_menu( 'footer-menu') ) { ?>
             <div class="row">
@@ -42,7 +42,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="<?php bloginfo('template_directory'); ?>/js/jquery-1.10.1.min.js"><\/script>')</script>
 
-    <script src="<?php bloginfo('template_directory'); ?>/bootstrap-<?php echo get_theme_mod('color_scheme','green'); ?>/js/bootstrap.min.js"></script>
+    <script src="<?php bloginfo('template_directory'); ?>/bootstrap/js/bootstrap.min.js"></script>
 
     <script src="<?php bloginfo('template_directory'); ?>/js/responsive-images.js"></script>
     <script src="<?php bloginfo('template_directory'); ?>/js/custom.js"></script>
