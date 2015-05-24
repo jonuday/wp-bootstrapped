@@ -21,19 +21,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="<?php bloginfo('template_directory'); ?>/apple-touch-icon.png">
 
-        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700|Poiret+One' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/bootstrap/css/bootstrap.min.css">
-
         <style>
             body {
                 padding-top: 50px;
                 padding-bottom: 20px;
             }
         </style>
-
-        <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/bootstrap/css/bootstrap-theme.min.css">
         
-        <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/style.css">
+        <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>/style.css">
 
         <script src="<?php bloginfo('template_directory'); ?>/bootstrap/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
@@ -86,7 +81,7 @@
             <form class="nav navbar-nav navbar-right navbar-form" role="form">
                 <label class="screen-reader-text" for="s">Search:</label>
                 <input class="form-control" type="search" value="<?php echo get_search_query(); ?>" name="s" id="s" placeholder="search..." />
-                <button type="submit" class="btn" >Search</button>
+                <button type="submit" class="btn" ><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
             </form>
 
         </div><!--/.navbar-collapse -->

@@ -17,8 +17,11 @@
  * 1. Fixed Scroll front page
  * 2. Gallery Page
  * 3. Customizer Realtime Updating (Logo, Navbar Style)
- * 4. 
+ * 4. Move fonts from header to stylesheet
+ * 5. Child theme boostrap theme files?
 **/
+
+add_theme_support( 'post-thumbnails' );
 
 // Custom Headers 
 function wp_bootstrapped_header () {
@@ -147,11 +150,11 @@ function wp_bootstrapped_customize_css()
 				opacity: 0.25;
             }
             .main {
-            	background: -webkit-gradient(linear, to left, to right, color-stop(0%, rgba(46, 46, 46, 0.75)), color-stop(50%, rgba(80, 80, 80, 0.5)), color-stop(100%, rgba(46, 46, 46, 0.75))), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 0 no-repeat;
-				background: -webkit-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 0 no-repeat;
-				background: -moz-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 0 no-repeat;
-				background: -o-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 0 no-repeat;
-				background: linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 0 no-repeat;
+            	background: -webkit-gradient(linear, to left, to right, color-stop(0%, rgba(46, 46, 46, 0.75)), color-stop(50%, rgba(80, 80, 80, 0.5)), color-stop(100%, rgba(46, 46, 46, 0.75))), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 50% no-repeat;
+				background: -webkit-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 50% no-repeat;
+				background: -moz-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 50% no-repeat;
+				background: -o-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 50% no-repeat;
+				background: linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 50% no-repeat;
 				background-size: cover;
             }
             <?php } ?>
@@ -492,9 +495,9 @@ function custom_dashboard_help() {
 class wp_bootstrapped_Widget_Recent_Posts extends WP_Widget {
 
 	public function __construct() {
-		$widget_ops = array('classname' => 'wp_bootstrapped_widget_recent_entries', 'description' => __( "Your site&#8217;s most recent posts with category filter.") );
-		parent::__construct('wp_bootstrapped_recent-posts', __('WP Bootstrapped Recent Posts'), $widget_ops);
-		$this->alt_option_name = 'wp_bootstrapped_recent_entries';
+		$widget_ops = array('classname' => 'wp_bootstrapped_widget_recent_posts', 'description' => __( "Your site&#8217;s most recent posts with category filter.") );
+		parent::__construct('wp_bootstrapped_recent-posts', __('WPB Recent Posts'), $widget_ops);
+		$this->alt_option_name = 'wp_bootstrapped_widget_recent_posts';
 
 		add_action( 'save_post', array($this, 'flush_widget_cache') );
 		add_action( 'deleted_post', array($this, 'flush_widget_cache') );
@@ -504,7 +507,7 @@ class wp_bootstrapped_Widget_Recent_Posts extends WP_Widget {
 	public function widget($args, $instance) {
 		$cache = array();
 		if ( ! $this->is_preview() ) {
-			$cache = wp_cache_get( 'wp_bootstrapped_recent_posts', 'widget' );
+			$cache = wp_cache_get( 'wp_bootstrapped_widget_recent_posts', 'widget' );
 		}
 
 		if ( ! is_array( $cache ) ) {
@@ -584,7 +587,7 @@ class wp_bootstrapped_Widget_Recent_Posts extends WP_Widget {
 
 		if ( ! $this->is_preview() ) {
 			$cache[ $args['widget_id'] ] = ob_get_flush();
-			wp_cache_set( 'wp_bootstrapped_recent_posts', $cache, 'widget' );
+			wp_cache_set( 'wp_bootstrapped_widget_recent_posts', $cache, 'widget' );
 		} else {
 			ob_end_flush();
 		}
@@ -599,14 +602,14 @@ class wp_bootstrapped_Widget_Recent_Posts extends WP_Widget {
 		$this->flush_widget_cache();
 
 		$alloptions = wp_cache_get( 'alloptions', 'options' );
-		if ( isset($alloptions['wp_bootstrapped_recent_entries']) )
-			delete_option('wp_bootstrapped_recent_entries');
+		if ( isset($alloptions['wp_bootstrapped_widget_recent_posts']) )
+			delete_option('wp_bootstrapped_widget_recent_posts');
 
 		return $instance;
 	}
 
 	public function flush_widget_cache() {
-		wp_cache_delete('wp_bootstrapped_recent_posts', 'widget');
+		wp_cache_delete('wp_bootstrapped_widget_recent_posts', 'widget');
 	}
 
 	public function form( $instance ) {
@@ -792,8 +795,8 @@ class wp_bootstrapped_widget_featured_content extends WP_Widget {
 
 	public function __construct() {
 		$widget_ops = array('classname' => 'wp_bootstrapped_widget_featured_content', 'description' => __( "Select featured content using post or page ID.") );
-		parent::__construct('wp_bootstrapped_featured_content', __('WPB Featured Content'), $widget_ops);
-		$this->alt_option_name = 'wp_bootstrapped_featured_content';
+		parent::__construct('wp_bootstrapped_widget_featured_content', __('WPB Featured Content'), $widget_ops);
+		$this->alt_option_name = 'wp_bootstrapped_widget_featured_content';
 
 		add_action( 'save_post', array($this, 'flush_widget_cache') );
 		add_action( 'deleted_post', array($this, 'flush_widget_cache') );
@@ -803,7 +806,7 @@ class wp_bootstrapped_widget_featured_content extends WP_Widget {
 	public function widget($args, $instance) {
 		$cache = array();
 		if ( ! $this->is_preview() ) {
-			$cache = wp_cache_get( 'wp_bootstrapped_featured_content', 'widget' );
+			$cache = wp_cache_get( 'wp_bootstrapped_widget_featured_content', 'widget' );
 		}
 
 		if ( ! is_array( $cache ) ) {
@@ -821,7 +824,7 @@ class wp_bootstrapped_widget_featured_content extends WP_Widget {
 
 		ob_start();
 
-		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Featured Content' );
+		$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : '';
 
 		$id = isset( $instance['id'] ) ? absint($instance['id']) : 0;
 
@@ -840,12 +843,13 @@ class wp_bootstrapped_widget_featured_content extends WP_Widget {
 		 *
 		 * @param array $args An array of arguments used to retrieve the recent posts.
 		 */
+
 		$r = new WP_Query( apply_filters( 'widget_posts_args', array(
 			'posts_per_page'      => 1,
 			'no_found_rows'       => true,
 			'post_status'         => 'publish',
-			'ignore_sticky_posts' => true,
-			'p' => $id // -> post or page id
+			'ignore_sticky_posts' => false,
+			'page_id' => $id // -> post or page id
 		) ) );
 
 		if ($r->have_posts()) :
@@ -871,12 +875,16 @@ class wp_bootstrapped_widget_featured_content extends WP_Widget {
 <?php
 		// Reset the global $the_post as this query will have stomped on it
 		wp_reset_postdata();
+		
+		else:
+
+			print '<section><article><h1>No content</h1><p>Either the content you selected is not published or there is no content matching the ID provided.</p></article></section>';
 
 		endif;
 
 		if ( ! $this->is_preview() ) {
 			$cache[ $args['widget_id'] ] = ob_get_flush();
-			wp_cache_set( 'wp_bootstrapped_featured_content', $cache, 'widget' );
+			wp_cache_set( 'wp_bootstrapped_widget_featured_content', $cache, 'widget' );
 		} else {
 			ob_end_flush();
 		}
@@ -890,14 +898,14 @@ class wp_bootstrapped_widget_featured_content extends WP_Widget {
 		$this->flush_widget_cache();
 
 		$alloptions = wp_cache_get( 'alloptions', 'options' );
-		if ( isset($alloptions['wp_bootstrapped_featured_content']) )
-			delete_option('wp_bootstrapped_featured_content');
+		if ( isset($alloptions['wp_bootstrapped_widget_featured_content']) )
+			delete_option('wp_bootstrapped_widget_featured_content');
 
 		return $instance;
 	}
 
 	public function flush_widget_cache() {
-		wp_cache_delete('wp_bootstrapped_featured_content', 'widget');
+		wp_cache_delete('wp_bootstrapped_widget_featured_content', 'widget');
 	}
 
 	public function form( $instance ) {
@@ -909,7 +917,7 @@ class wp_bootstrapped_widget_featured_content extends WP_Widget {
 		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
 		
 		<p><label for="<?php echo $this->get_field_id( 'id' ); ?>"><?php _e( 'ID Number of post or page to show, limit 1:' ); ?></label>
-		<input id="<?php echo $this->get_field_id( 'id' ); ?>" name="<?php echo $this->get_field_name( 'id' ); ?>" type="text" value="<?php echo $id; ?>" size="3" /></p>
+		<input id="<?php echo $this->get_field_id( 'id' ); ?>" name="<?php echo $this->get_field_name( 'id' ); ?>" type="text" value="<?php echo $id; ?>" size="5" /></p>
 
 		<p><input class="checkbox" type="checkbox" <?php checked( $show_date ); ?> id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" />
 		<label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Display post date?' ); ?></label></p>
@@ -919,6 +927,9 @@ class wp_bootstrapped_widget_featured_content extends WP_Widget {
 
 register_widget('wp_bootstrapped_widget_featured_content');
 
+/*
+* Featured Content Shortcode
+*/
 function wp_bootstrapped_shortcode_featured_content( $attributes ) {
 
 	$a = shortcode_atts( array(
@@ -940,7 +951,7 @@ function wp_bootstrapped_shortcode_featured_content( $attributes ) {
 		'posts_per_page'      => 1,
 		'no_found_rows'       => true,
 		'post_status'         => 'publish',
-		'ignore_sticky_posts' => true,
+		'ignore_sticky_posts' => false,
 		'p' 	  => $a['id'] // -> term_id
 	) ) );
 
@@ -976,7 +987,7 @@ function wp_bootstrapped_shortcode_featured_content( $attributes ) {
 
 }
 
-add_shortcode('wpb_featured_content','wp_bootstrapped_Shortcode_featured_content');
+add_shortcode('wpb_featured_content','wp_bootstrapped_shortcode_featured_content');
 
 
 
