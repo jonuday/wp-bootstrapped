@@ -136,7 +136,7 @@ function wp_bootstrapped_customize_css()
          		min-width: 140px;
          		height: auto; 
          		background: transparent url( <?php echo get_theme_mod('logo_image') ? get_theme_mod('logo_image') :  get_template_directory_uri() . '/img/wp-bootstrapped.png'; ?>) 20px 50% no-repeat;
-         		background-size: 100% auto;
+         		background-size: auto 60%;
          		text-indent: -9999em;
          	}
 

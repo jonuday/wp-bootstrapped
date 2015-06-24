@@ -145,7 +145,7 @@ img {
 
 .banner {
 	@include background (linear-gradient(to bottom, rgba($body-bg ,0.8), rgba($body-bg,1)), 
- 			 transparent url(img/header.jpg) 0 0 no-repeat);
+ 			 transparent url(../img/header.jpg) 0 0 no-repeat);
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -156,7 +156,7 @@ img {
 
 .main {
 	@include background (linear-gradient(to left, rgba($gray-base,0.25), rgba($gray-darker,0.5), rgba($gray-base,0.25)), 
-			 transparent url(img/header.jpg) 0 0 no-repeat);
+			 transparent url(../img/header.jpg) 0 0 no-repeat);
 }
 
 /* shift this to header image CSS */ 
