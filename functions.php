@@ -48,25 +48,41 @@ add_action('after_setup_theme','wp_bootstrapped_header');
 function wp_bootstrapped_customize_register( $wp_customize ) {
 
 
-   //All our sections, settings, and controls will be added here
+   // All our sections, settings, and controls will be added here
 
+	// Add Sections
 	$wp_customize->add_section( 'wp_bootstrapped_logo_section' , array(
     	'title'      => __( 'Logo', 'wp_bootstrapped' ),
     	'priority'   => 10,
 	) );
 
-	// add settings
+	$wp_customize->add_section( 'wp_bootstrapped_front_section' , array(
+    	'title'      => __( 'Front Page Style', 'wp_bootstrapped' ),
+    	'priority'   => 120,
+	) );
+
+
+
+	// Add settings
 	$wp_customize->add_setting( 'nav_style' , array(
     	'default'     => 'default',
     	'transport'   => 'postMessage',
 	) );
 
 	$wp_customize->add_setting( 'nav_fixed' );
-		
+
+	$wp_customize->add_setting( 'front_page_layout' , array(
+    	'default'     => 'default',
+     	'transport'   => 'postMessage',
+	) );
+
+	$wp_customize->add_setting( 'front_page_gradient' );
 
 	$wp_customize->add_setting( 'logo_image' , array(
     	'transport'   => 'postMessage',
 	) ); // 'default'     => 'img/wp-bootstrapped.png',
+
+
 
 	// add controls	
 
@@ -85,13 +101,34 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
 		)
 	); // echo get_theme_mod('nav_style', '');
 	
-
 	$wp_customize->add_control( 'nav_fixed', array(
 	        'type' => 'checkbox',
 	        'label' => 'Use Fixed Navbars',
 	        'section' => 'nav',
 	    )
 	); // echo get_theme_mod('nav_style', 'navbar-default');
+
+	$wp_customize->add_control('front_page_layout', 
+		array(
+			'label'    => __( 'Front Page Layout', 'wp_bootstrapped' ),
+			'section'  => 'wp_bootstrapped_front_section',
+			'settings' => 'front_page_layout',
+			'type'     => 'radio',
+			'choices'  => array(
+				'default'  => 'Top banner background (default)',
+				'full' => 'Full screen background',
+			),
+		)
+	); // echo get_theme_mod('front_page_layout', '');
+
+	$wp_customize->add_control( 'front_page_gradient', array(
+	        'type' => 'checkbox',
+	        'label' => 'Use gradient on background image',
+	        'section' => 'wp_bootstrapped_front_section',
+	    )
+	); // echo get_theme_mod('front_page_gradient', '');
+
+
 
 	$wp_customize->add_control( new WP_Customize_Header_Image_Control( $wp_customize, 'header_image', array(
 		'label'        => __( 'Front Page Banner Image', 'wp_bootstrapped' ),
@@ -150,11 +187,11 @@ function wp_bootstrapped_customize_css()
 				opacity: 0.25;
             }
             .main {
-            	background: -webkit-gradient(linear, to left, to right, color-stop(0%, rgba(46, 46, 46, 0.75)), color-stop(50%, rgba(80, 80, 80, 0.5)), color-stop(100%, rgba(46, 46, 46, 0.75))), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 50% no-repeat;
-				background: -webkit-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 50% no-repeat;
-				background: -moz-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 50% no-repeat;
-				background: -o-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 50% no-repeat;
-				background: linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 50% no-repeat;
+            	background:  <?php if (get_theme_mod('front_page_gradient')) : ?>-webkit-gradient(linear, to left, to right, color-stop(0%, rgba(46, 46, 46, 0.75)), color-stop(50%, rgba(80, 80, 80, 0.5)), color-stop(100%, rgba(46, 46, 46, 0.75))), <?php endif ?> transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 50% no-repeat;
+				background:  <?php if (get_theme_mod('front_page_gradient')) : ?>-webkit-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), <?php endif ?> transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 50% no-repeat;
+				background:  <?php if (get_theme_mod('front_page_gradient')) : ?>-moz-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), <?php endif ?>  transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 50% no-repeat;
+				background:  <?php if (get_theme_mod('front_page_gradient')) : ?>-o-linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), <?php endif ?> transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 50% no-repeat;
+				background:  <?php if (get_theme_mod('front_page_gradient')) : ?>linear-gradient(to left, rgba(46, 46, 46, 0.75), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.75)), <?php endif ?>  transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 50% 50% no-repeat;
 				background-size: cover;
             }
             <?php } ?>
@@ -704,7 +741,7 @@ add_shortcode('wpb_recent_posts','wp_bootstrapped_Shortcode_Recent_Posts');
 add_action( 'wp_enqueue_scripts', 'register_cycle2' );
 
 function register_cycle2() {
-	wp_register_script( 'script-name',  get_template_directory_uri() . '/js/jquery.cycle2.min.js', array(), '2.1.6', true );
+	wp_register_script( 'cycle2',  get_template_directory_uri() . '/js/jquery.cycle2.min.js', array(), '2.1.6', true );
 }
 
 function wp_bootstrapped_gallery( $attributes ) {

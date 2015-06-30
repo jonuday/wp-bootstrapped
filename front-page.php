@@ -13,7 +13,8 @@ get_header();
 ?>
 
 <!-- BEGIN FRONT PAGE CONTENT --> 
-<div class="main">
+<div class="main <?php if (get_theme_mod('front_page_layout') !== 'default') { echo get_theme_mod('front_page_layout', ''); } else { echo 'inverse'; } ?>">
+<?php if (get_theme_mod('front_page_layout') !== 'default') { echo '</div><!-- /.full.main --> <div class="inverse">'; } ?>
 
     <section class="row">
         <div class="container"> 
@@ -59,12 +60,12 @@ get_header();
             <?php endif; // end have_posts() check ?>
         </div>
     </section>
-</div><!-- /.main -->
+<?php if (get_theme_mod('front_page_layout') == 'default') { echo '</div><!-- /.main.inverse -->'; } ?>
 
     <!-- widgets section -->
     <?php get_sidebar('widgets'); ?>
 
-
+<?php if (get_theme_mod('front_page_layout') !== 'default') { echo '</div><!-- /.inverse -->'; } ?>
 
 <!-- this does not get called --> 
 <?php 

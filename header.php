@@ -28,7 +28,7 @@
             }
         </style>
         
-        <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>/style.css">
+        <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
 
         <script src="<?php bloginfo('template_directory'); ?>/bootstrap/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 

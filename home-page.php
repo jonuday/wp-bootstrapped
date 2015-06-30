@@ -18,7 +18,7 @@ get_header();
     </div>
 
     <section class="row">
-        <div class="container"> 
+        <div class="container cycle-slideshow" data-cycle-slides="> article"> 
             <?php if ( have_posts() ) : ?>
 
                 <?php /* Start the Loop */ ?>
