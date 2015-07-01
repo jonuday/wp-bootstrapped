@@ -169,6 +169,9 @@ img {
 body.home {
 
 	.inverse {
+		font-size: 1.75em;
+		color: #FFF;
+		text-shadow: 1px 2px 3px #000;
 
 		> ul {
 			padding: 0;
@@ -176,30 +179,24 @@ body.home {
 			list-style: none;
 		}
 
+		h1, h2, h3, h4, h5, a {
+			color: #FFF;
+		}
+
 		.container {
 			position: relative;
-			font-size: 1.25em;
-			color: #FFF;
-			text-shadow: 1px 2px 5px #000;
 			padding: 2em;
-			
-			a {
-				color: #FFF;
-			}
 		}
+
+		.panel {
+			background-color: rgba($gray-base, 0.75);
+		}
+
 	}
  }
 
 
 /* content */
-.widget-container h2 {
-	font-size: 18px;
-}
-.fpw-widget-page .widget-title, .fpw-widget-page .fpw-page-title, .fpw-widget-page .fpw-featured-image {
-    font-size: 36px;
-    margin: 0px 0px 10px;
-    padding-top: 0px;
-}
 
 .sidebar {
 	margin-top: 20px;
@@ -214,10 +211,10 @@ body.home {
 		border-radius: 0;
 	}
 }
-
 .panel {
-	margin-top: 20px;
+	background-color: transparent;
 }
+
 
 /* Posts */
 .entry-header img {

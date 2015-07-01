@@ -153,43 +153,38 @@ img.alignright {
 }
 
 /* shift this to header image CSS */
-/* line 173, custom.scss */
+/* line 171, custom.scss */
+body.home .inverse {
+  font-size: 1.75em;
+  color: #FFF;
+  text-shadow: 1px 2px 3px #000;
+}
+/* line 176, custom.scss */
 body.home .inverse > ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-/* line 179, custom.scss */
-body.home .inverse .container {
-  position: relative;
-  font-size: 1.25em;
+/* line 182, custom.scss */
+body.home .inverse h1, body.home .inverse h2, body.home .inverse h3, body.home .inverse h4, body.home .inverse h5, body.home .inverse a {
   color: #FFF;
-  text-shadow: 1px 2px 5px #000;
-  padding: 2em;
 }
 /* line 186, custom.scss */
-body.home .inverse .container a {
-  color: #FFF;
+body.home .inverse .container {
+  position: relative;
+  padding: 2em;
+}
+/* line 191, custom.scss */
+body.home .inverse .panel {
+  background-color: rgba(46, 46, 46, 0.75);
 }
 
 /* content */
-/* line 195, custom.scss */
-.widget-container h2 {
-  font-size: 18px;
-}
-
-/* line 198, custom.scss */
-.fpw-widget-page .widget-title, .fpw-widget-page .fpw-page-title, .fpw-widget-page .fpw-featured-image {
-  font-size: 36px;
-  margin: 0px 0px 10px;
-  padding-top: 0px;
-}
-
-/* line 204, custom.scss */
+/* line 201, custom.scss */
 .sidebar {
   margin-top: 20px;
 }
-/* line 207, custom.scss */
+/* line 204, custom.scss */
 .sidebar .dropdown-menu {
   position: relative;
   margin-top: 1px;
@@ -200,39 +195,39 @@ body.home .inverse .container a {
   border-radius: 0;
 }
 
-/* line 218, custom.scss */
+/* line 214, custom.scss */
 .panel {
-  margin-top: 20px;
+  background-color: transparent;
 }
 
 /* Posts */
-/* line 223, custom.scss */
+/* line 220, custom.scss */
 .entry-header img {
   float: left;
 }
 
-/* line 229, custom.scss */
+/* line 226, custom.scss */
 footer.entry-meta {
   display: none;
 }
 
 /* Gallery */
-/* line 237, custom.scss */
+/* line 234, custom.scss */
 .cycle-wrapper {
   position: relative;
 }
 
-/* line 240, custom.scss */
+/* line 237, custom.scss */
 .cycle-slideshow {
   overflow: hidden;
 }
 
-/* line 246, custom.scss */
+/* line 243, custom.scss */
 .cycle-slide > img {
   position: relative;
   width: calc(100% - 8px);
 }
-/* line 251, custom.scss */
+/* line 248, custom.scss */
 .cycle-slide > div {
   position: absolute;
   bottom: -10%;
@@ -246,12 +241,12 @@ footer.entry-meta {
   -o-transition: all 1.5s ease-in, 1s;
   transition: all 1.5s ease-in, 1s;
 }
-/* line 264, custom.scss */
+/* line 261, custom.scss */
 .cycle-slide.cycle-slide-active > div {
   bottom: 0;
 }
 
-/* line 271, custom.scss */
+/* line 268, custom.scss */
 .cycle-pagers {
   position: absolute;
   width: 100%;
@@ -261,26 +256,26 @@ footer.entry-meta {
   padding: 0 5%;
   z-index: 100;
 }
-/* line 280, custom.scss */
+/* line 277, custom.scss */
 .cycle-pagers a {
   color: rgba(255, 255, 255, 0.75);
   text-shadow: 2px 2px 5px #838383;
 }
-/* line 284, custom.scss */
+/* line 281, custom.scss */
 .cycle-pagers a:hover {
   color: #FFF;
 }
-/* line 289, custom.scss */
+/* line 286, custom.scss */
 .cycle-pagers #prev {
   float: left;
 }
-/* line 293, custom.scss */
+/* line 290, custom.scss */
 .cycle-pagers #next {
   float: right;
 }
 
 @media all and (max-width: 767px) {
-  /* line 301, custom.scss */
+  /* line 298, custom.scss */
   .cycle-slide > div {
     position: relative;
     bottom: 0;
@@ -293,7 +288,7 @@ footer.entry-meta {
     transition: all 1.5s ease-in, 1s;
   }
 
-  /* line 313, custom.scss */
+  /* line 310, custom.scss */
   .cycle-pagers {
     position: absolute;
     top: 0;
@@ -301,7 +296,7 @@ footer.entry-meta {
     margin-top: -35px;
     text-align: right;
   }
-  /* line 320, custom.scss */
+  /* line 317, custom.scss */
   .cycle-pagers #prev, .cycle-pagers #next {
     display: inline;
     float: none;
