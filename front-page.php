@@ -11,21 +11,32 @@
  
 get_header(); 
 ?>
-
 <!-- BEGIN FRONT PAGE CONTENT --> 
+
+<?php if ( get_theme_mod('front_page_layout') == "slideshow" ) :  
+     // we use the shortcode to make a new query and styles
+     $args = array('category' => get_theme_mod('front_page_category'));
+?>
+
+    <div class="slideshow_full">
+    <?php echo do_shortcode( wp_bootstrapped_gallery($args) ); ?>
+    </div>
+
+<?php else : ?>
+
 <div class="main <?php if (get_theme_mod('front_page_layout') !== 'default') { echo get_theme_mod('front_page_layout', ''); } else { echo 'inverse'; } ?>">
 <?php if (get_theme_mod('front_page_layout') !== 'default') { echo '</div><!-- /.full.main --> <div class="inverse">'; } ?>
 
     <section class="row">
         <div class="container"> 
-            <?php if ( have_posts() ) : ?>
+            <?php if ( have_posts() ) : ?>               
 
-                <?php /* Start the Loop */ ?>
-                <?php while ( have_posts() ) : the_post(); ?>
-                    <?php get_template_part( 'content', get_post_format() ); ?>
-                <?php endwhile; ?>
-    <!-- this gets called -->
-                <?php wp_bootstrapped_content_nav( 'nav-below' ); ?>
+                    <?php /* Start the Loop */ ?>
+                    <?php while ( have_posts() ) : the_post(); ?>
+                        <?php get_template_part( 'content', get_post_format() ); ?>
+                    <?php endwhile; ?>
+                    <!-- this gets called -->
+                    <?php wp_bootstrapped_content_nav( 'nav-below' ); ?>
 
             <?php else : ?>
 
@@ -68,6 +79,9 @@ get_header();
 <?php if (get_theme_mod('front_page_layout') !== 'default') { echo '</div><!-- /.inverse -->'; } ?>
 
 <!-- this does not get called --> 
+
+ <?php endif; ?>
+
 <?php 
 get_footer(); 
 ?>

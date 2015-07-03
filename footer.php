@@ -26,10 +26,10 @@
 
         <div class="row">
             <div class="container">
-                <div class="copyright col-sm-4 col-xs-12">
+                <div class="copyright col-sm-6 col-xs-12">
                         <p>&copy; <?php bloginfo('name'); ?> <?php echo date(Y); ?></p>
                     </div>
-                    <div class="col-sm-4 col-xs-12 theme">
+                    <div class="col-sm-6 col-xs-12 theme text-right">
                         <p><a href="https://github.com/jonuday/wp-bootstrapped" alt="A Bootstrapped Theme for Wordpress">WordPress Bootstrapped Theme</a> for <a href="http://wordpress.org" alt="Wordpress">Wordpress</a></p>
                     </div>
                 </div>

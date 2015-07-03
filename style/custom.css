@@ -19,24 +19,30 @@ Built with SASS
   display: none;
 }
 
+/* line 44, custom.scss */
+.bg-transparent,
+.panel-transparent {
+  background-color: transparent;
+}
+
 /* Adjustments for WordPress Styles */
-/* line 45, custom.scss */
+/* line 50, custom.scss */
 body, html {
   /* important */
   height: 100%;
   padding-top: 24px;
   margin-bottom: 30px;
 }
-/* line 51, custom.scss */
+/* line 56, custom.scss */
 body.logged-in, html.logged-in {
   padding-top: 20px;
 }
-/* line 54, custom.scss */
+/* line 59, custom.scss */
 body.logged-in .navbar-fixed-top, html.logged-in .navbar-fixed-top {
   top: 25px;
 }
 
-/* line 61, custom.scss */
+/* line 66, custom.scss */
 body > .footer-fixed {
   position: fixed;
   bottom: 0;
@@ -46,35 +52,35 @@ body > .footer-fixed {
   border-top: 1px solid white;
   z-index: 1000;
 }
-/* line 70, custom.scss */
+/* line 75, custom.scss */
 body > .footer-fixed.navbar-inverse {
   color: white;
 }
-/* line 75, custom.scss */
+/* line 80, custom.scss */
 body .clear {
   height: 60px;
 }
-/* line 80, custom.scss */
+/* line 85, custom.scss */
 body .clear-double {
   height: 120px;
 }
 
 @media all and (max-width: 767px) {
-  /* line 89, custom.scss */
+  /* line 94, custom.scss */
   body > .footer-fixed {
     position: relative;
   }
-  /* line 93, custom.scss */
+  /* line 98, custom.scss */
   body .clear, body .clear-double {
     height: 4px;
   }
 }
-/* line 101, custom.scss */
+/* line 106, custom.scss */
 a:hover {
   text-decoration: none;
 }
 
-/* line 106, custom.scss */
+/* line 111, custom.scss */
 img {
   background-color: #fefefe;
   border: 1px solid #a5a5a5;
@@ -91,29 +97,29 @@ img {
   -o-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 117, custom.scss */
+/* line 122, custom.scss */
 img.alignleft {
   float: left;
   margin-left: 0;
 }
-/* line 121, custom.scss */
+/* line 126, custom.scss */
 img.alignright {
   float: right;
   margin-right: 0;
 }
 
-/* line 128, custom.scss */
+/* line 133, custom.scss */
 .row {
   margin-left: 0;
   margin-right: 0;
 }
 
-/* line 134, custom.scss */
+/* line 139, custom.scss */
 .navbar-fixed-top {
   margin-bottom: 0;
 }
 
-/* line 139, custom.scss */
+/* line 144, custom.scss */
 .banner,
 .main {
   background-size: cover;
@@ -122,7 +128,7 @@ img.alignright {
   background-position: center center;
 }
 
-/* line 146, custom.scss */
+/* line 151, custom.scss */
 .banner {
   background: -webkit-gradient(linear, to bottom, to top, color-stop(0%, rgba(254, 254, 254, 0.8)), color-stop(100%, #fefefe)), transparent url(../img/header.jpg) 0 0 no-repeat;
   background: -webkit-linear-gradient(to bottom, rgba(254, 254, 254, 0.8), #fefefe), transparent url(../img/header.jpg) 0 0 no-repeat;
@@ -137,7 +143,7 @@ img.alignright {
   z-index: -1;
 }
 
-/* line 157, custom.scss */
+/* line 162, custom.scss */
 .main {
   background: -webkit-gradient(linear, to left, to right, color-stop(0%, rgba(46, 46, 46, 0.25)), color-stop(50%, rgba(80, 80, 80, 0.5)), color-stop(100%, rgba(46, 46, 46, 0.25))), transparent url(../img/header.jpg) 0 0 no-repeat;
   background: -webkit-linear-gradient(to left, rgba(46, 46, 46, 0.25), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.25)), transparent url(../img/header.jpg) 0 0 no-repeat;
@@ -145,21 +151,25 @@ img.alignright {
   background: -o-linear-gradient(to left, rgba(46, 46, 46, 0.25), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.25)), transparent url(../img/header.jpg) 0 0 no-repeat;
   background: linear-gradient(to left, rgba(46, 46, 46, 0.25), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.25)), transparent url(../img/header.jpg) 0 0 no-repeat;
 }
-/* line 161, custom.scss */
+/* line 166, custom.scss */
 .main.full {
   position: fixed;
   width: 100%;
   height: 100%;
 }
+/* line 172, custom.scss */
+.main.inverse {
+  margin-bottom: 20px;
+}
 
 /* shift this to header image CSS */
-/* line 173, custom.scss */
+/* line 182, custom.scss */
 body.home .inverse > ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-/* line 179, custom.scss */
+/* line 188, custom.scss */
 body.home .inverse .container {
   position: relative;
   font-size: 1.25em;
@@ -167,29 +177,29 @@ body.home .inverse .container {
   text-shadow: 1px 2px 5px #000;
   padding: 2em;
 }
-/* line 186, custom.scss */
+/* line 195, custom.scss */
 body.home .inverse .container a {
   color: #FFF;
 }
 
 /* content */
-/* line 195, custom.scss */
+/* line 204, custom.scss */
 .widget-container h2 {
   font-size: 18px;
 }
 
-/* line 198, custom.scss */
+/* line 207, custom.scss */
 .fpw-widget-page .widget-title, .fpw-widget-page .fpw-page-title, .fpw-widget-page .fpw-featured-image {
   font-size: 36px;
   margin: 0px 0px 10px;
   padding-top: 0px;
 }
 
-/* line 204, custom.scss */
+/* line 213, custom.scss */
 .sidebar {
   margin-top: 20px;
 }
-/* line 207, custom.scss */
+/* line 216, custom.scss */
 .sidebar .dropdown-menu {
   position: relative;
   margin-top: 1px;
@@ -200,39 +210,34 @@ body.home .inverse .container a {
   border-radius: 0;
 }
 
-/* line 218, custom.scss */
-.panel {
-  margin-top: 20px;
-}
-
 /* Posts */
-/* line 223, custom.scss */
+/* line 232, custom.scss */
 .entry-header img {
   float: left;
 }
 
-/* line 229, custom.scss */
+/* line 238, custom.scss */
 footer.entry-meta {
   display: none;
 }
 
 /* Gallery */
-/* line 237, custom.scss */
+/* line 246, custom.scss */
 .cycle-wrapper {
   position: relative;
 }
 
-/* line 240, custom.scss */
+/* line 249, custom.scss */
 .cycle-slideshow {
   overflow: hidden;
 }
 
-/* line 246, custom.scss */
+/* line 255, custom.scss */
 .cycle-slide > img {
   position: relative;
   width: calc(100% - 8px);
 }
-/* line 251, custom.scss */
+/* line 260, custom.scss */
 .cycle-slide > div {
   position: absolute;
   bottom: -10%;
@@ -246,12 +251,12 @@ footer.entry-meta {
   -o-transition: all 1.5s ease-in, 1s;
   transition: all 1.5s ease-in, 1s;
 }
-/* line 264, custom.scss */
+/* line 273, custom.scss */
 .cycle-slide.cycle-slide-active > div {
   bottom: 0;
 }
 
-/* line 271, custom.scss */
+/* line 280, custom.scss */
 .cycle-pagers {
   position: absolute;
   width: 100%;
@@ -261,26 +266,26 @@ footer.entry-meta {
   padding: 0 5%;
   z-index: 100;
 }
-/* line 280, custom.scss */
+/* line 289, custom.scss */
 .cycle-pagers a {
   color: rgba(255, 255, 255, 0.75);
   text-shadow: 2px 2px 5px #838383;
 }
-/* line 284, custom.scss */
+/* line 293, custom.scss */
 .cycle-pagers a:hover {
   color: #FFF;
 }
-/* line 289, custom.scss */
+/* line 298, custom.scss */
 .cycle-pagers #prev {
   float: left;
 }
-/* line 293, custom.scss */
+/* line 302, custom.scss */
 .cycle-pagers #next {
   float: right;
 }
 
 @media all and (max-width: 767px) {
-  /* line 301, custom.scss */
+  /* line 310, custom.scss */
   .cycle-slide > div {
     position: relative;
     bottom: 0;
@@ -293,7 +298,7 @@ footer.entry-meta {
     transition: all 1.5s ease-in, 1s;
   }
 
-  /* line 313, custom.scss */
+  /* line 322, custom.scss */
   .cycle-pagers {
     position: absolute;
     top: 0;
@@ -301,7 +306,7 @@ footer.entry-meta {
     margin-top: -35px;
     text-align: right;
   }
-  /* line 320, custom.scss */
+  /* line 329, custom.scss */
   .cycle-pagers #prev, .cycle-pagers #next {
     display: inline;
     float: none;

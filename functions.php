@@ -76,7 +76,14 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
      	'transport'   => 'postMessage',
 	) );
 
+	$wp_customize->add_setting( 'front_page_category' );
+
 	$wp_customize->add_setting( 'front_page_gradient' );
+
+	$wp_customize->add_setting( 'front_page_panels' , array(
+    	'default'     => 'default',
+     	'transport'   => 'postMessage',
+	) );
 
 	$wp_customize->add_setting( 'logo_image' , array(
     	'transport'   => 'postMessage',
@@ -117,7 +124,19 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
 			'choices'  => array(
 				'default'  => 'Top banner background (default)',
 				'full' => 'Full screen background',
+				'slideshow' => 'Full screen slideshow as background',
 			),
+		)
+	); // echo get_theme_mod('front_page_layout', '');
+
+	$wp_customize->add_control('front_page_category', 
+		array(
+			'label'    => __( 'Front Page Category for Slideshow', 'wp_bootstrapped' ),
+			'section'  => 'wp_bootstrapped_front_section',
+			'settings' => 'front_page_category',
+			'type'     => 'select',
+			'choices'  => wpb_category_list(),
+			'active_callback' => function () { return get_theme_mod('front_page_layout') == 'slideshow'; }
 		)
 	); // echo get_theme_mod('front_page_layout', '');
 
@@ -125,6 +144,20 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
 	        'type' => 'checkbox',
 	        'label' => 'Use gradient on background image',
 	        'section' => 'wp_bootstrapped_front_section',
+	    )
+	); // echo get_theme_mod('front_page_gradient', '');
+
+	$wp_customize->add_control( 'front_page_panels', array(
+	        'type' => 'radio',
+	        'label' => __( 'Select style for panels', 'wp_bootstrapped' ),
+	        'section' => 'wp_bootstrapped_front_section',
+	        'settings' => 'front_page_panels',
+	        'choices'  => array(
+	        	'default' => 'White (default)',
+				'transparent'  => 'Transparent',
+				'primary' => 'Primary color',
+
+			),
 	    )
 	); // echo get_theme_mod('front_page_gradient', '');
 
@@ -426,6 +459,11 @@ endif;
 // The hero is more useful if one can choose any contents for 
 // for rotating, so a sidebar area is set to handle the contents.
 function wp_bootstrapped_widgets() {
+
+	$panel_style = 'panel-'.get_theme_mod('front_page_panels');
+	$panel_bg 	 = 'bg-'.get_theme_mod('front_page_panels');
+
+
 	// 2 widget areas for right sidebars 
 	register_sidebar( array(
 		'name'          => __( 'Top Right Sidebar', 'wp_bootstrapped' ),
@@ -477,10 +515,10 @@ function wp_bootstrapped_widgets() {
 	register_sidebar( array(
 		'name'          => __( 'First Footer Content Area' , 'wp_bootstrapped' ),
 		'id'            => 'widget-1',
-		'description'   => 'Contents used in templates that include contents above the footer',
+		'description'   => 'First panel used on Front/Home Page',
 		'class'         => 'widget-1',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</div>\n",
+		'before_widget' => '<div id="%1$s" class="panel %2$s '.$panel_style.'"><div class="panel-body '.$panel_bg.'">',
+		'after_widget'  => "</div>\n</div>\n",
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => "</h1>\n",
 	) );
@@ -488,10 +526,10 @@ function wp_bootstrapped_widgets() {
 	register_sidebar( array(
 		'name'          => __( 'Second Footer Content Area', 'wp_bootstrapped' ),
 		'id'            => 'widget-2',
-		'description'   => 'Contents used in templates that include contents above the footer',
+		'description'   => 'Second panel used on Front/Home Page',
 		'class'         => 'widget-2',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</div>\n",
+		'before_widget' => '<div id="%1$s" class="panel %2$s '.$panel_style.'"><div class="panel-body '.$panel_bg.'">',
+		'after_widget'  => "</div>\n</div>\n",
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => "</h1>\n",
 	) );
@@ -499,10 +537,10 @@ function wp_bootstrapped_widgets() {
 	register_sidebar( array(
 		'name'          => __( 'Third Footer Content Area', 'wp_bootstrapped' ),
 		'id'            => 'widget-3',
-		'description'   => 'Contents used in templates that include contents above the footer',
+		'description'   => 'Third panel used on Front/Home Page',
 		'class'         => 'widget-3',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget'  => "</div>\n",
+		'before_widget' => '<div id="%1$s" class="panel %2$s '.$panel_style.'"><div class="panel-body '.$panel_bg.'">',
+		'after_widget'  => "</div>\n</div>\n",
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => "</h1>\n",
 	) );
@@ -741,7 +779,7 @@ add_shortcode('wpb_recent_posts','wp_bootstrapped_Shortcode_Recent_Posts');
 add_action( 'wp_enqueue_scripts', 'register_cycle2' );
 
 function register_cycle2() {
-	wp_register_script( 'cycle2',  get_template_directory_uri() . '/js/jquery.cycle2.min.js', array(), '2.1.6', true );
+	wp_register_script( 'script-name',  get_template_directory_uri() . '/js/jquery.cycle2.min.js', array(), '2.1.6', true );
 }
 
 function wp_bootstrapped_gallery( $attributes ) {
@@ -1027,5 +1065,19 @@ function wp_bootstrapped_shortcode_featured_content( $attributes ) {
 add_shortcode('wpb_featured_content','wp_bootstrapped_shortcode_featured_content');
 
 
+function wpb_category_list() {
+	$dropdown = ['all' => 'All'];
 
-?>
+    $categories = get_categories(); // wp_list_categories(); // wp_dropdown_categories();
+
+    foreach ($categories as $category) {
+    	$k = $category->name;
+    	$v = $category->name;
+    	// $n = [$k]=$v;
+
+    	$dropdown[$k]=$v;
+    }
+
+    return $dropdown;
+}
+

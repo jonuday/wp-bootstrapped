@@ -1,6 +1,6 @@
 <?php
 /**
- * The front page template file.
+ * The home page template file.
  *
  * @package WP_Bootstrapped
  * @subpackage WP_Bootstrapped
