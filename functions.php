@@ -515,15 +515,9 @@ function wp_bootstrapped_widgets() {
 	register_sidebar( array(
 		'name'          => __( 'First Footer Content Area' , 'wp_bootstrapped' ),
 		'id'            => 'widget-1',
-<<<<<<< HEAD
 		'description'   => 'First panel used on Front/Home Page',
 		'class'         => 'widget-1',
 		'before_widget' => '<div id="%1$s" class="panel %2$s '.$panel_style.'"><div class="panel-body '.$panel_bg.'">',
-=======
-		'description'   => 'Contents used in templates that include contents above the footer',
-		'class'         => 'panel',
-		'before_widget' => '<div id="%1$s" class="panel %2$s"><div class="panel-body">',
->>>>>>> origin/master
 		'after_widget'  => "</div>\n</div>\n",
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => "</h1>\n",
@@ -534,11 +528,7 @@ function wp_bootstrapped_widgets() {
 		'id'            => 'widget-2',
 		'description'   => 'Second panel used on Front/Home Page',
 		'class'         => 'widget-2',
-<<<<<<< HEAD
 		'before_widget' => '<div id="%1$s" class="panel %2$s '.$panel_style.'"><div class="panel-body '.$panel_bg.'">',
-=======
-		'before_widget' => '<div id="%1$s" class="panel %2$s"><div class="panel-body">',
->>>>>>> origin/master
 		'after_widget'  => "</div>\n</div>\n",
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => "</h1>\n",
@@ -549,11 +539,7 @@ function wp_bootstrapped_widgets() {
 		'id'            => 'widget-3',
 		'description'   => 'Third panel used on Front/Home Page',
 		'class'         => 'widget-3',
-<<<<<<< HEAD
 		'before_widget' => '<div id="%1$s" class="panel %2$s '.$panel_style.'"><div class="panel-body '.$panel_bg.'">',
-=======
-		'before_widget' => '<div id="%1$s" class="panel %2$s"><div class="panel-body">',
->>>>>>> origin/master
 		'after_widget'  => "</div>\n</div>\n",
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => "</h1>\n",
@@ -831,7 +817,7 @@ function wp_bootstrapped_gallery( $attributes ) {
 	if ($r->have_posts()) :
 		wp_enqueue_script( 'script-name' );
 
-		echo '<section class="cycle-wrapper">';
+		echo '<section class="cycle-wrapper gallery">';
 		echo $a['title'] ? '<h1>' . $a['title']  . '</h1>' : '';
 		echo '<div class="cycle-slideshow" data-cycle-slides="> article" data-cycle-timeout="'.$a['timeout'].'" data-cycle-speed="'.$a['speed'].'" data-cycle-pause-on-hover="true" ';
 		if ($a['pagers'] == true) { echo 'data-cycle-next="#next" data-cycle-prev="#prev"'; }

@@ -18,7 +18,7 @@ get_header();
      $args = array('category' => get_theme_mod('front_page_category'));
 ?>
 
-    <div class="slideshow_full">
+    <div class="slideshow_full inverse">
     <?php echo do_shortcode( wp_bootstrapped_gallery($args) ); ?>
     </div>
 
