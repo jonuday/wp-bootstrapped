@@ -155,6 +155,7 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
 	        'choices'  => array(
 	        	'default' => 'White (default)',
 				'transparent'  => 'Transparent',
+				'gray'  => 'Grayscale',
 				'primary' => 'Primary color',
 
 			),

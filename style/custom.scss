@@ -45,6 +45,11 @@ $link-hover-color 	: darken($link-color, 15%);
 	background-color: transparent;
 }
 
+.bg-gray,
+.panel-gray {
+	background-color: rgba($gray-base, 0.75);
+}
+
 /* Adjustments for WordPress Styles */
 
 body, html {
@@ -63,6 +68,10 @@ body, html {
 }
 
 body {
+	> .container {
+		padding-bottom: 15px;
+	}
+
 	> .footer-fixed {
 		position: fixed;
 		bottom: 0;
@@ -167,10 +176,13 @@ img {
 		  position: fixed;
 		  width: 100%;
 		  height: 100%;
+		  top: 0;
+		  left: 0;
+		  z-index: -1;
 	}
 
 	&.inverse {
-		margin-bottom: 20px
+		margin-bottom: 20px;
 	}
 }
 
@@ -197,10 +209,6 @@ body.home {
 			padding: 2em;
 		}
 
-		.panel {
-			background-color: rgba($gray-base, 0.75);
-		}
-
 	}
  }
 
@@ -222,7 +230,15 @@ body.home {
 }
 
 .panel {
-	background-color: transparent;
+
+	.bg-primary a {
+		color: rgba(#FFF,0.85);
+
+
+		&:hover {
+			color: rgba(#FFF,0.97);			
+		}
+	}
 }
 
 
@@ -254,6 +270,16 @@ footer {
 		font-size: 1.25em;
 	}
 }
+
+/*.slideshow_full {
+	position: fixed;
+	display: block;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}*/
 
 .cycle-slide {
 	.slideshow_full & {
