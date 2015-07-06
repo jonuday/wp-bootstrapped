@@ -9,7 +9,7 @@
  *
 **/
  
-get_header(); 
+get_header('front'); 
 ?>
 <!-- BEGIN FRONT PAGE CONTENT --> 
 
@@ -24,11 +24,11 @@ get_header();
 
 <?php else : ?>
 
-<div class="main <?php if (get_theme_mod('front_page_layout') !== 'default') { echo get_theme_mod('front_page_layout', ''); } else { echo 'dinverse'; } ?>">
-<?php if (get_theme_mod('front_page_layout') !== 'default') { echo '</div><!-- /.full.main --> <div class="dinverse">'; } ?>
+<div class="main <?php if (get_theme_mod('front_page_layout') !== 'default') { echo get_theme_mod('front_page_layout', ''); } ?>">
+<?php if (get_theme_mod('front_page_layout') !== 'default') { echo '</div><!-- /.full.main -->'; } ?>
 
     <section class="row">
-        <div class="container-fluid inverse"> 
+        <div class="container<?php if ( get_theme_mod('nav_fixed') == 0 ) { echo '-fluid'; } ?> inverse"> 
             <?php if ( have_posts() ) : ?>               
 
                     <?php /* Start the Loop */ ?>
@@ -76,7 +76,6 @@ get_header();
     <!-- widgets section -->
     <?php get_sidebar('widgets'); ?>
 
-<?php if (get_theme_mod('front_page_layout') !== 'default') { echo '</div><!-- /.inverse -->'; } ?>
 
 <!-- this does not get called --> 
 

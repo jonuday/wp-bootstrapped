@@ -8,7 +8,7 @@
  *
 **/
  
-get_header(); 
+get_header('front'); 
 ?>
 
 <!-- BEGIN HOME PAGE CONTENT --> 
@@ -18,7 +18,7 @@ get_header();
     </div>
 
     <section class="row">
-        <div class="container cycle-slideshow" data-cycle-slides="> article"> 
+        <div class="container-fluid cycle-slideshow" data-cycle-slides="> article"> 
             <?php if ( have_posts() ) : ?>
 
                 <?php /* Start the Loop */ ?>

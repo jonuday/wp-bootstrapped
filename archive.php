@@ -12,14 +12,8 @@ get_header(); ?>
 
 <!-- BEGIN ARCHIVE CONTENT --> 
 
-	<?php $header_image = get_header_image();
-        if ( ! empty( $header_image ) ) { ?>
-        <div class="row banner">
-        </div>    
-    <?php } ?>
-
     <div class="row">
-    	<div class="container">
+    	<div class="container<?php if ( get_theme_mod('nav_fixed') == 0 ) { echo '-fluid'; } ?>">
 	    		<div class="col-sm-8">
 	    			<?php if ( have_posts() ) : ?>
 					<h1><?php

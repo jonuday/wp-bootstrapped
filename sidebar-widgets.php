@@ -24,8 +24,7 @@ if ( is_active_sidebar( 'widget-1' ) || is_active_sidebar( 'widget-2' ) || is_ac
         $spanNumber = 12 / $widgetCount;
 
     ?>
-    <div class="row">
-        <div class="container">
+    <div class="row panels">
 
             <?php if ( is_active_sidebar( 'widget-1' )) { ?>
             <div class="widget-container col-sm-<?php echo $spanNumber; ?>">
@@ -51,6 +50,5 @@ if ( is_active_sidebar( 'widget-1' ) || is_active_sidebar( 'widget-2' ) || is_ac
             </div>
             <?php } ?>
 
-        </div>
     </div>
 <?php endif; ?>

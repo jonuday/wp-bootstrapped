@@ -520,7 +520,7 @@ function wp_bootstrapped_widgets() {
 		'class'         => 'widget-1',
 		'before_widget' => '<div id="%1$s" class="panel %2$s '.$panel_style.'"><div class="panel-body '.$panel_bg.'">',
 		'after_widget'  => "</div>\n</div>\n",
-		'before_title'  => '<h1 class="widget-title">',
+		'before_title'  => '<h1 class="panel-title">',
 		'after_title'   => "</h1>\n",
 	) );
 
@@ -531,7 +531,7 @@ function wp_bootstrapped_widgets() {
 		'class'         => 'widget-2',
 		'before_widget' => '<div id="%1$s" class="panel %2$s '.$panel_style.'"><div class="panel-body '.$panel_bg.'">',
 		'after_widget'  => "</div>\n</div>\n",
-		'before_title'  => '<h1 class="widget-title">',
+		'before_title'  => '<h1 class="panel-title">',
 		'after_title'   => "</h1>\n",
 	) );
 
@@ -542,7 +542,7 @@ function wp_bootstrapped_widgets() {
 		'class'         => 'widget-3',
 		'before_widget' => '<div id="%1$s" class="panel %2$s '.$panel_style.'"><div class="panel-body '.$panel_bg.'">',
 		'after_widget'  => "</div>\n</div>\n",
-		'before_title'  => '<h1 class="widget-title">',
+		'before_title'  => '<h1 class="panel-title">',
 		'after_title'   => "</h1>\n",
 	) );
 }

@@ -13,14 +13,8 @@ get_header(); ?>
 
 <!-- BEGIN PAGE CONTENT --> 
 
-    <?php $header_image = get_header_image();
-        if ( ! empty( $header_image ) ) { ?>
-        <div class="row banner">
-        </div>    
-    <?php } ?>
-
     <div class="row">
-    	<div class="container">
+    	<div class="container-fluid">
 		    <section class="col-md-12">
 		        <?php if ( have_posts() ) : ?>
 

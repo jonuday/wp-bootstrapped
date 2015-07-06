@@ -40,16 +40,6 @@ $link-hover-color 	: darken($link-color, 15%);
 	display: none;
 } 
 
-.bg-transparent,
-.panel-transparent {
-	background-color: transparent;
-}
-
-.bg-gray,
-.panel-gray {
-	background-color: rgba($gray-base, 0.75);
-}
-
 /* Adjustments for WordPress Styles */
 
 body, html {
@@ -72,8 +62,10 @@ body {
 		padding-bottom: 15px;
 	}
 
-	footer .navbar-default {
-		padding: 5px;
+	.footer-default {
+		margin: 20px 0 15px;
+		padding: 5px 5px 0;
+		border-radius: 5px;
 	}
 
 	> .footer-fixed {
@@ -101,20 +93,21 @@ body {
 	}
 }
 
-@media all and (max-width: 767px) {
-	body {
 
-		> .footer-fixed {
-			position: relative;
-		}
+// Layout
 
-		.clear, .clear-double {
-			height: 4px;
-		}
-		
-	}
+.row {
+	margin-left: 0;
+	margin-right: 0;
 }
 
+
+.navbar-fixed-top {
+	margin-bottom: 0;
+}
+
+
+// Custom Styles 
 a {
 	&:hover {
 		text-decoration: none;
@@ -142,16 +135,38 @@ img {
 	}
 }
 
+// Widgets/Panels
 
-.row {
-	margin-left: 0;
-	margin-right: 0;
+.bg-transparent,
+.panel-transparent {
+	background-color: transparent;
 }
 
+.bg-gray,
+.panel-gray {
+	background-color: rgba($gray-base, 0.35);
 
-.navbar-fixed-top {
-	margin-bottom: 0;
+	color: #FFF;
 }
+
+.bg-default,
+.panel-default {
+	background-color: rgba(#FFF, 0.50);
+}
+
+.panel-primary,
+.bg-primary {
+	a {
+		color: rgba(#FFF,0.85);
+
+
+		&:hover {
+			color: rgba(#FFF,0.97);			
+		}
+	}
+}
+
+// Banners
 
 .banner,
 .main {
@@ -190,7 +205,6 @@ img {
 	}
 }
 
-/* shift this to header image CSS */ 
 body.home {
 
 	.inverse {
@@ -217,7 +231,7 @@ body.home {
  }
 
 
-/* content */
+// Widgets */
 
 .sidebar {
 	margin-top: 20px;
@@ -233,21 +247,20 @@ body.home {
 	}
 }
 
+.row.panels {
+	padding-top: 1em;
+}
+
 .panel {
 
-	.bg-primary a {
-		color: rgba(#FFF,0.85);
-
-
-		&:hover {
-			color: rgba(#FFF,0.97);			
-		}
+	.widget-title {
+		margin-top: 0;
 	}
 }
 
 
 
-/* Posts */
+// Posts */
 .entry-header img {
 	float: left;
 }
@@ -260,7 +273,7 @@ footer {
 }
 
 
-/* Gallery */
+// Gallery/Slideshow */
 
 .cycle-wrapper {
 	position: relative;
@@ -372,7 +385,20 @@ footer {
 }
 
 @media all and (max-width: 767px) {
+	// layout
+	body {
 
+		> .footer-fixed {
+			position: relative;
+		}
+
+		.clear, .clear-double {
+			height: 4px;
+		}
+		
+	}
+
+	// Slideshow
 	.cycle-slide {
 		.slideshow_full & {
 		}
@@ -387,18 +413,9 @@ footer {
 	  	}
 	}
 
-.cycle-pagers {
-//		position: absolute;
-//		top: 0;
+	.cycle-pagers {
 		padding: 0 2.5%;
 		font-size: 28px;
-//		margin-top: -35px;
-//		text-align: right;
-
-//		#prev, #next {
-//			display: inline;
-//			float: none;
-//			clear: both;
-//		}
 	}
 }
+

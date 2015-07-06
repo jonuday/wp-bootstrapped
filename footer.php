@@ -10,13 +10,15 @@
 ?>
 
 
-    <div class="clear<?php if (has_nav_menu('footer-menu')) { echo '-double'; } ?>"></div>
+    <?php if ( get_theme_mod('nav_fixed') == 1 ) { ?>
+        <div class="clear<?php if (has_nav_menu('footer-menu')) { echo '-double'; } ?>"></div>
+    <?php } ?>
     
-    <footer class="footer navbar-<?php echo get_theme_mod('nav_style', 'default'); ?> <?php if ( get_theme_mod('nav_fixed') == 1 ) { echo 'footer-fixed'; } ?>">
+    <footer class="footer  footer<?php if ( get_theme_mod('nav_fixed') == 1 ) { echo '-fixed'; } else { echo '-default'; } ?> navbar-<?php echo get_theme_mod('nav_style', 'default'); ?>">
 
         <?php if ( has_nav_menu( 'footer-menu') ) { ?>
             <div class="row">
-                <div class="container-fluid"> 
+                <div class="container<?php if ( get_theme_mod('nav_fixed') == 0 ) { echo '-fluid'; } ?>"> 
                     <div class="nav col-xs-12">
                         <?php wp_nav_menu( array( 'container_class' => 'navbar', 'theme_location' => 'footer-menu', 'menu_class' => 'nav nav-pills' , 'walker' => new wp_bootstrapped_Walker_Nav_Menu ) ); ?>
                     </div>
@@ -25,7 +27,7 @@
         <?php } ?>
 
         <div class="row">
-            <div class="container-fluid">
+            <div class="container<?php if ( get_theme_mod('nav_fixed') == 0 ) { echo '-fluid'; } ?>">
                 <div class="copyright col-sm-6 col-xs-12">
                         <p>&copy; <?php bloginfo('name'); ?> <?php echo date(Y); ?></p>
                     </div>

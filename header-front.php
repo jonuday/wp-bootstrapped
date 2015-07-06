@@ -87,11 +87,5 @@
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
-    
-    <?php $header_image = get_header_image();
-        if ( ! empty( $header_image ) ) { ?>
-        <div class="row banner">
-        </div>    
-    <?php } ?>
 
     <!-- END HEADER -->
