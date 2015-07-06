@@ -16,7 +16,7 @@
 
         <?php if ( has_nav_menu( 'footer-menu') ) { ?>
             <div class="row">
-                <div class="container"> 
+                <div class="container-fluid"> 
                     <div class="nav col-xs-12">
                         <?php wp_nav_menu( array( 'container_class' => 'navbar', 'theme_location' => 'footer-menu', 'menu_class' => 'nav nav-pills' , 'walker' => new wp_bootstrapped_Walker_Nav_Menu ) ); ?>
                     </div>
@@ -25,7 +25,7 @@
         <?php } ?>
 
         <div class="row">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="copyright col-sm-6 col-xs-12">
                         <p>&copy; <?php bloginfo('name'); ?> <?php echo date(Y); ?></p>
                     </div>

@@ -24,11 +24,11 @@ get_header();
 
 <?php else : ?>
 
-<div class="main <?php if (get_theme_mod('front_page_layout') !== 'default') { echo get_theme_mod('front_page_layout', ''); } else { echo 'inverse'; } ?>">
-<?php if (get_theme_mod('front_page_layout') !== 'default') { echo '</div><!-- /.full.main --> <div class="inverse">'; } ?>
+<div class="main <?php if (get_theme_mod('front_page_layout') !== 'default') { echo get_theme_mod('front_page_layout', ''); } else { echo 'dinverse'; } ?>">
+<?php if (get_theme_mod('front_page_layout') !== 'default') { echo '</div><!-- /.full.main --> <div class="dinverse">'; } ?>
 
     <section class="row">
-        <div class="container"> 
+        <div class="container-fluid inverse"> 
             <?php if ( have_posts() ) : ?>               
 
                     <?php /* Start the Loop */ ?>

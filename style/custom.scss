@@ -72,6 +72,10 @@ body {
 		padding-bottom: 15px;
 	}
 
+	footer .navbar-default {
+		padding: 5px;
+	}
+
 	> .footer-fixed {
 		position: fixed;
 		bottom: 0;
@@ -204,7 +208,7 @@ body.home {
 			color: #FFF;
 		}
 
-		.container {
+		&.container {
 			position: relative;
 			padding: 2em;
 		}
