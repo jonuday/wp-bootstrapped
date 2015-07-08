@@ -80,8 +80,10 @@
 
             <form class="nav navbar-nav navbar-right navbar-form" role="form">
                 <label class="screen-reader-text" for="s">Search:</label>
-                <input class="form-control" type="search" value="<?php echo get_search_query(); ?>" name="s" id="s" placeholder="search..." />
-                <button type="submit" class="btn" ><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                <div class="input-group">
+                    <input class="form-control" type="search" value="<?php echo get_search_query(); ?>" name="s" id="s" placeholder="search..." />
+                    <span class="input-group-btn"><button type="submit" class="btn" ><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></span>
+                </div>
             </form>
 
         </div><!--/.navbar-collapse -->

@@ -24,7 +24,7 @@ get_header('front');
 
 <?php else : ?>
 
-<div class="main <?php if (get_theme_mod('front_page_layout') !== 'default') { echo get_theme_mod('front_page_layout', ''); } ?>">
+<div class="main <?php if (get_theme_mod('front_page_layout') !== 'default') { echo get_theme_mod('front_page_layout', ''); } else { echo 'jumbotron'; } ?>">
 <?php if (get_theme_mod('front_page_layout') !== 'default') { echo '</div><!-- /.full.main -->'; } ?>
 
     <section class="row">
