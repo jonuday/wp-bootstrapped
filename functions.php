@@ -3,7 +3,7 @@
  *
  * @package WordPress Bootstrapped
  * @subpackage WP_Bootstrapped
- * @since WordPress Bootstrapped 1.0.2
+ * @since WordPress Bootstrapped 1.2
  *
  * Features:
  * • Recent Posts with Category (Shortcode & Widget)
@@ -218,6 +218,7 @@ function wp_bootstrapped_customize_css()
 				background: -moz-linear-gradient(to bottom, rgba(254, 254, 254, 0), #fefefe), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 0 0 no-repeat;
 				background: -o-linear-gradient(to bottom, rgba(254, 254, 254, 0), #fefefe), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 0 0 no-repeat;
 				background: linear-gradient(to bottom, rgba(254, 254, 254, 0), #fefefe), transparent url(<?php echo get_theme_mod('header_image', get_template_directory_uri() . '/img/header.jpg'); ?>) 0 0 no-repeat;
+			    background-size: cover;
 				opacity: 0.25;
             }
             .main {
@@ -1067,7 +1068,7 @@ add_shortcode('wpb_featured_content','wp_bootstrapped_shortcode_featured_content
 
 
 function wpb_category_list() {
-	$dropdown = ['all' => 'All'];
+	$dropdown['all'] = 'All';
 
     $categories = get_categories(); // wp_list_categories(); // wp_dropdown_categories();
 
