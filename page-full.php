@@ -14,7 +14,7 @@ get_header(); ?>
 <!-- BEGIN PAGE CONTENT --> 
 
     <div class="row">
-    	<div class="container-fluid">
+    	<div class="container<?php if ( get_theme_mod('nav_fixed') == 0 ) { echo '-fluid'; } ?> content">
 		    <section class="col-xs-12">
 		        <?php if ( have_posts() ) : ?>
 

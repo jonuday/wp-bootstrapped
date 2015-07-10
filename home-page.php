@@ -18,7 +18,7 @@ get_header('front');
     </div>
 
     <section class="row">
-        <div class="container-fluid cycle-slideshow" data-cycle-slides="> article"> 
+        <div class="container<?php if ( get_theme_mod('nav_fixed') == 0 ) { echo '-fluid'; } ?> cycle-slideshow" data-cycle-slides="> article"> 
             <?php if ( have_posts() ) : ?>
 
                 <?php /* Start the Loop */ ?>

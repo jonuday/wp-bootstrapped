@@ -23,7 +23,7 @@ Built with SASS
 /* line 45, custom.scss */
 body, html {
   /* important */
-  height: 100%;
+  height: auto;
   padding-top: 24px;
   margin-bottom: 30px;
 }
@@ -74,18 +74,22 @@ body .clear-double {
   margin-left: 0;
   margin-right: 0;
 }
+/* line 103, custom.scss */
+.row .content {
+  padding-top: 1em;
+}
 
-/* line 105, custom.scss */
+/* line 109, custom.scss */
 .navbar-fixed-top {
   margin-bottom: 0;
 }
 
-/* line 112, custom.scss */
+/* line 116, custom.scss */
 a:hover {
   text-decoration: none;
 }
 
-/* line 117, custom.scss */
+/* line 121, custom.scss */
 img {
   background-color: #fefefe;
   border: 1px solid #a5a5a5;
@@ -102,48 +106,48 @@ img {
   -o-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 128, custom.scss */
+/* line 132, custom.scss */
 img.alignleft {
   float: left;
   margin-left: 0;
 }
-/* line 132, custom.scss */
+/* line 136, custom.scss */
 img.alignright {
   float: right;
   margin-right: 0;
 }
 
-/* line 141, custom.scss */
+/* line 145, custom.scss */
 .bg-transparent,
 .panel-transparent {
   background-color: transparent;
 }
 
-/* line 146, custom.scss */
+/* line 150, custom.scss */
 .bg-gray,
 .panel-gray {
   background-color: rgba(46, 46, 46, 0.35);
   color: #FFF;
 }
 
-/* line 153, custom.scss */
+/* line 157, custom.scss */
 .bg-default,
 .panel-default {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-/* line 159, custom.scss */
+/* line 163, custom.scss */
 .panel-primary a,
 .bg-primary a {
   color: rgba(255, 255, 255, 0.85);
 }
-/* line 163, custom.scss */
+/* line 167, custom.scss */
 .panel-primary a:hover,
 .bg-primary a:hover {
   color: rgba(255, 255, 255, 0.97);
 }
 
-/* line 172, custom.scss */
+/* line 176, custom.scss */
 .banner,
 .main {
   background-size: cover;
@@ -152,7 +156,7 @@ img.alignright {
   background-position: center center;
 }
 
-/* line 179, custom.scss */
+/* line 183, custom.scss */
 .banner {
   background: -webkit-gradient(linear, to bottom, to top, color-stop(0%, rgba(254, 254, 254, 0.8)), color-stop(100%, #fefefe)), transparent url(../img/header.jpg) 0 0 no-repeat;
   background: -webkit-linear-gradient(to bottom, rgba(254, 254, 254, 0.8), #fefefe), transparent url(../img/header.jpg) 0 0 no-repeat;
@@ -167,7 +171,7 @@ img.alignright {
   z-index: -1;
 }
 
-/* line 190, custom.scss */
+/* line 194, custom.scss */
 .main {
   background: -webkit-gradient(linear, to left, to right, color-stop(0%, rgba(46, 46, 46, 0.25)), color-stop(50%, rgba(80, 80, 80, 0.5)), color-stop(100%, rgba(46, 46, 46, 0.25))), transparent url(../img/header.jpg) 0 0 no-repeat;
   background: -webkit-linear-gradient(to left, rgba(46, 46, 46, 0.25), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.25)), transparent url(../img/header.jpg) 0 0 no-repeat;
@@ -175,7 +179,7 @@ img.alignright {
   background: -o-linear-gradient(to left, rgba(46, 46, 46, 0.25), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.25)), transparent url(../img/header.jpg) 0 0 no-repeat;
   background: linear-gradient(to left, rgba(46, 46, 46, 0.25), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.25)), transparent url(../img/header.jpg) 0 0 no-repeat;
 }
-/* line 194, custom.scss */
+/* line 198, custom.scss */
 .main.full {
   position: fixed;
   width: 100%;
@@ -184,38 +188,38 @@ img.alignright {
   left: 0;
   z-index: -1;
 }
-/* line 203, custom.scss */
+/* line 207, custom.scss */
 .main.inverse {
   margin-bottom: 20px;
 }
 
-/* line 210, custom.scss */
+/* line 214, custom.scss */
 body.home .inverse {
   font-size: 1.75em;
   color: #FFF;
   text-shadow: 1px 2px 3px #000;
 }
-/* line 215, custom.scss */
+/* line 219, custom.scss */
 body.home .inverse > ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-/* line 221, custom.scss */
+/* line 225, custom.scss */
 body.home .inverse h1, body.home .inverse h2, body.home .inverse h3, body.home .inverse h4, body.home .inverse h5, body.home .inverse a {
   color: #FFF;
 }
-/* line 225, custom.scss */
+/* line 229, custom.scss */
 body.home .inverse.container {
   position: relative;
   padding: 2em;
 }
 
-/* line 236, custom.scss */
+/* line 240, custom.scss */
 .sidebar {
   margin-top: 20px;
 }
-/* line 239, custom.scss */
+/* line 243, custom.scss */
 .sidebar .dropdown-menu {
   position: relative;
   margin-top: 1px;
@@ -226,36 +230,36 @@ body.home .inverse.container {
   border-radius: 0;
 }
 
-/* line 250, custom.scss */
+/* line 254, custom.scss */
 .row.panels {
   padding-top: 1em;
 }
 
-/* line 256, custom.scss */
+/* line 260, custom.scss */
 .panel .widget-title {
   margin-top: 0;
 }
 
-/* line 264, custom.scss */
+/* line 268, custom.scss */
 .entry-header img {
   float: left;
 }
 
-/* line 270, custom.scss */
+/* line 274, custom.scss */
 footer.entry-meta {
   display: none;
 }
 
-/* line 278, custom.scss */
+/* line 282, custom.scss */
 .cycle-wrapper {
   position: relative;
 }
 
-/* line 281, custom.scss */
+/* line 285, custom.scss */
 .cycle-slideshow {
   overflow: hidden;
 }
-/* line 284, custom.scss */
+/* line 288, custom.scss */
 .slideshow_full .cycle-slideshow {
   position: relative;
   height: calc(100% - 50px);
@@ -271,17 +275,17 @@ footer.entry-meta {
 	left: 0;
 	z-index: -1;
 }*/
-/* line 302, custom.scss */
+/* line 306, custom.scss */
 .slideshow_full .cycle-slide {
   width: 100%;
   max-height: calc(100% - 50px);
 }
-/* line 307, custom.scss */
+/* line 311, custom.scss */
 .cycle-slide > img {
   position: relative;
   width: calc(100% - 8px);
 }
-/* line 311, custom.scss */
+/* line 315, custom.scss */
 .slideshow_full .cycle-slide > img {
   width: 100%;
   height: auto;
@@ -289,7 +293,7 @@ footer.entry-meta {
   border: 0;
   margin: 0;
 }
-/* line 320, custom.scss */
+/* line 324, custom.scss */
 .cycle-slide > div {
   position: absolute;
   bottom: -10%;
@@ -303,7 +307,7 @@ footer.entry-meta {
   -o-transition: all 1.5s ease-in, 1s;
   transition: all 1.5s ease-in, 1s;
 }
-/* line 331, custom.scss */
+/* line 335, custom.scss */
 .slideshow_full .cycle-slide > div {
   bottom: auto;
   top: 100%;
@@ -314,17 +318,17 @@ footer.entry-meta {
   background-color: transparent;
   margin: 0;
 }
-/* line 344, custom.scss */
+/* line 348, custom.scss */
 .cycle-slide.cycle-slide-active > div {
   bottom: 0;
 }
-/* line 347, custom.scss */
+/* line 351, custom.scss */
 .slideshow_full .cycle-slide.cycle-slide-active > div {
   top: 20%;
   opacity: 1;
 }
 
-/* line 356, custom.scss */
+/* line 360, custom.scss */
 .cycle-pagers {
   position: absolute;
   width: 100%;
@@ -334,46 +338,46 @@ footer.entry-meta {
   padding: 0 5%;
   z-index: 100;
 }
-/* line 365, custom.scss */
+/* line 369, custom.scss */
 .slideshow_full .cycle-pagers {
   top: calc(50% - 70px);
 }
-/* line 369, custom.scss */
+/* line 373, custom.scss */
 .cycle-pagers a {
   color: rgba(255, 255, 255, 0.75);
   text-shadow: 2px 2px 5px #838383;
 }
-/* line 373, custom.scss */
+/* line 377, custom.scss */
 .cycle-pagers a:hover {
   color: #FFF;
 }
-/* line 378, custom.scss */
+/* line 382, custom.scss */
 .cycle-pagers #prev {
   float: left;
 }
-/* line 382, custom.scss */
+/* line 386, custom.scss */
 .cycle-pagers #next {
   float: right;
 }
 
 @media all and (max-width: 767px) {
-  /* line 391, custom.scss */
+  /* line 395, custom.scss */
   body > .footer-fixed {
     position: relative;
   }
-  /* line 395, custom.scss */
+  /* line 399, custom.scss */
   body .clear, body .clear-double {
     height: 4px;
   }
 
-  /* line 408, custom.scss */
+  /* line 412, custom.scss */
   .slideshow_full .cycle-slide > img {
     min-height: calc(95vh - 50px);
     width: auto;
     min-width: 100%;
   }
 
-  /* line 416, custom.scss */
+  /* line 420, custom.scss */
   .cycle-pagers {
     padding: 0 2.5%;
     font-size: 28px;
