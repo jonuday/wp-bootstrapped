@@ -243,23 +243,26 @@ body.home .inverse.container {
 /* line 268, custom.scss */
 .entry-header img {
   float: left;
+  min-width: 7.25em;
+  max-width: 23.675%;
+  margin: 0.175% 2.425% 0 0;
 }
 
-/* line 274, custom.scss */
+/* line 277, custom.scss */
 footer.entry-meta {
   display: none;
 }
 
-/* line 282, custom.scss */
+/* line 285, custom.scss */
 .cycle-wrapper {
   position: relative;
 }
 
-/* line 285, custom.scss */
+/* line 288, custom.scss */
 .cycle-slideshow {
   overflow: hidden;
 }
-/* line 288, custom.scss */
+/* line 291, custom.scss */
 .slideshow_full .cycle-slideshow {
   position: relative;
   height: calc(100% - 50px);
@@ -275,17 +278,17 @@ footer.entry-meta {
 	left: 0;
 	z-index: -1;
 }*/
-/* line 306, custom.scss */
+/* line 309, custom.scss */
 .slideshow_full .cycle-slide {
   width: 100%;
   max-height: calc(100% - 50px);
 }
-/* line 311, custom.scss */
+/* line 314, custom.scss */
 .cycle-slide > img {
   position: relative;
   width: calc(100% - 8px);
 }
-/* line 315, custom.scss */
+/* line 318, custom.scss */
 .slideshow_full .cycle-slide > img {
   width: 100%;
   height: auto;
@@ -293,7 +296,7 @@ footer.entry-meta {
   border: 0;
   margin: 0;
 }
-/* line 324, custom.scss */
+/* line 327, custom.scss */
 .cycle-slide > div {
   position: absolute;
   bottom: -10%;
@@ -307,7 +310,7 @@ footer.entry-meta {
   -o-transition: all 1.5s ease-in, 1s;
   transition: all 1.5s ease-in, 1s;
 }
-/* line 335, custom.scss */
+/* line 338, custom.scss */
 .slideshow_full .cycle-slide > div {
   bottom: auto;
   top: 100%;
@@ -318,17 +321,17 @@ footer.entry-meta {
   background-color: transparent;
   margin: 0;
 }
-/* line 348, custom.scss */
+/* line 351, custom.scss */
 .cycle-slide.cycle-slide-active > div {
   bottom: 0;
 }
-/* line 351, custom.scss */
+/* line 354, custom.scss */
 .slideshow_full .cycle-slide.cycle-slide-active > div {
   top: 20%;
   opacity: 1;
 }
 
-/* line 360, custom.scss */
+/* line 363, custom.scss */
 .cycle-pagers {
   position: absolute;
   width: 100%;
@@ -338,46 +341,46 @@ footer.entry-meta {
   padding: 0 5%;
   z-index: 100;
 }
-/* line 369, custom.scss */
+/* line 372, custom.scss */
 .slideshow_full .cycle-pagers {
   top: calc(50% - 70px);
 }
-/* line 373, custom.scss */
+/* line 376, custom.scss */
 .cycle-pagers a {
   color: rgba(255, 255, 255, 0.75);
   text-shadow: 2px 2px 5px #838383;
 }
-/* line 377, custom.scss */
+/* line 380, custom.scss */
 .cycle-pagers a:hover {
   color: #FFF;
 }
-/* line 382, custom.scss */
+/* line 385, custom.scss */
 .cycle-pagers #prev {
   float: left;
 }
-/* line 386, custom.scss */
+/* line 389, custom.scss */
 .cycle-pagers #next {
   float: right;
 }
 
 @media all and (max-width: 767px) {
-  /* line 395, custom.scss */
+  /* line 398, custom.scss */
   body > .footer-fixed {
     position: relative;
   }
-  /* line 399, custom.scss */
+  /* line 402, custom.scss */
   body .clear, body .clear-double {
     height: 4px;
   }
 
-  /* line 412, custom.scss */
+  /* line 415, custom.scss */
   .slideshow_full .cycle-slide > img {
     min-height: calc(95vh - 50px);
     width: auto;
     min-width: 100%;
   }
 
-  /* line 420, custom.scss */
+  /* line 423, custom.scss */
   .cycle-pagers {
     padding: 0 2.5%;
     font-size: 28px;
