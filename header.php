@@ -33,6 +33,8 @@
         <script src="<?php bloginfo('template_directory'); ?>/bootstrap/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
         <?php wp_head(); ?> 
+        <?php get_theme_mod('head_scripts', ''); ?>
+        
     </head>
     <body  <?php body_class($class); ?>>
         <!--[if lt IE 8]>

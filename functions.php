@@ -45,6 +45,25 @@ add_action('after_setup_theme','wp_bootstrapped_header');
 
 // Custom Settings
 
+/**
+ * Adds textarea support to the theme customizer
+ */
+class WPB_Customize_Textarea_Control extends WP_Customize_Control {
+    public $type = 'textarea';
+ 
+    public function render_content() {
+        ?>
+            <label>
+                <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+                <textarea rows="5" style="width:100%;" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
+            </label>
+        <?php
+    }
+}
+
+/**
+ * Adds customizer areas for theme
+ */
 function wp_bootstrapped_customize_register( $wp_customize ) {
 
 
@@ -59,6 +78,10 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
 	$wp_customize->add_section( 'wp_bootstrapped_front_section' , array(
     	'title'      => __( 'Front Page Style', 'wp_bootstrapped' ),
     	'priority'   => 120,
+	) );
+	$wp_customize->add_section( 'wp_bootstrapped_scripts_section' , array(
+    	'title'      => __( 'Third Party Scripts', 'wp_bootstrapped' ),
+    	'priority'   => 130,
 	) );
 
 
@@ -89,6 +112,9 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
     	'transport'   => 'postMessage',
 	) ); // 'default'     => 'img/wp-bootstrapped.png',
 
+	$wp_customize->add_setting( 'head_scripts' );
+
+	$wp_customize->add_setting( 'footer_scripts' );
 
 
 	// add controls	
@@ -138,7 +164,7 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
 			'choices'  => wpb_category_list(),
 			'active_callback' => function () { return get_theme_mod('front_page_layout') == 'slideshow'; }
 		)
-	); // echo get_theme_mod('front_page_layout', '');
+	); // echo get_theme_mod('front_page_category', '');
 
 	$wp_customize->add_control( 'front_page_gradient', array(
 	        'type' => 'checkbox',
@@ -160,7 +186,7 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
 
 			),
 	    )
-	); // echo get_theme_mod('front_page_gradient', '');
+	); // echo get_theme_mod('front_page_panels', '');
 
 
 
@@ -177,11 +203,21 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
 		'settings'   => 'logo_image',
 	) ) );
 
+	$wp_customize->add_control( new WPB_Customize_Textarea_Control( $wp_customize, 'head_scripts', array(
+		'label'        => __( 'Head', 'wp_bootstrapped' ),
+		'section'    => 'wp_bootstrapped_scripts_section',
+	) ) ); // echo get_theme_mod('head_scripts', '');
+
+	$wp_customize->add_control( new WPB_Customize_Textarea_Control( $wp_customize, 'footer_scripts', array(
+		'label'        => __( 'Footer', 'wp_bootstrapped' ),
+		'section'    => 'wp_bootstrapped_scripts_section',
+	) ) );
+
 	$wp_customize->add_control( new WP_Customize_Background_Image_Control( $wp_customize, 'background_image', array(
 		'label'        => __( 'Posts and Pages Background Image', 'wp_bootstrapped' ),
 		'section'    => 'background_image',
 		'settings'   => 'background_image',
-	) ) );
+	) ) ); // echo get_theme_mod('footer_scripts', '');
 
 	// Acknowledge whats already built in
 	$wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
