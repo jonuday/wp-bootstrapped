@@ -49,7 +49,7 @@
     <script src="<?php bloginfo('template_directory'); ?>/js/responsive-images.js"></script>
     <script src="<?php bloginfo('template_directory'); ?>/js/custom.js"></script>
 
-    <?php get_theme_mod('footer_scripts', ''); ?>
+    <?php print get_theme_mod('footer_scripts', ''); ?>
 
     <?php wp_footer(); ?>
 </body>

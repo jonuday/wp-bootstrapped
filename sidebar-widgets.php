@@ -4,7 +4,7 @@
  *
  * @package WP_Bootstrapped
  * @subpackage WP_Bootstrapped
- * @since WordPress Bootstrapped 1.0
+ * @since WordPress Bootstrapped 1.1.2
  *
 **/
 
@@ -25,6 +25,8 @@ if ( is_active_sidebar( 'widget-1' ) || is_active_sidebar( 'widget-2' ) || is_ac
 
     ?>
     <div class="row panels">
+
+        <div class="container<?php if ( get_theme_mod('nav_fixed') == 0 ) { echo '-fluid'; } ?>">         
 
             <?php if ( is_active_sidebar( 'widget-1' )) { ?>
             <div class="widget-container col-sm-<?php echo $spanNumber; ?>">
@@ -49,6 +51,6 @@ if ( is_active_sidebar( 'widget-1' ) || is_active_sidebar( 'widget-2' ) || is_ac
                 
             </div>
             <?php } ?>
-
+        </div>
     </div>
 <?php endif; ?>

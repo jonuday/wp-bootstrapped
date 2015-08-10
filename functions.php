@@ -3,7 +3,7 @@
  *
  * @package WordPress Bootstrapped
  * @subpackage WP_Bootstrapped
- * @since WordPress Bootstrapped 1.2
+ * @since WordPress Bootstrapped 1.2.1
  *
  * Features:
  * • Recent Posts with Category (Shortcode & Widget)
@@ -46,25 +46,25 @@ add_action('after_setup_theme','wp_bootstrapped_header');
 // Custom Settings
 
 /**
- * Adds textarea support to the theme customizer
- */
-class WPB_Customize_Textarea_Control extends WP_Customize_Control {
-    public $type = 'textarea';
- 
-    public function render_content() {
-        ?>
-            <label>
-                <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-                <textarea rows="5" style="width:100%;" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
-            </label>
-        <?php
-    }
-}
-
-/**
  * Adds customizer areas for theme
  */
 function wp_bootstrapped_customize_register( $wp_customize ) {
+
+	/**
+	 * Adds textarea support to the theme customizer
+	 */
+	class WPB_Customize_Textarea_Control extends WP_Customize_Control {
+	    public $type = 'textarea';
+	 
+	    public function render_content() {
+	        ?>
+	            <label>
+	                <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+	                <textarea rows="5" style="width:100%;" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
+	            </label>
+	        <?php
+	    }
+	}
 
 
    // All our sections, settings, and controls will be added here
