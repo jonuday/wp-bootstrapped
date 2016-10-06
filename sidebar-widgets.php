@@ -23,6 +23,43 @@ if ( is_active_sidebar( 'widget-1' ) || is_active_sidebar( 'widget-2' ) || is_ac
         // the span number
         $spanNumber = 12 / $widgetCount;
 
+        if (get_theme_mod('front_page_panel_layout') == "rows") { 
+    ?>
+
+        <?php if ( is_active_sidebar( 'widget-1' )) { ?>
+        <section class="row">
+            <div class="container">
+                <div class="widget-container col-sm-12">
+                    <?php dynamic_sidebar( 'widget-1' ); ?>
+                </div>
+            </div>
+        </section>
+        <?php } ?>
+            
+        <?php if ( is_active_sidebar( 'widget-2' )) { ?>
+        <section class="row">
+            <div class="container">
+                <div class="widget-container col-sm-12">                
+                    <?php dynamic_sidebar( 'widget-2' ); ?>
+                </div>
+            </div>
+        </section>
+        <?php } ?>
+
+        <?php if ( is_active_sidebar( 'widget-3' )) { ?>
+        <section class="row">
+            <div class="container">
+                <div class="widget-container col-sm-12">
+                
+                    <?php dynamic_sidebar( 'widget-3' ); ?>
+                </div>
+            </div>
+        </section>
+        <?php } ?>
+
+    <?php
+        } else {
+
     ?>
     <div class="row panels">
 
@@ -53,4 +90,8 @@ if ( is_active_sidebar( 'widget-1' ) || is_active_sidebar( 'widget-2' ) || is_ac
             <?php } ?>
         </div>
     </div>
-<?php endif; ?>
+    <?php 
+        } 
+
+    endif; 
+?>

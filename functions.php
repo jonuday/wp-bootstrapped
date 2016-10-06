@@ -79,6 +79,10 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
     	'title'      => __( 'Front Page Style', 'wp_bootstrapped' ),
     	'priority'   => 120,
 	) );
+	$wp_customize->add_section( 'wp_bootstrapped_nav_section' , array(
+    	'title'      => __( 'Header Nav Style', 'wp_bootstrapped' ),
+    	'priority'   => 125,
+	) );
 	$wp_customize->add_section( 'wp_bootstrapped_scripts_section' , array(
     	'title'      => __( 'Third Party Scripts', 'wp_bootstrapped' ),
     	'priority'   => 130,
@@ -108,6 +112,11 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
      	'transport'   => 'postMessage',
 	) );
 
+	$wp_customize->add_setting( 'front_page_panel_layout' , array(
+    	'default'     => 'default',
+     	'transport'   => 'postMessage',
+	) );
+
 	$wp_customize->add_setting( 'logo_image' , array(
     	'transport'   => 'postMessage',
 	) ); // 'default'     => 'img/wp-bootstrapped.png',
@@ -124,7 +133,7 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
 	$wp_customize->add_control('nav_style', 
 		array(
 			'label'    => __( 'Navbar Style', 'wp_bootstrapped' ),
-			'section'  => 'nav',
+			'section'  => 'wp_bootstrapped_nav_section',
 			'settings' => 'nav_style',
 			'type'     => 'radio',
 			'choices'  => array(
@@ -136,10 +145,10 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
 	
 	$wp_customize->add_control( 'nav_fixed', array(
 	        'type' => 'checkbox',
-	        'label' => 'Use Fixed Navbars',
-	        'section' => 'nav',
+	        'label' => __( 'Use Fixed Navbars', 'wp_bootstrapped' ),
+	        'section' => 'wp_bootstrapped_nav_section',
 	    )
-	); // echo get_theme_mod('nav_style', 'navbar-default');
+	); // echo get_theme_mod('nav_fixed', 'navbar-fixed');
 
 	$wp_customize->add_control('front_page_layout', 
 		array(
@@ -187,6 +196,18 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
 			),
 	    )
 	); // echo get_theme_mod('front_page_panels', '');
+
+	$wp_customize->add_control( 'front_page_panel_layout', array(
+	        'type' => 'radio',
+	        'label' => __( 'Select layout for panels', 'wp_bootstrapped' ),
+	        'section' => 'wp_bootstrapped_front_section',
+	        'settings' => 'front_page_panel_layout',
+	        'choices'  => array(
+	        	'default' => 'Panels (default)',
+				'rows'  => 'Rows',
+			),
+	    )
+	); // echo get_theme_mod('front_page_panel_layout', 'default');
 
 
 

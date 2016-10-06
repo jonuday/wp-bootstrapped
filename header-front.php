@@ -33,6 +33,7 @@
         <?php wp_head(); ?> 
         <?php print get_theme_mod('head_scripts', ''); ?>
 
+
     </head>
     <body  <?php body_class($class); ?>>
         <!--[if lt IE 8]>
@@ -49,45 +50,46 @@
         <?php _e( 'Skip to content', 'wp-bootstrapped' ); ?></a>
     </div>
 
-    <?php if ( get_theme_mod('nav_fixed') == '' ) { echo '<div class="container">'; } ?>
+    <header class="navbar-wrapper">
+        <?php if ( get_theme_mod('nav_fixed') == '' ) { echo '<div class="container">'; } ?>
 
-    <nav class="navbar navbar-<?php echo get_theme_mod('nav_style', 'default'); ?> <?php if ( get_theme_mod('nav_fixed') == 1 ) { echo 'navbar-fixed-top'; } ?>" role="navigation">
-      <div class="container<?php if ( get_theme_mod('nav_fixed') == 0 ) { echo '-fluid'; } ?>">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/"><?php bloginfo('name'); ?></a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-                        
-            <?php /*
+        <nav class="navbar navbar-<?php echo get_theme_mod('nav_style', 'default'); ?> <?php if ( get_theme_mod('nav_fixed') == 1 ) { echo 'affix-top'; } ?>" <?php if ( get_theme_mod('nav_fixed') == 1 ) { echo ' data-spy="affix" data-offset-top="60" '; } ?> role="navigation">
+          <div class="container<?php if ( get_theme_mod('nav_fixed') == 1 ) { echo '-fluid'; } ?>">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/"><?php bloginfo('name'); ?></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                            
+                <?php /*
 
-                        Our navigation menu.  If one isn't filled out, wp_nav_menu falls
-                        back to wp_page_menu.  The menu assigned to the primary position is
-                        the one used.  If none is assigned, the menu with the lowest ID is
-                        used. */
+                            Our navigation menu.  If one isn't filled out, wp_nav_menu falls
+                            back to wp_page_menu.  The menu assigned to the primary position is
+                            the one used.  If none is assigned, the menu with the lowest ID is
+                            used. */
 
-                        //if (has_nav_menu('top-menu')) {
-                            wp_nav_menu( array( 'container_class' => '', 'theme_location' => 'top-menu', 'menu_class' => 'nav navbar-nav', 'fallback_cb' => 'false', 'walker' => new wp_bootstrapped_Walker_Nav_Menu ) );  
-                        //} else {
-                        //    wp_page_menu(array( 'container_class' => 'sr-only', 'menu_class' => 'nav navbar-nav', 'walker' => new wp_bootstrapped_Walker_Nav_Menu  )); 
-                       //}
-           ?>
+                            //if (has_nav_menu('top-menu')) {
+                                wp_nav_menu( array( 'container_class' => '', 'theme_location' => 'top-menu', 'menu_class' => 'nav navbar-nav', 'fallback_cb' => 'false', 'walker' => new wp_bootstrapped_Walker_Nav_Menu ) );  
+                            //} else {
+                            //    wp_page_menu(array( 'container_class' => 'sr-only', 'menu_class' => 'nav navbar-nav', 'walker' => new wp_bootstrapped_Walker_Nav_Menu  )); 
+                           //}
+               ?>
 
-            <form class="nav navbar-nav navbar-right navbar-form" role="form">
-                <label class="screen-reader-text" for="s">Search:</label>
-                <div class="input-group">
-                    <input class="form-control" type="search" value="<?php echo get_search_query(); ?>" name="s" id="s" placeholder="search..." />
-                    <span class="input-group-btn"><button type="submit" class="btn" ><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></span>
-                </div>
-            </form>
+                <form class="nav navbar-nav navbar-right navbar-form" role="form">
+                    <label class="screen-reader-text" for="s">Search:</label>
+                    <div class="input-group">
+                        <input class="form-control" type="search" value="<?php echo get_search_query(); ?>" name="s" id="s" placeholder="search..." />
+                        <span class="input-group-btn"><button type="submit" class="btn" ><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></span>
+                    </div>
+                </form>
 
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
-
+            </div><!--/.navbar-collapse -->
+          </div>
+        </nav>
+    </header>
     <!-- END HEADER -->
