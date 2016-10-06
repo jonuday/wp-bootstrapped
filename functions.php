@@ -244,7 +244,7 @@ function wp_bootstrapped_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
 	$wp_customize->get_setting( 'background_image' )->transport = 'postMessage';
-
+	$wp_customize->get_setting( 'front_page_panel_layout' )->transport = 'postMessage';
 }
 add_action( 'customize_register', 'wp_bootstrapped_customize_register' );
 
@@ -332,8 +332,7 @@ class wp_bootstrapped_Walker_Nav_Menu extends Walker_Nav_Menu {
 	 * @param  array $args    Additional strings.
 	 * @return void
 	 */
-	public function start_el( &$output, $item, $depth, $args )
-	{
+	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
 		$output     .= '<li';
 		$attributes  = '';
 		$caret = '';
@@ -385,7 +384,7 @@ class wp_bootstrapped_Walker_Nav_Menu extends Walker_Nav_Menu {
 	 * @param string $output Passed by reference. Used to append additional content.
 	 * @return void
 	 */
-	public function start_lvl( &$output )
+	public function start_lvl(  &$output, $depth = 0, $args = array() )
 	{
 		$output .= '<ul class="dropdown-menu">';
 	}
@@ -396,7 +395,7 @@ class wp_bootstrapped_Walker_Nav_Menu extends Walker_Nav_Menu {
 	 * @param string $output Passed by reference. Used to append additional content.
 	 * @return void
 	 */
-	public function end_lvl( &$output )
+	public function end_lvl(  &$output, $depth = 0, $args = array() )
 	{
 		$output .= '</ul>';
 	}
@@ -407,8 +406,7 @@ class wp_bootstrapped_Walker_Nav_Menu extends Walker_Nav_Menu {
 	 * @param string $output Passed by reference. Used to append additional content.
 	 * @return void
 	 */
-	function end_el( &$output )
-	{
+	function end_el( &$output, $object, $depth = 0, $args = array() ) {
 		$output .= '</li>';
 	}
 }

@@ -27,4 +27,14 @@
 		} );
 	} );
 		
+
+	//Update site layout...
+	wp.customize( 'front_page_panel_layout', function( value ) {
+		value.bind( function( newval ) {
+			console.log('front page panel layout' ); // works
+			// how to reload widegets?
+			
+		} );
+	} );
+
 } )( jQuery );
