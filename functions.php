@@ -516,11 +516,6 @@ endif;
 // The hero is more useful if one can choose any contents for 
 // for rotating, so a sidebar area is set to handle the contents.
 function wp_bootstrapped_widgets() {
-
-	$panel_style = 'panel-'.get_theme_mod('front_page_panels');
-	$panel_bg 	 = 'bg-'.get_theme_mod('front_page_panels');
-
-
 	// 2 widget areas for right sidebars 
 	register_sidebar( array(
 		'name'          => __( 'Top Right Sidebar', 'wp_bootstrapped' ),
@@ -569,13 +564,20 @@ function wp_bootstrapped_widgets() {
 
 
 	// 3 widget areas for above the footer
+	$panel_style = 'panel-'.get_theme_mod('front_page_panels');
+	$panel_bg 	 = 'bg-'.get_theme_mod('front_page_panels');
+	$panel_style_layout_before_1 = get_theme_mod('front_page_panel_layout') == 'default' ? '<div id="%1$s" class="panel %2$s '.$panel_style.'"><div class="panel-body '.$panel_bg.'">' : '<section class="row panel-1 %2$s '.$panel_bg.' '.$panel_style.'"><div class="container"><div class="col-sm-12">';
+	$panel_style_layout_before_2 = get_theme_mod('front_page_panel_layout') == 'default' ? '<div id="%1$s" class="panel %2$s '.$panel_style.'"><div class="panel-body '.$panel_bg.'">' : '<section class="row panel-2 %2$s '.$panel_bg.' '.$panel_style.'"><div class="container"><div class="col-sm-12">';
+	$panel_style_layout_before_3 = get_theme_mod('front_page_panel_layout') == 'default' ? '<div id="%1$s" class="panel %2$s '.$panel_style.'"><div class="panel-body '.$panel_bg.'">' : '<section class="row panel-3 %2$s '.$panel_bg.' '.$panel_style.'"><div class="container"><div class="col-sm-12">';
+	$panel_style_layout_after  = get_theme_mod('front_page_panel_layout') == 'default' ? '</div></div>' : '</div></div></section>';
+
 	register_sidebar( array(
 		'name'          => __( 'First Footer Content Area' , 'wp_bootstrapped' ),
 		'id'            => 'widget-1',
 		'description'   => 'First panel used on Front/Home Page',
 		'class'         => 'widget-1',
-		'before_widget' => '<div id="%1$s" class="panel %2$s '.$panel_style.'"><div class="panel-body '.$panel_bg.'">',
-		'after_widget'  => "</div>\n</div>\n",
+		'before_widget' => $panel_style_layout_before_1,
+		'after_widget'  => $panel_style_layout_after,
 		'before_title'  => '<h1 class="panel-title">',
 		'after_title'   => "</h1>\n",
 	) );
@@ -585,8 +587,8 @@ function wp_bootstrapped_widgets() {
 		'id'            => 'widget-2',
 		'description'   => 'Second panel used on Front/Home Page',
 		'class'         => 'widget-2',
-		'before_widget' => '<div id="%1$s" class="panel %2$s '.$panel_style.'"><div class="panel-body '.$panel_bg.'">',
-		'after_widget'  => "</div>\n</div>\n",
+		'before_widget' => $panel_style_layout_before_2,
+		'after_widget'  => $panel_style_layout_after,
 		'before_title'  => '<h1 class="panel-title">',
 		'after_title'   => "</h1>\n",
 	) );
@@ -596,8 +598,8 @@ function wp_bootstrapped_widgets() {
 		'id'            => 'widget-3',
 		'description'   => 'Third panel used on Front/Home Page',
 		'class'         => 'widget-3',
-		'before_widget' => '<div id="%1$s" class="panel %2$s '.$panel_style.'"><div class="panel-body '.$panel_bg.'">',
-		'after_widget'  => "</div>\n</div>\n",
+		'before_widget' => $panel_style_layout_before_3,
+		'after_widget'  => $panel_style_layout_after,
 		'before_title'  => '<h1 class="panel-title">',
 		'after_title'   => "</h1>\n",
 	) );

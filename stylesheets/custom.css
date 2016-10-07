@@ -1,83 +1,395 @@
 /*
-Error: Undefined variable: "$grey-base".
-        on line 237 of /Users/jonuday/Sites/np-site/wp-content/themes/wp-bootstrapped/sass/custom.scss
+Theme Name: Basic Bootstrap Template for WordPress
+Theme URI: https://github.com/jonuday/wp-bootstrapped
+Description: A Bootstrapped theme for WordPress.
+Author: Jonathan Day
+Author URI: http://jonuday.com/about
+Version: 1.0.2
+Tags: green, white, custom-colors, three-columns, flexible-width, custom-header, custom-background, threaded-comments, sticky-post, editor-style, custom-menus (optional)
 
-232: 		}
-233: 	}
-234: 
-235: 	.widget-row {
-236: 		text-align: center;
-237: 		background-color: $grey-base;
-238: 		padding-top: 2em;
-239: 		padding-bottom: 2em;
-240: 		margin-top: 0;
-241: 		margin-bottom: 0;
-242: 		font-size: 1.75em;
+License: 
+License URI:
 
-Backtrace:
-/Users/jonuday/Sites/np-site/wp-content/themes/wp-bootstrapped/sass/custom.scss:237
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/script/tree/variable.rb:49:in `_perform'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/script/tree/node.rb:58:in `perform'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:397:in `visit_prop'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `block (2 levels) in visit_rule'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `map'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `block in visit_rule'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:431:in `visit_rule'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `block (2 levels) in visit_rule'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `map'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `block in visit_rule'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:431:in `visit_rule'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `map'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:159:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:8:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/root_node.rb:36:in `css_tree'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/tree/root_node.rb:20:in `render'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/engine.rb:281:in `render'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:494:in `update_stylesheet'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `each'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/Library/Ruby/Gems/2.0.0/gems/compass-1.0.3/lib/compass/sass_compiler.rb:40:in `compile!'
-/Library/Ruby/Gems/2.0.0/gems/compass-1.0.3/lib/compass/commands/update_project.rb:49:in `perform'
-/Library/Ruby/Gems/2.0.0/gems/compass-1.0.3/lib/compass/commands/base.rb:18:in `execute'
-/Library/Ruby/Gems/2.0.0/gems/compass-1.0.3/lib/compass/commands/project_base.rb:19:in `execute'
-/Library/Ruby/Gems/2.0.0/gems/compass-1.0.3/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
-/Library/Ruby/Gems/2.0.0/gems/compass-1.0.3/lib/compass/exec/sub_command_ui.rb:15:in `run!'
-/Library/Ruby/Gems/2.0.0/gems/compass-1.0.3/bin/compass:30:in `block in <top (required)>'
-/Library/Ruby/Gems/2.0.0/gems/compass-1.0.3/bin/compass:44:in `call'
-/Library/Ruby/Gems/2.0.0/gems/compass-1.0.3/bin/compass:44:in `<top (required)>'
-/usr/local/bin/compass:22:in `load'
-/usr/local/bin/compass:22:in `<main>'
+General comments:
+Built with SASS
+
 */
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Undefined variable: \"$grey-base\".\A         on line 237 of /Users/jonuday/Sites/np-site/wp-content/themes/wp-bootstrapped/sass/custom.scss\A \A 232: 		}\A 233: 	}\A 234: \A 235: 	.widget-row {\A 236: 		text-align: center;\A 237: 		background-color: $grey-base;\A 238: 		padding-top: 2em;\A 239: 		padding-bottom: 2em;\A 240: 		margin-top: 0;\A 241: 		margin-bottom: 0;\A 242: 		font-size: 1.75em;"; }
+/* line 39, ../sass/custom.scss */
+.screen-reader-text {
+  display: none;
+}
+
+/* Adjustments for WordPress Styles */
+/* line 45, ../sass/custom.scss */
+body, html {
+  /* important */
+  height: auto;
+  padding-top: 24px;
+  margin-bottom: 30px;
+}
+/* line 51, ../sass/custom.scss */
+body.logged-in, html.logged-in {
+  padding-top: 20px;
+}
+/* line 54, ../sass/custom.scss */
+body.logged-in .navbar-fixed-top, html.logged-in .navbar-fixed-top {
+  top: 25px;
+}
+
+/* line 61, ../sass/custom.scss */
+body > .container {
+  padding-bottom: 15px;
+}
+/* line 65, ../sass/custom.scss */
+body .footer-default {
+  margin: 20px 0 15px;
+  padding: 5px 5px 0;
+  border-radius: 5px;
+}
+/* line 71, ../sass/custom.scss */
+body > .footer-fixed {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 4px 0;
+  margin: 2em 0 0;
+  border-top: 1px solid white;
+  z-index: 1000;
+}
+/* line 80, ../sass/custom.scss */
+body > .footer-fixed.navbar-inverse {
+  color: white;
+}
+/* line 85, ../sass/custom.scss */
+body .clear {
+  height: 60px;
+}
+/* line 90, ../sass/custom.scss */
+body .clear-double {
+  height: 120px;
+}
+
+/* line 99, ../sass/custom.scss */
+a:hover {
+  text-decoration: none;
+}
+
+/* line 104, ../sass/custom.scss */
+img {
+  background-color: #fefefe;
+  border: 1px solid #a5a5a5;
+  margin: 0.25em 0.5em;
+  padding: 0.25em;
+  max-width: 100%;
+  height: auto;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+/* line 115, ../sass/custom.scss */
+img.alignleft {
+  float: left;
+  margin-left: 0;
+}
+/* line 119, ../sass/custom.scss */
+img.alignright {
+  float: right;
+  margin-right: 0;
+}
+/* line 125, ../sass/custom.scss */
+.entry-header img {
+  float: left;
+  min-width: 7.25em;
+  max-width: 23.675%;
+  margin: 0.175% 2.425% 0 0;
+}
+
+/* line 137, ../sass/custom.scss */
+header nav[class*="affix"] {
+  width: 100%;
+  z-index: 9;
+}
+/* line 142, ../sass/custom.scss */
+header nav.affix-top {
+  position: absolute;
+}
+
+/* line 148, ../sass/custom.scss */
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+/* line 152, ../sass/custom.scss */
+.row .content {
+  padding-top: 1em;
+}
+
+/* line 159, ../sass/custom.scss */
+footer.entry-meta {
+  display: none;
+}
+
+/* line 167, ../sass/custom.scss */
+.banner,
+.main {
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* line 175, ../sass/custom.scss */
+.banner {
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZlZmVmZSIgc3RvcC1vcGFjaXR5PSIwLjgiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZWZlZmUiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA='), transparent url(../img/header.jpg) 0 0 no-repeat;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(254, 254, 254, 0.8)), color-stop(100%, #fefefe)), transparent url(../img/header.jpg) 0 0 no-repeat;
+  background: -moz-linear-gradient(top, rgba(254, 254, 254, 0.8), #fefefe), transparent url(../img/header.jpg) 0 0 no-repeat;
+  background: -webkit-linear-gradient(top, rgba(254, 254, 254, 0.8), #fefefe), transparent url(../img/header.jpg) 0 0 no-repeat;
+  background: linear-gradient(to bottom, rgba(254, 254, 254, 0.8), #fefefe), transparent url(../img/header.jpg) 0 0 no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 600px;
+  width: 100%;
+  z-index: -1;
+}
+
+/* line 186, ../sass/custom.scss */
+.main {
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjEuMCIgeTE9IjAuNSIgeDI9IjAuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzJlMmUyZSIgc3RvcC1vcGFjaXR5PSIwLjI1Ii8+PHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiM1MDUwNTAiIHN0b3Atb3BhY2l0eT0iMC41Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMmUyZTJlIiBzdG9wLW9wYWNpdHk9IjAuMjUiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA='), transparent url(../img/header.jpg) 0 0 no-repeat;
+  background: -webkit-gradient(linear, 100% 50%, 0% 50%, color-stop(0%, rgba(46, 46, 46, 0.25)), color-stop(50%, rgba(80, 80, 80, 0.5)), color-stop(100%, rgba(46, 46, 46, 0.25))), transparent url(../img/header.jpg) 0 0 no-repeat;
+  background: -moz-linear-gradient(right, rgba(46, 46, 46, 0.25), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.25)), transparent url(../img/header.jpg) 0 0 no-repeat;
+  background: -webkit-linear-gradient(right, rgba(46, 46, 46, 0.25), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.25)), transparent url(../img/header.jpg) 0 0 no-repeat;
+  background: linear-gradient(to left, rgba(46, 46, 46, 0.25), rgba(80, 80, 80, 0.5), rgba(46, 46, 46, 0.25)), transparent url(../img/header.jpg) 0 0 no-repeat;
+}
+/* line 190, ../sass/custom.scss */
+.main.full {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+/* line 199, ../sass/custom.scss */
+.main.inverse {
+  margin-bottom: 20px;
+}
+
+/* line 206, ../sass/custom.scss */
+body.home .inverse {
+  font-size: 1.75em;
+  color: #FFF;
+  text-shadow: 1px 2px 3px #000;
+}
+/* line 211, ../sass/custom.scss */
+body.home .inverse > ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+/* line 217, ../sass/custom.scss */
+body.home .inverse h1, body.home .inverse h2, body.home .inverse h3, body.home .inverse h4, body.home .inverse h5, body.home .inverse a {
+  color: #FFF;
+}
+/* line 221, ../sass/custom.scss */
+body.home .inverse.container {
+  position: relative;
+  padding: 2em;
+}
+/* line 227, ../sass/custom.scss */
+body.home .widget-row {
+  text-align: center;
+  background-color: #2E2E2E;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.75em;
+}
+/* line 236, ../sass/custom.scss */
+body.home .widget-row h1 {
+  margin-bottom: 20px;
+}
+
+/* line 245, ../sass/custom.scss */
+.sidebar {
+  margin-top: 20px;
+}
+/* line 248, ../sass/custom.scss */
+.sidebar .dropdown-menu {
+  position: relative;
+  margin-top: 1px;
+  float: none;
+  clear: both;
+  background-color: white;
+  border: none;
+  border-radius: 0;
+}
+
+/* line 259, ../sass/custom.scss */
+.row.panels {
+  padding-top: 1em;
+}
+
+/* line 265, ../sass/custom.scss */
+.panel .widget-title {
+  margin-top: 0;
+}
+
+/* line 273, ../sass/custom.scss */
+.bg-transparent,
+.panel-transparent {
+  background-color: transparent;
+}
+
+/* line 278, ../sass/custom.scss */
+.bg-gray,
+.panel-gray {
+  background-color: rgba(46, 46, 46, 0.35);
+  color: #FFF;
+}
+
+/* line 284, ../sass/custom.scss */
+.bg-default,
+.panel-default {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* line 291, ../sass/custom.scss */
+.panel-primary a,
+.bg-primary a {
+  color: rgba(255, 255, 255, 0.85);
+}
+/* line 295, ../sass/custom.scss */
+.panel-primary a:hover,
+.bg-primary a:hover {
+  color: rgba(255, 255, 255, 0.97);
+}
+
+/* line 304, ../sass/custom.scss */
+.cycle-wrapper {
+  position: relative;
+}
+
+/* line 307, ../sass/custom.scss */
+.cycle-slideshow {
+  overflow: hidden;
+}
+/* line 310, ../sass/custom.scss */
+.slideshow_full .cycle-slideshow {
+  position: relative;
+  height: calc(100% - 50px);
+  font-size: 1.25em;
+}
+
+/* line 318, ../sass/custom.scss */
+.slideshow_full .cycle-slide {
+  width: 100%;
+  max-height: calc(100% - 50px);
+}
+/* line 323, ../sass/custom.scss */
+.cycle-slide > img {
+  position: relative;
+  width: calc(100% - 8px);
+}
+/* line 327, ../sass/custom.scss */
+.slideshow_full .cycle-slide > img {
+  width: 100%;
+  height: auto;
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+/* line 336, ../sass/custom.scss */
+.cycle-slide > div {
+  position: absolute;
+  bottom: -10%;
+  left: 0;
+  width: calc(100% - 12px);
+  padding: 0 5% 2%;
+  background-color: rgba(254, 254, 254, 0.75);
+  margin: 8px;
+  -moz-transition: all, 1.5s, ease-in 1s;
+  -o-transition: all, 1.5s, ease-in 1s;
+  -webkit-transition: all, 1.5s, ease-in 1s;
+  transition: all 1.5s ease-in 1s;
+}
+/* line 347, ../sass/custom.scss */
+.slideshow_full .cycle-slide > div {
+  bottom: auto;
+  top: 100%;
+  width: 70%;
+  left: 15%;
+  padding: 0;
+  opacity: 0.5;
+  background-color: transparent;
+  margin: 0;
+}
+/* line 360, ../sass/custom.scss */
+.cycle-slide.cycle-slide-active > div {
+  bottom: 0;
+}
+/* line 363, ../sass/custom.scss */
+.slideshow_full .cycle-slide.cycle-slide-active > div {
+  top: 20%;
+  opacity: 1;
+}
+
+/* line 371, ../sass/custom.scss */
+.cycle-pagers {
+  position: absolute;
+  width: 100%;
+  top: calc(50% - 20px);
+  font-size: 40px;
+  line-height: 1;
+  padding: 0 5%;
+  z-index: 100;
+}
+/* line 380, ../sass/custom.scss */
+.slideshow_full .cycle-pagers {
+  top: calc(50% - 70px);
+}
+/* line 384, ../sass/custom.scss */
+.cycle-pagers a {
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 2px 2px 5px #838383;
+}
+/* line 388, ../sass/custom.scss */
+.cycle-pagers a:hover {
+  color: #FFF;
+}
+/* line 393, ../sass/custom.scss */
+.cycle-pagers #prev {
+  float: left;
+}
+/* line 397, ../sass/custom.scss */
+.cycle-pagers #next {
+  float: right;
+}
+
+@media all and (max-width: 767px) {
+  /* line 406, ../sass/custom.scss */
+  body > .footer-fixed {
+    position: relative;
+  }
+  /* line 410, ../sass/custom.scss */
+  body .clear, body .clear-double {
+    height: 4px;
+  }
+
+  /* line 423, ../sass/custom.scss */
+  .slideshow_full .cycle-slide > img {
+    min-height: calc(95vh - 50px);
+    width: auto;
+    min-width: 100%;
+  }
+
+  /* line 431, ../sass/custom.scss */
+  .cycle-pagers {
+    padding: 0 2.5%;
+    font-size: 28px;
+  }
+}

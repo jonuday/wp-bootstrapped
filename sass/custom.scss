@@ -94,24 +94,7 @@ body {
 }
 
 
-// Layout
-
-.row {
-	margin-left: 0;
-	margin-right: 0;
-
-	.content {
-		padding-top: 1em;
-	}
-}
-
-
-.navbar-fixed-top {
-	margin-bottom: 0;
-}
-
-
-// Custom Styles 
+// Base
 a {
 	&:hover {
 		text-decoration: none;
@@ -137,40 +120,49 @@ img {
 		float: right;
 		margin-right: 0;
 	}
+
+	// Posts
+	.entry-header & {
+		float: left;
+		min-width: 7.25em;
+		max-width: 23.675%;
+		margin: 0.175% 2.425% 0 0;
+	}
 }
 
-// Widgets/Panels
 
-.bg-transparent,
-.panel-transparent {
-	background-color: transparent;
-}
-
-.bg-gray,
-.panel-gray {
-	background-color: rgba($gray-base, 0.35);
-
-	color: #FFF;
-}
-
-.bg-default,
-.panel-default {
-	background-color: rgba(#FFF, 0.50);
-}
-
-.panel-primary,
-.bg-primary {
-	a {
-		color: rgba(#FFF,0.85);
-
-
-		&:hover {
-			color: rgba(#FFF,0.97);			
+// Layout
+header {
+	nav {
+		&[class*="affix"] {
+			width: 100%;
+		    z-index: 9;
+		}
+		
+		&.affix-top {
+			position: absolute;
 		}
 	}
 }
 
-// Banners
+.row {
+	margin-left: 0;
+	margin-right: 0;
+
+	.content {
+		padding-top: 1em;
+	}
+}
+
+footer {
+
+	&.entry-meta {
+		display: none;
+	}
+}
+
+// Modules
+// - Banners
 
 .banner,
 .main {
@@ -234,7 +226,7 @@ body.home {
 
 	.widget-row {
 		text-align: center;
-		background-color: $grey-base;
+		background-color: $gray-base;
 		padding-top: 2em;
 		padding-bottom: 2em;
 		margin-top: 0;
@@ -275,20 +267,34 @@ body.home {
 	}
 }
 
+// Theme
+// - Widgets/Panels
 
-
-// Posts */
-.entry-header img {
-	float: left;
-	min-width: 7.25em;
-	max-width: 23.675%;
-	margin: 0.175% 2.425% 0 0;
+.bg-transparent,
+.panel-transparent {
+	background-color: transparent;
 }
 
-footer {
+.bg-gray,
+.panel-gray {
+	background-color: rgba($gray-base, 0.35);
+	color: #FFF;
+}
 
-	&.entry-meta {
-		display: none;
+.bg-default,
+.panel-default {
+	background-color: rgba(#FFF, 0.50);
+}
+
+.panel-primary,
+.bg-primary {
+	a {
+		color: rgba(#FFF,0.85);
+
+
+		&:hover {
+			color: rgba(#FFF,0.97);			
+		}
 	}
 }
 
@@ -307,16 +313,6 @@ footer {
 		font-size: 1.25em;
 	}
 }
-
-/*.slideshow_full {
-	position: fixed;
-	display: block;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	z-index: -1;
-}*/
 
 .cycle-slide {
 	.slideshow_full & {
@@ -362,15 +358,14 @@ footer {
 
 	&.cycle-slide-active {
 		> div {
-				bottom: 0;
+			bottom: 0;
 
-				.slideshow_full & {
-					top: 20%;
-					opacity: 1;
-				}
+			.slideshow_full & {
+				top: 20%;
+				opacity: 1;
 			}
 		}
-
+	}
 }
 
 .cycle-pagers {

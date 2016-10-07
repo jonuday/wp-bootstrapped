@@ -22,14 +22,3 @@ This allows custom Bootstrap and Bootstrap-Theme stylesheets, which can be custo
 @import url('bootstrap/css/bootstrap.min.css');
 @import url('bootstrap/css/bootstrap-theme.min.css');
 @import url('stylesheets/custom.css');
-
-
-
-/* to add to SASS */
-header nav[class*="affix"] {
-	width: 100%;
-    z-index: 9;
-}
-header nav.affix-top {
-	position: absolute;
-}

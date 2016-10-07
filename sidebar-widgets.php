@@ -23,41 +23,10 @@ if ( is_active_sidebar( 'widget-1' ) || is_active_sidebar( 'widget-2' ) || is_ac
         // the span number
         $spanNumber = 12 / $widgetCount;
 
-        if (get_theme_mod('front_page_panel_layout') == "rows") { 
-    ?>
-
-        <?php if ( is_active_sidebar( 'widget-1' )) { ?>
-        <section class="row">
-            <div class="container">
-                <div class="widget-container col-sm-12">
-                    <?php dynamic_sidebar( 'widget-1' ); ?>
-                </div>
-            </div>
-        </section>
-        <?php } ?>
-            
-        <?php if ( is_active_sidebar( 'widget-2' )) { ?>
-        <section class="row">
-            <div class="container">
-                <div class="widget-container col-sm-12">                
-                    <?php dynamic_sidebar( 'widget-2' ); ?>
-                </div>
-            </div>
-        </section>
-        <?php } ?>
-
-        <?php if ( is_active_sidebar( 'widget-3' )) { ?>
-        <section class="row">
-            <div class="container">
-                <div class="widget-container col-sm-12">
-                
-                    <?php dynamic_sidebar( 'widget-3' ); ?>
-                </div>
-            </div>
-        </section>
-        <?php } ?>
-
-    <?php
+        if (get_theme_mod('front_page_panel_layout') == "rows") {
+            if ( is_active_sidebar( 'widget-1' )) { dynamic_sidebar( 'widget-1' );  } 
+            if ( is_active_sidebar( 'widget-2' )) { dynamic_sidebar( 'widget-2' );  } 
+            if ( is_active_sidebar( 'widget-3' )) { dynamic_sidebar( 'widget-3' );  } 
         } else {
 
     ?>
@@ -66,27 +35,21 @@ if ( is_active_sidebar( 'widget-1' ) || is_active_sidebar( 'widget-2' ) || is_ac
         <div class="container<?php if ( get_theme_mod('nav_fixed') == 0 ) { echo '-fluid'; } ?>">         
 
             <?php if ( is_active_sidebar( 'widget-1' )) { ?>
-            <div class="widget-container col-sm-<?php echo $spanNumber; ?>">
-                
+                <div class="widget-container col-sm-<?php echo $spanNumber; ?>">
                     <?php dynamic_sidebar( 'widget-1' ); ?>
-                
-            </div>
+                </div>
             <?php } ?>
             
             <?php if ( is_active_sidebar( 'widget-2' )) { ?>
-            <div class="widget-container col-sm-<?php echo $spanNumber; ?>">
-                
+                <div class="widget-container col-sm-<?php echo $spanNumber; ?>">
                     <?php dynamic_sidebar( 'widget-2' ); ?>
-                
-            </div>
+                </div>
             <?php } ?>
 
             <?php if ( is_active_sidebar( 'widget-3' )) { ?>
-            <div class="widget-container col-sm-<?php echo $spanNumber; ?>">
-                
+                <div class="widget-container col-sm-<?php echo $spanNumber; ?>">
                     <?php dynamic_sidebar( 'widget-3' ); ?>
-                
-            </div>
+                </div>
             <?php } ?>
         </div>
     </div>
